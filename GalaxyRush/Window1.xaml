@@ -10,7 +10,7 @@
     Height="450"
     mc:Ignorable="d">
     <Grid>
-        <Button x:Name="ButJouer" Content="Jouer" HorizontalAlignment="Left" Margin="154,291,0,0" VerticalAlignment="Top" Click="ButJouer_Click" FontSize="48" FontWeight="Bold" BorderThickness="1,1,1,1" Background="#00DDDDDD" Foreground="Black" BorderBrush="#00707070" />
+        <Button x:Name="ButJouers" Content="Jouer" HorizontalAlignment="Left" Margin="154,291,0,0" VerticalAlignment="Top" Click="ButJouer_Click" FontSize="48" FontWeight="Bold" BorderThickness="1,1,1,1" Background="#00DDDDDD" Foreground="Black" BorderBrush="#00707070" />
         <Button x:Name="ButQuitter" Content="Quitter" HorizontalAlignment="Left" Margin="539,291,0,0" VerticalAlignment="Top" Click="ButQuitter_Click" FontSize="48" FontWeight="Bold" Background="#00DDDDDD" BorderBrush="#00707070"/>
         <Label x:Name="TitreJeuMenu" Content="Galaxy Rush" HorizontalAlignment="Center" Margin="0,43,0,0" VerticalAlignment="Top" Width="492" Height="94" FontWeight="ExtraBold" FontSize="72" FontFamily="Cascadia Code"/>
     </Grid>
