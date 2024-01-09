@@ -11,14 +11,14 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Background>
-        <ImageBrush ImageSource="\Images\LogoGalaxyRushR.png&gt;" />
+        <ImageBrush ImageSource="\Images\LogoGalaxyRushR.png" />
     </Window.Background>
     <Grid>
-        <Image Source="/Images/fond_espace.jpg" Stretch="Fill" />
+        <Image Source="/Images/fond_espace.jpg" Stretch="Fill"/>
         <Button
             x:Name="ButJouer"
-            Margin="127,271,0,0"
-            HorizontalAlignment="Left"
+            Margin="0,245,0,0"
+            HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Background="#00DDDDDD"
             BorderBrush="#00707070"
@@ -30,8 +30,8 @@
             Foreground="White" />
         <Button
             x:Name="ButQuitter"
-            Margin="540,271,0,0"
-            HorizontalAlignment="Left"
+            Margin="0,318,0,0"
+            HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Background="#00DDDDDD"
             BorderBrush="#00707070"
@@ -40,22 +40,22 @@
             FontSize="48"
             FontWeight="Bold"
             Foreground="White" />
-        <Label
+        <!--<Label
             x:Name="TitreJeuMenu"
             Width="492"
             Height="94"
-            Margin="0,92,0,0"
+            Margin="0,10,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Content="Galaxy Rush"
             FontFamily="Cascadia Code"
             FontSize="72"
             FontWeight="ExtraBold"
-            Foreground="White" />
+            Foreground="White" />-->
         <Image
             Width="338"
             Height="262"
-            Margin="0,139,0,0"
+            Margin="0,-17,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Source="/Images/LogoGalaxyRushR.png"
