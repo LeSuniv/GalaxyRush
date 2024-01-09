@@ -23,6 +23,14 @@ namespace GalaxyRush
         public MainWindow()
         {
             InitializeComponent();
+            LevelDialog fenetreNiveau = new LevelDialog();
+            ShowDialog(fenetreNiveau);
+            fenetreNiveau.ShowDialog();
+            if (fenetreNiveau.DialogResult == false)
+            {
+                Application.Current.Shutdown();
+                InitializeGame();
+            }
         }
     }
 }
