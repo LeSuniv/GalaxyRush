@@ -10,5 +10,8 @@
     Height="450"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
-    <Grid />
+    <Grid >
+        <Image Margin="0,0,226,0" Source="/Images/FondJeuGalaxyRusher.png" Stretch="Fill"/>
+        <Image Margin="574,0,-380,0" Source="/Images/FondJeuGalaxyRusher.png" Stretch="Fill"/>
+    </Grid>
 </Window>
