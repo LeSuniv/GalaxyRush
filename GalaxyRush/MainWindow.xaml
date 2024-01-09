@@ -11,8 +11,7 @@
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Grid >
-        <Image Margin="0,0,226,0" Source="/Images/FondJeuGalaxyRusher.png" Stretch="Fill"/>
-        <Image Margin="574,0,-380,0" Source="/Images/FondJeuGalaxyRusher.png" Stretch="Fill"/>
-        <Image Margin="1064,-271,-1371,-319" Source="/Images/MicrosoftTeams-image.png" Stretch="Fill"/>
+        <Image Margin="0,0,174,0" Source="/Images/MicrosoftTeams-image.png" Stretch="Fill"/>
+        <Image Margin="626,0,-452,0" Source="/Images/MicrosoftTeams-image.png" Stretch="Fill"/>
     </Grid>
 </Window>
