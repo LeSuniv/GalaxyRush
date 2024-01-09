@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GalaxyRush
 {
@@ -23,14 +24,21 @@ namespace GalaxyRush
         public MainWindow()
         {
             InitializeComponent();
-            LevelDialog fenetreNiveau = new LevelDialog();
-            ShowDialog(fenetreNiveau);
-            fenetreNiveau.ShowDialog();
-            if (fenetreNiveau.DialogResult == false)
+        }
+        private void CanvasKeyIs(object sender, KeyEventArgs e)
+        {
+            // on gère les booléens gauche et droite en fonction de l’appui de la touche
+            if (e.Key == Key.Left)
             {
-                Application.Current.Shutdown();
-                InitializeGame();
+                goUp = true;
             }
         }
+        private void GameEngine(object sender, EventArgs e)
+        {
+
+        }
+        private bool goUp = false;
+        // crée une nouvelle instance de la classe dispatch timer
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
     }
 }
