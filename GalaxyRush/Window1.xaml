@@ -10,10 +10,55 @@
     Height="450"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.Background>
+        <ImageBrush ImageSource="\Images\LogoGalaxyRushR.png&gt;" />
+    </Window.Background>
     <Grid>
-        <Image Source="/Images/fond_espace.jpg" Stretch="Fill"/>
-        <Button x:Name="ButJouer" Content="Jouer" HorizontalAlignment="Left" Margin="127,271,0,0" VerticalAlignment="Top" Click="ButJouer_Click" FontSize="48" FontWeight="Bold" BorderThickness="1,1,1,1" Background="#00DDDDDD" Foreground="White" BorderBrush="#00707070" />
-        <Button x:Name="ButQuitter" Content="Quitter" HorizontalAlignment="Left" Margin="540,271,0,0" VerticalAlignment="Top" Click="ButQuitter_Click" FontSize="48" FontWeight="Bold" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="White"/>
-        <Label x:Name="TitreJeuMenu" Content="Galaxy Rush" HorizontalAlignment="Center" Margin="0,92,0,0" VerticalAlignment="Top" Width="492" Height="94" FontWeight="ExtraBold" FontSize="72" FontFamily="Cascadia Code" Foreground="White"/>
+        <Image Source="/Images/fond_espace.jpg" Stretch="Fill" />
+        <Button
+            x:Name="ButJouer"
+            Margin="127,271,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#00DDDDDD"
+            BorderBrush="#00707070"
+            BorderThickness="1,1,1,1"
+            Click="ButJouer_Click"
+            Content="Jouer"
+            FontSize="48"
+            FontWeight="Bold"
+            Foreground="White" />
+        <Button
+            x:Name="ButQuitter"
+            Margin="540,271,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#00DDDDDD"
+            BorderBrush="#00707070"
+            Click="ButQuitter_Click"
+            Content="Quitter"
+            FontSize="48"
+            FontWeight="Bold"
+            Foreground="White" />
+        <Label
+            x:Name="TitreJeuMenu"
+            Width="492"
+            Height="94"
+            Margin="0,92,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Galaxy Rush"
+            FontFamily="Cascadia Code"
+            FontSize="72"
+            FontWeight="ExtraBold"
+            Foreground="White" />
+        <Image
+            Width="338"
+            Height="262"
+            Margin="0,139,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Source="/Images/LogoGalaxyRushR.png"
+            Stretch="Fill" />
     </Grid>
 </Window>

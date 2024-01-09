@@ -11,11 +11,6 @@
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="698*"/>
-            <ColumnDefinition Width="103*"/>
-        </Grid.ColumnDefinitions>
-        <Image Margin="0,0,72,0" Source="/Images/MicrosoftTeams-image.png" Stretch="Fill"/>
-        <Image Margin="630,0,-456,0" Source="/Images/MicrosoftTeams-image.png" Stretch="Fill" Grid.ColumnSpan="2"/>
+        <Image Source="/Images/fond_espace_jeu.png" Stretch="Fill" Margin="0,0,119,0"/>
     </Grid>
 </Window>
