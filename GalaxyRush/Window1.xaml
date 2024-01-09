@@ -9,9 +9,9 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid >
-        <Button x:Name="ButJouer" Content="Jouer" HorizontalAlignment="Left" Margin="383,189,0,0" VerticalAlignment="Top" Click="ButJouer_Click" />
-        <Button x:Name="ButQuitter" Content="Quitter" HorizontalAlignment="Left" Margin="605,199,0,0" VerticalAlignment="Top" Click="ButQuitter_Click"/>
-        <Label x:Name="TitreJeu" Content="Galaxy Rush" HorizontalAlignment="Center" Margin="0,0,0,200" VerticalAlignment="Center"/>
+    <Grid>
+        <Button x:Name="ButJouer" Content="Jouer" HorizontalAlignment="Left" Margin="154,291,0,0" VerticalAlignment="Top" Click="ButJouer_Click" FontSize="48" FontWeight="Bold" />
+        <Button x:Name="ButQuitter" Content="Quitter" HorizontalAlignment="Left" Margin="539,291,0,0" VerticalAlignment="Top" Click="ButQuitter_Click" FontSize="48" FontWeight="Bold"/>
+        <Label x:Name="TitreJeu" Content="Galaxy Rush" HorizontalAlignment="Center" Margin="0,43,0,0" VerticalAlignment="Top" Width="492" Height="94" FontWeight="ExtraBold" FontSize="72" FontFamily="Cascadia Code"/>
     </Grid>
 </Window>
