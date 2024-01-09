@@ -25,19 +25,19 @@ namespace GalaxyRush
         {
             InitializeComponent();
         }
-        private void CanvasKeyIs(object sender, KeyEventArgs e)
+        /*private void CanvasKeyIs(object sender, KeyEventArgs e)
         {
             // on gère les booléens gauche et droite en fonction de l’appui de la touche
             if (e.Key == Key.Left)
             {
                 goUp = true;
             }
-        }
+        }*/
         private void GameEngine(object sender, EventArgs e)
         {
 
         }
-        private bool goUp = false;
+        //private bool goUp = false;
         // crée une nouvelle instance de la classe dispatch timer
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
     }
