@@ -71,7 +71,7 @@ namespace GalaxyRush
             ImageBrush texturobstacle = new ImageBrush();
             Rectangle nouveauobstacle = new Rectangle
             {
-                Tag = "asteroide",
+                Tag = "lafrance",
                 Height = 200,
                 Width = 50,
                 Fill = texturobstacle,
