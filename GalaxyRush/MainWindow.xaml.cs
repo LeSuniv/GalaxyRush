@@ -15,7 +15,7 @@ namespace GalaxyRush
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private ImageBrush fusée = new ImageBrush(); 
+        private ImageBrush fusée = new ImageBrush(); 
 
         public MainWindow()
         {
@@ -35,6 +35,8 @@ namespace GalaxyRush
             // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
         }
+
+
         private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
         {
             // on gère les booléens gauche et droite en fonction de l’appui de la touche
@@ -48,6 +50,7 @@ namespace GalaxyRush
             }
         }
 
+
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
             // on gère les booléens gauche et droite en fonction de l’appui de la touche
@@ -60,26 +63,37 @@ namespace GalaxyRush
                 goUp = false;
             }
         }
+
+
         private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
-            //nbrObstacle += 1;
-            //Random ordonné = new Random();
-            //int y = ordonné.Next(0,200);
-            //int right = 0;
-            //ImageBrush texturobstacle = new ImageBrush();
-            //Rectangle nouveauobstacle = new Rectangle
-            //{
-            //    Tag = "laFrance",
-            //    Height = 200,
-            //    Width = 50,
-            //    Fill = texturobstacle,
-            //}
-            //Canvas.SetRight(nouveauobstacle, right);
-            //Canvas.SetTop(nouveauobstacle,y)
-            //myCanvas.Children.Add(nouveauobstacle);
-            //right -= 60;
-            //textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+            nbrObstacle += 1;
+            Random ordonne = new Random();
+
+            int y = ordonne.Next(0, 200);
+            int right = 0;
+
+            ImageBrush texturobstacle = new ImageBrush();
+
+            Rectangle nouveauobstacle = new Rectangle
+            {
+                Tag = "laFrance",
+                Height = 200,
+                Width = 50,
+                Fill = texturobstacle,
+            };
+
+            Canvas.SetRight(nouveauobstacle, right);
+
+            Canvas.SetTop(nouveauobstacle, y);
+
+            myCanvas.Children.Add(nouveauobstacle);
+
+            right -= 60;
+            texturobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
         }
+
+
         private void Jeu(object sender, EventArgs e)
         {
             // création d’un rectangle joueur pour la détection de collision
@@ -87,6 +101,10 @@ namespace GalaxyRush
             joueur.Width, joueur.Height);
             scoreText.Content = scoreText + "points";
         }
+
+
+        #region Constante
+
         private bool goUp, goRight = true;
         private bool goDown = false;
         // crée une nouvelle instance de la classe dispatch timer
@@ -95,5 +113,7 @@ namespace GalaxyRush
         private ImageBrush SkinJoueur = new ImageBrush();
         private int nbrObstacle = 0;
         private int score = 0;
+
+        #endregion
     }
 }

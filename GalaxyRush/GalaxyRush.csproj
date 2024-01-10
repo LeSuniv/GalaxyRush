@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fusée.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="fusée.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="images\asteroide.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
