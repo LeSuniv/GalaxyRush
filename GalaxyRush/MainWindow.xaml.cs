@@ -30,7 +30,7 @@ namespace GalaxyRush
             // lancement du timer
             dispatcherTimer.Start();
             // chargement de l’image du joueur 
-            SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/invader.png"));
+            SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/fusée.png"));
             // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
         }
