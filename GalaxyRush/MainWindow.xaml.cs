@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 namespace GalaxyRush
@@ -23,9 +25,21 @@ namespace GalaxyRush
 
             //InitializeGame();
 
+            // configure le Timer et les événements
+            // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
+            dispatcherTimer.Tick += Jeu;
+            // rafraissement toutes les 16 milliseconds
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(16);
+            // lancement du timer
+            dispatcherTimer.Start();
+            // chargement de l’image du joueur 
+            SkinJoueur.ImageSource = new BitmapImage(new
+            Uri(AppDomain.CurrentDomain.BaseDirectory + "images/player.png"));
+            // assignement de skin du joueur au rectangle associé
+            joueur.Fill = SkinJoueur;
         }
 
-        private void CanvasKeyIsDown(object sender, KeyEventArgs e)
+        private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
         {
             // on gère les booléens gauche et droite en fonction de l’appui de la touche
             if (e.Key == Key.Space && goUp == true)
@@ -37,7 +51,7 @@ namespace GalaxyRush
                 goUp = true;
             }
         }
-        private void CanvasKeyIsUp(object sender, KeyEventArgs e)
+        private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
             // on gère les booléens gauche et droite en fonction de l’appui de la touche
             if (e.Key == Key.Space && goUp == true)
@@ -49,8 +63,26 @@ namespace GalaxyRush
                 goUp = false;
             }
         }
-        private void GameEngine(object sender, EventArgs e)
+        private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
+            ImageBrush texturobstacle = new ImageBrush();
+            Rectangle nouveauobstacle = new Rectangle
+            {
+                Tag = "asteroide",
+                Height = 200,
+                Width = 50,
+                Fill = texturobstacle,
+            }
+            Canvas.SetRight(nouveauobstacle, right);
+            myCanvas.Children.Add(nouveauobstacle);
+            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/asteroide.png"));
+        }
+        private void Jeu(object sender, EventArgs e)
+        {
+            // création d’un rectangle joueur pour la détection de collision
+            Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
+            joueur.Width, joueur.Height);
+            CreeObstacles();
 
         }
 
@@ -58,5 +90,7 @@ namespace GalaxyRush
         private bool goDown = false;
         // crée une nouvelle instance de la classe dispatch timer
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
+        private ImageBrush SkinJoueur = new ImageBrush();
     }
 }
