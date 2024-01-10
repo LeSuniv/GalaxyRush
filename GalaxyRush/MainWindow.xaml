@@ -15,8 +15,8 @@
         Name="myCanvas"
         Background="LightBlue"
         Focusable="True"
-        KeyDown="Canvas_KeyDown"
-        KeyUp="Canvas_KeyUp">
+        KeyDown="CanvasKeyIsDown"
+        KeyUp="CanvasKeyIsUp">
             <Rectangle
             Name="background"
             Width="1262"

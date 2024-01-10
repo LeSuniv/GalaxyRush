@@ -16,6 +16,10 @@ namespace GalaxyRush
             InitializeComponent();
             Window1 debutjeu = new Window1();
             debutjeu.ShowDialog();
+            if (debutjeu.DialogResult == false)
+                Application.Current.Shutdown();
+
+            //InitializeGame();
         }
 
         private void CanvasKeyIsDown(object sender, KeyEventArgs e)
