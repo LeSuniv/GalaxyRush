@@ -72,7 +72,7 @@ namespace GalaxyRush
                 Height = 200,
                 Width = 50,
                 Fill = texturobstacle,
-            }
+            };
             Canvas.SetRight(nouveauobstacle, right);
             Canvas.SetTop(nouveauobstacle, y)
             myCanvas.Children.Add(nouveauobstacle);
