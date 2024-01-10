@@ -80,7 +80,7 @@ namespace GalaxyRush
             Canvas.SetTop(nouveauobstacle,y)
             myCanvas.Children.Add(nouveauobstacle);
             right -= 60;
-            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/asteroide.png"));
+            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
         }
         private void Jeu(object sender, EventArgs e)
         {
@@ -96,5 +96,6 @@ namespace GalaxyRush
         // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
         private ImageBrush SkinJoueur = new ImageBrush();
         private int nbrObstacle = 0;
+        private string bonsoir;
     }
 }
