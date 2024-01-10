@@ -67,19 +67,19 @@ namespace GalaxyRush
             Random ordonné = new Random();
             int y = ordonné.Next(0,200);
             int right = 0;
-            ImageBrush textureobstacle = new ImageBrush();
-            Rectangle nouveauobstacle = new Rectangle
+            ImageBrush textureObstacle = new ImageBrush();
+            Rectangle nouveauObstacle = new Rectangle
             {
                 Tag = "asteroide",
                 Height = 200,
                 Width = 50,
-                Fill = texturobstacle,
-            }
-            Canvas.SetRight(nouveauobstacle, right);
-            Canvas.SetTop(nouveauobstacle,y)
-            myCanvas.Children.Add(nouveauobstacle);
+                Fill = textureObstacle,
+            };
+            Canvas.SetRight(nouveauObstacle, right);
+            Canvas.SetTop(nouveauObstacle, y);
+            myCanvas.Children.Add(nouveauObstacle);
             right -= 60;
-            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+            textureObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
         }
         private void Jeu(object sender, EventArgs e)
         {
