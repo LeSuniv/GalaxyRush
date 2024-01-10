@@ -11,14 +11,14 @@ namespace GalaxyRush
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ImageBrush fusée = new ImageBrush(); 
+        //private ImageBrush fusée = new ImageBrush(); 
 
         public MainWindow()
         {
-            InitializeComponent();
-            Window1 debutjeu = new Window1();
-            debutjeu.ShowDialog();
-            if (debutjeu.DialogResult == false)
+            //InitializeComponent();
+            Window1 debutJeu = new Window1();
+            debutJeu.ShowDialog();
+            if (debutJeu.DialogResult == false)
                 Application.Current.Shutdown();
 
             //InitializeGame();
@@ -53,6 +53,7 @@ namespace GalaxyRush
         {
 
         }
+
         private bool goUp, goRight = true;
         private bool goDown = false;
         // crée une nouvelle instance de la classe dispatch timer

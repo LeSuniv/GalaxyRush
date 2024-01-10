@@ -10,9 +10,9 @@
     Height="450"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Window.Background>
-        <ImageBrush ImageSource="\Images\LogoGalaxyRushR.png"  Stretch="Fill"/>
-    </Window.Background>
+    <!--<Window.Background>
+        <ImageBrush ImageSource="\Images\fond_espace.jpg"  Stretch="Fill"/>
+    </Window.Background>-->
     <Grid>
         <Image Source="/Images/fond_espace.jpg" Stretch="Fill"/>
         <Button

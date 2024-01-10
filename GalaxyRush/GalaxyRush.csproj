@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <SplashScreen Include="Images\fond_espace.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </SplashScreen>
   </ItemGroup>
 
