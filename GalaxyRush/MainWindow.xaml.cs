@@ -51,6 +51,7 @@ namespace GalaxyRush
                 goUp = true;
             }
         }
+
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
             // on gère les booléens gauche et droite en fonction de l’appui de la touche
@@ -72,7 +73,7 @@ namespace GalaxyRush
             ImageBrush texturobstacle = new ImageBrush();
             Rectangle nouveauobstacle = new Rectangle
             {
-                Tag = "lafrance",
+                Tag = "laFrance",
                 Height = 200,
                 Width = 50,
                 Fill = texturobstacle,
