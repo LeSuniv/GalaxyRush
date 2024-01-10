@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -63,23 +62,7 @@ namespace GalaxyRush
         }
         private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
-            nbrObstacle += 1;
-            Random ordonné = new Random();
-            int y = ordonné.Next(0,200);
-            int right = 0;
-            ImageBrush textureObstacle = new ImageBrush();
-            Rectangle nouveauObstacle = new Rectangle
-            {
-                Tag = "asteroide",
-                Height = 200,
-                Width = 50,
-                Fill = textureObstacle,
-            };
-            Canvas.SetRight(nouveauObstacle, right);
-            Canvas.SetTop(nouveauObstacle, y);
-            myCanvas.Children.Add(nouveauObstacle);
-            right -= 60;
-            textureObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+           
         }
         private void Jeu(object sender, EventArgs e)
         {
