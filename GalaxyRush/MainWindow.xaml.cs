@@ -18,12 +18,14 @@ namespace GalaxyRush
 
         private void CanvasKeyIsDown(object sender, KeyEventArgs e)
         {
-            bool truc = goUp;
             // on gère les booléens gauche et droite en fonction de l’appui de la touche
-            if (e.Key == Key.Space && truc == true)
+            if (e.Key == Key.Space && goUp == true)
             {
                 goUp = false;
-                goRight = false;
+            }
+            if (e.Key == Key.Space && goUp == false)
+            {
+                goUp = true;
             }
         }
         private void CanvasKeyIsUp(object sender, KeyEventArgs e)
@@ -31,13 +33,11 @@ namespace GalaxyRush
             // on gère les booléens gauche et droite en fonction de l’appui de la touche
             if (e.Key == Key.Space && goUp == true)
             {
-                goUp = true;
-                goRight = true;
+                goDown = true;
             }
             if (e.Key == Key.Space && goUp == false)
             {
                 goUp = false;
-                goRight = false;
             }
         }
         private void GameEngine(object sender, EventArgs e)
