@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,16 +16,11 @@ namespace GalaxyRush
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ImageBrush fusée = new ImageBrush();
-        private List<Rectangle> itemsToRemove = new List<Rectangle>();
+        //private ImageBrush fusée = new ImageBrush(); 
 
         public MainWindow()
         {
             InitializeComponent();
-            Window1 debutjeu = new Window1();
-            debutjeu.ShowDialog();
-            if (debutjeu.DialogResult == false)
-                Application.Current.Shutdown();
 
             //InitializeGame();
 
@@ -36,8 +32,7 @@ namespace GalaxyRush
             // lancement du timer
             dispatcherTimer.Start();
             // chargement de l’image du joueur 
-            SkinJoueur.ImageSource = new BitmapImage(new
-            Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/fusée.png"));
+            SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/fusée.png"));
             // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
         }
@@ -53,6 +48,7 @@ namespace GalaxyRush
                 goUp = true;
             }
         }
+
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
             // on gère les booléens gauche et droite en fonction de l’appui de la touche
@@ -69,26 +65,21 @@ namespace GalaxyRush
         {
             nbrObstacle += 1;
             Random ordonné = new Random();
-            int y = ordonné.Next(0, 200);
+            int y = ordonné.Next(0,200);
             int right = 0;
-            for(int i = 0; i < 1; i++) 
-            { 
-
-            }
-            ImageBrush textureObstacle = new ImageBrush();
-            Rectangle nouveauObstacle = new Rectangle
+            ImageBrush textureobstacle = new ImageBrush();
+            Rectangle nouveauobstacle = new Rectangle
             {
                 Tag = "asteroide",
                 Height = 200,
                 Width = 50,
-                Fill = textureObstacle,
-            };
-            Canvas.SetRight(nouveauObstacle, right);
-            Canvas.SetTop(nouveauObstacle, y);
-            myCanvas.Children.Add(nouveauObstacle);
+                Fill = texturobstacle,
+            }
+            Canvas.SetRight(nouveauobstacle, right);
+            Canvas.SetTop(nouveauobstacle,y)
+            myCanvas.Children.Add(nouveauobstacle);
             right -= 60;
-            textureObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
-
+            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
         }
         private void Jeu(object sender, EventArgs e)
         {
