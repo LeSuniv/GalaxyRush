@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 
@@ -10,6 +11,7 @@ namespace GalaxyRush
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ImageBrush fusée = new ImageBrush(); 
 
         public MainWindow()
         {
@@ -20,6 +22,7 @@ namespace GalaxyRush
                 Application.Current.Shutdown();
 
             //InitializeGame();
+
         }
 
         private void CanvasKeyIsDown(object sender, KeyEventArgs e)

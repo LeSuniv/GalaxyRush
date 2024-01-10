@@ -18,7 +18,7 @@
         Name="myCanvas"
         Background="LightBlue"
         Focusable="True"
-        </Canvas>
+       
         <Image  Source="/Images/fond_espace.jpg" Stretch="Fill"/>
         <Button
             x:Name="ButJouer"
