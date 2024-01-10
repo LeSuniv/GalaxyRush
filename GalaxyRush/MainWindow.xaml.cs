@@ -87,7 +87,7 @@ namespace GalaxyRush
             // création d’un rectangle joueur pour la détection de collision
             Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
             joueur.Width, joueur.Height);
-            CreeObstacles();
+            scoreText.Content = scoreText + "points";
         }
         private bool goUp, goRight = true;
         private bool goDown = false;
@@ -96,6 +96,5 @@ namespace GalaxyRush
         // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
         private ImageBrush SkinJoueur = new ImageBrush();
         private int nbrObstacle = 0;
-        private string bonsoir;
     }
 }
