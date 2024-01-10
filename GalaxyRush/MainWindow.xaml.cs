@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace GalaxyRush
@@ -61,23 +62,23 @@ namespace GalaxyRush
         }
         private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
-            nbrObstacle += 1;
-            Random ordonné = new Random();
-            int y = ordonné.Next(0, 200);
-            int right = 0;
-            ImageBrush texturobstacle = new ImageBrush();
-            Rectangle nouveauobstacle = new Rectangle
-            {
-                Tag = "laFrance",
-                Height = 200,
-                Width = 50,
-                Fill = texturobstacle,
-            };
-            Canvas.SetRight(nouveauobstacle, right);
-            Canvas.SetTop(nouveauobstacle, y)
-            myCanvas.Children.Add(nouveauobstacle);
-            right -= 60;
-            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+            //nbrObstacle += 1;
+            //Random ordonné = new Random();
+            //int y = ordonné.Next(0,200);
+            //int right = 0;
+            //ImageBrush texturobstacle = new ImageBrush();
+            //Rectangle nouveauobstacle = new Rectangle
+            //{
+            //    Tag = "laFrance",
+            //    Height = 200,
+            //    Width = 50,
+            //    Fill = texturobstacle,
+            //}
+            //Canvas.SetRight(nouveauobstacle, right);
+            //Canvas.SetTop(nouveauobstacle,y)
+            //myCanvas.Children.Add(nouveauobstacle);
+            //right -= 60;
+            //textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
         }
         private void Jeu(object sender, EventArgs e)
         {
@@ -93,5 +94,6 @@ namespace GalaxyRush
         // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
         private ImageBrush SkinJoueur = new ImageBrush();
         private int nbrObstacle = 0;
+        private int score = 0;
     }
 }
