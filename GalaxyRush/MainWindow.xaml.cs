@@ -72,7 +72,7 @@ namespace GalaxyRush
             ImageBrush texturobstacle = new ImageBrush();
             Rectangle nouveauobstacle = new Rectangle
             {
-                Tag = "asteroide",
+                Tag = "lafrance",
                 Height = 200,
                 Width = 50,
                 Fill = texturobstacle,
@@ -97,6 +97,5 @@ namespace GalaxyRush
         // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
         private ImageBrush SkinJoueur = new ImageBrush();
         private int nbrObstacle = 0;
-        private int score = 0;
     }
 }
