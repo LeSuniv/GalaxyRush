@@ -38,7 +38,6 @@ namespace GalaxyRush
             // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
         }
-
         private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
         {
             // on gère les booléens gauche et droite en fonction de l’appui de la touche
@@ -65,8 +64,10 @@ namespace GalaxyRush
         }
         private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
+            nbrObstacle += 1;
             Random ordonné = new Random();
             int y = ordonné.Next(0,200);
+            int right = 0;
             ImageBrush texturobstacle = new ImageBrush();
             Rectangle nouveauobstacle = new Rectangle
             {
@@ -78,7 +79,8 @@ namespace GalaxyRush
             Canvas.SetRight(nouveauobstacle, right);
             Canvas.SetTop(nouveauobstacle,y)
             myCanvas.Children.Add(nouveauobstacle);
-            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+            right -= 60;
+            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/asteroide.png"));
         }
         private void Jeu(object sender, EventArgs e)
         {
@@ -93,6 +95,7 @@ namespace GalaxyRush
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
         private ImageBrush SkinJoueur = new ImageBrush();
+        private int nbrObstacle = 0;
         private int score = 0;
     }
 }
