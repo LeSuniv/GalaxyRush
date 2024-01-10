@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Images\fond_espace.jpg">
+    <None Update="images\fond_espace.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Images\fond_espace_jeu.png">
+    <None Update="images\fond_espace_jeu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Images\LogoGalaxyRushR.png">
+    <None Update="images\LogoGalaxyRushR.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

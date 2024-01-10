@@ -18,24 +18,19 @@ namespace GalaxyRush
 
         public MainWindow()
         {
-            //InitializeComponent();
-            Window1 debutJeu = new Window1();
-            debutJeu.ShowDialog();
-            if (debutJeu.DialogResult == false)
-                Application.Current.Shutdown();
+            InitializeComponent();
 
             //InitializeGame();
 
             // configure le Timer et les événements
             // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
-            //dispatcherTimer.Tick += Jeu;
+            dispatcherTimer.Tick += Jeu;
             // rafraissement toutes les 16 milliseconds
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(16);
             // lancement du timer
             dispatcherTimer.Start();
             // chargement de l’image du joueur 
-            SkinJoueur.ImageSource = new BitmapImage(new
-            Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/fusée.png"));
+            SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/invader.png"));
             // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
         }
@@ -66,23 +61,23 @@ namespace GalaxyRush
         }
         private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
-            nbrObstacle += 1;
-            Random ordonné = new Random();
-            int y = ordonné.Next(0,200);
-            int right = 0;
-            ImageBrush texturobstacle = new ImageBrush();
-            Rectangle nouveauobstacle = new Rectangle
-            {
-                Tag = "laFrance",
-                Height = 200,
-                Width = 50,
-                Fill = texturobstacle,
-            }
-            Canvas.SetRight(nouveauobstacle, right);
-            Canvas.SetTop(nouveauobstacle,y)
-            myCanvas.Children.Add(nouveauobstacle);
-            right -= 60;
-            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+            //nbrObstacle += 1;
+            //Random ordonné = new Random();
+            //int y = ordonné.Next(0,200);
+            //int right = 0;
+            //ImageBrush texturobstacle = new ImageBrush();
+            //Rectangle nouveauobstacle = new Rectangle
+            //{
+            //    Tag = "laFrance",
+            //    Height = 200,
+            //    Width = 50,
+            //    Fill = texturobstacle,
+            //}
+            //Canvas.SetRight(nouveauobstacle, right);
+            //Canvas.SetTop(nouveauobstacle,y)
+            //myCanvas.Children.Add(nouveauobstacle);
+            //right -= 60;
+            //textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
         }
         private void Jeu(object sender, EventArgs e)
         {
