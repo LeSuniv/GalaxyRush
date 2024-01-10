@@ -14,6 +14,8 @@ namespace GalaxyRush
         public MainWindow()
         {
             InitializeComponent();
+            Window1 debutjeu = new Window1();
+            debutjeu.ShowDialog();
         }
 
         private void CanvasKeyIs(object sender, KeyEventArgs e)
