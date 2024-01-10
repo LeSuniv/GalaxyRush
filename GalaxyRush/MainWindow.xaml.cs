@@ -13,6 +13,7 @@ namespace GalaxyRush
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ImageBrush fusée = new ImageBrush(); 
 
         public MainWindow()
         {

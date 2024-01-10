@@ -10,11 +10,16 @@
     Height="450"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Window.Background>
+    <!--<Window.Background>
         <ImageBrush ImageSource="\Images\LogoGalaxyRushR.png" />
-    </Window.Background>
+    </Window.Background>-->
     <Grid>
-        <Image Source="/Images/fond_espace.jpg" Stretch="Fill"/>
+        <Canvas
+        Name="myCanvas"
+        Background="LightBlue"
+        Focusable="True"
+       
+        <Image  Source="/Images/fond_espace.jpg" Stretch="Fill"/>
         <Button
             x:Name="ButJouer"
             Margin="0,245,0,0"
