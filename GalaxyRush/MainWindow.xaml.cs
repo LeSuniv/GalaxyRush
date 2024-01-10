@@ -65,6 +65,8 @@ namespace GalaxyRush
         }
         private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
+            Random ordonné = new Random();
+            int y = ordonné.Next(0,200);
             ImageBrush texturobstacle = new ImageBrush();
             Rectangle nouveauobstacle = new Rectangle
             {
@@ -74,6 +76,7 @@ namespace GalaxyRush
                 Fill = texturobstacle,
             }
             Canvas.SetRight(nouveauobstacle, right);
+            Canvas.SetTop(nouveauobstacle,y)
             myCanvas.Children.Add(nouveauobstacle);
             textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/asteroide.png"));
         }
@@ -83,7 +86,6 @@ namespace GalaxyRush
             Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
             joueur.Width, joueur.Height);
             CreeObstacles();
-
         }
         private bool goUp, goRight = true;
         private bool goDown = false;
