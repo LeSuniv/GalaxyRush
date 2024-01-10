@@ -14,7 +14,12 @@
         <ImageBrush ImageSource="\Images\fond_espace.jpg"  Stretch="Fill"/>
     </Window.Background>-->
     <Grid>
-        <Image  Source="/Images/fond_espace.jpg" Stretch="Fill"/>
+        <!--<Image Width="800" Height="450" Source="/Images/fond_espace.jpg"/>-->
+        <Image Width="800" Height="450">
+            <Image.Source>
+                <BitmapImage UriSource="\Images\fond_espace.jpg" />
+            </Image.Source>
+        </Image>
         <Button
             x:Name="ButJouer"
             Margin="0,245,0,0"
@@ -61,4 +66,5 @@
             Source="/Images/LogoGalaxyRushR.png"
             Stretch="Fill" />
     </Grid>
+
 </Window>

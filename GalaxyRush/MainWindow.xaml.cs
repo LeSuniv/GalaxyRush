@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -27,7 +28,7 @@ namespace GalaxyRush
 
             // configure le Timer et les événements
             // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
-            dispatcherTimer.Tick += Jeu;
+            //dispatcherTimer.Tick += Jeu;
             // rafraissement toutes les 16 milliseconds
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(16);
             // lancement du timer
@@ -63,28 +64,28 @@ namespace GalaxyRush
                 goUp = false;
             }
         }
-        private void CreeObstacles(object sender, KeyboardEventArgs e)
-        {
-            ImageBrush texturobstacle = new ImageBrush();
-            Rectangle nouveauobstacle = new Rectangle
-            {
-                Tag = "asteroide",
-                Height = 200,
-                Width = 50,
-                Fill = texturobstacle,
-            }
-            Canvas.SetRight(nouveauobstacle, right);
-            myCanvas.Children.Add(nouveauobstacle);
-            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/asteroide.png"));
-        }
-        private void Jeu(object sender, EventArgs e)
-        {
-            // création d’un rectangle joueur pour la détection de collision
-            Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
-            joueur.Width, joueur.Height);
-            CreeObstacles();
+        //private void CreeObstacles(object sender, KeyboardEventArgs e)
+        //{
+        //    ImageBrush texturobstacle = new ImageBrush();
+        //    Rectangle nouveauobstacle = new Rectangle
+        //    {
+        //        Tag = "asteroide",
+        //        Height = 200,
+        //        Width = 50,
+        //        Fill = texturobstacle,
+        //    }
+        //    Canvas.SetRight(nouveauobstacle, right);
+        //    myCanvas.Children.Add(nouveauobstacle);
+        //    textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/asteroide.png"));
+        //}
+        //private void Jeu(object sender, EventArgs e)
+        //{
+        //    // création d’un rectangle joueur pour la détection de collision
+        //    Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
+        //    joueur.Width, joueur.Height);
+        //    CreeObstacles();
 
-        }
+        //}
 
         private bool goUp, goRight = true;
         private bool goDown = false;
