@@ -14,11 +14,6 @@
         <ImageBrush ImageSource="\Images\LogoGalaxyRushR.png" />
     </Window.Background>-->
     <Grid>
-        <Canvas
-        Name="myCanvas"
-        Background="LightBlue"
-        Focusable="True"
-       
         <Image  Source="/Images/fond_espace.jpg" Stretch="Fill"/>
         <Button
             x:Name="ButJouer"

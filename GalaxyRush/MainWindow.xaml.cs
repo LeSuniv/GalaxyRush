@@ -65,13 +65,25 @@ namespace GalaxyRush
         }
         private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
-
+            ImageBrush texturobstacle = new ImageBrush();
+            Rectangle nouveauobstacle = new Rectangle
+            {
+                Tag = "asteroide",
+                Height = 200,
+                Width = 50,
+                Fill = texturobstacle,
+            }
+            Canvas.SetRight(nouveauobstacle, right);
+            myCanvas.Children.Add(nouveauobstacle);
+            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/asteroide.png"));
         }
         private void Jeu(object sender, EventArgs e)
         {
             // création d’un rectangle joueur pour la détection de collision
             Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
             joueur.Width, joueur.Height);
+            CreeObstacles();
+
         }
         private bool goUp, goRight = true;
         private bool goDown = false;
