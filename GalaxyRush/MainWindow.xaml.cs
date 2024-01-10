@@ -21,12 +21,12 @@ namespace GalaxyRush
         {
             InitializeComponent();
 
-            Dialog dialogNom = new Dialog();
-            dialogNom.ShowDialog();
-            dialogNom.Owner = this;
-            if (dialogNom.DialogResult == false)
-                Application.Current.Shutdown();
-        }
+            //Dialog dialogNom = new Dialog();
+            //dialogNom.ShowDialog();
+            //dialogNom.Owner = this;
+            //if (dialogNom.DialogResult == false)
+            //    Application.Current.Shutdown();
+        
 
         //InitializeGame();
 
@@ -38,7 +38,7 @@ namespace GalaxyRush
             // lancement du timer
             dispatcherTimer.Start();
             // chargement de l’image du joueur 
-            SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/fusée.png"));
+            SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fusée.png"));
             // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
         }
