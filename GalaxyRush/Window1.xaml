@@ -11,16 +11,16 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Background>
-        <ImageBrush ImageSource="\Images\LogoGalaxyRushR.png" />
+        <ImageBrush ImageSource="\Images\fond_espace.jpg" Stretch="Fill" />
     </Window.Background>
     <Grid>
-        <Image Source="/Images/fond_espace.jpg" Stretch="Fill"/>
+        <!--<Image Source="/Images/fond_espace.jpg" Stretch="Fill"/>-->
         <Button
             x:Name="ButJouer"
             Margin="0,245,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Background="#00DDDDDD"
+            Background="Black"
             BorderBrush="#00707070"
             BorderThickness="1,1,1,1"
             Click="ButJouer_Click"

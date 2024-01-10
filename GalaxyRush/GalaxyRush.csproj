@@ -8,15 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\LogoGalaxyRushR.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <SplashScreen Include="Images\LogoGalaxyRushR.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Images\fond_espace.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\fond_espace_jeu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\LogoGalaxyRushR.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
