@@ -10,53 +10,53 @@
     Height="450"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
-    <Grid >
+    <Grid>
         <Canvas
-        Name="myCanvas"
-        Background="LightBlue"
-        Focusable="True"
-        KeyDown="CanvasKeyIsDown"
-        KeyUp="CanvasKeyIsUp">
+            Name="myCanvas"
+            Background="LightBlue"
+            Focusable="True"
+            KeyDown="CleeCanvasAppuyee"
+            KeyUp="CleeCanvasRelachee">
             <Rectangle
-            Name="background"
-            Width="1262"
-            Height="400"
-            Fill="Orange" />
+                Name="background"
+                Width="1262"
+                Height="400"
+                Fill="Orange" />
             <Rectangle
-            Name="background2"
-            Canvas.Left="1262"
-            Width="1262"
-            Height="400"
-            Fill="LightGreen" />
+                Name="background2"
+                Canvas.Left="1262"
+                Width="1262"
+                Height="400"
+                Fill="LightGreen" />
             <Rectangle
-            Name="ground"
-            Canvas.Left="0"
-            Canvas.Top="387"
-            Width="800"
-            Height="32"
-            Fill="Black" />
+                Name="ground"
+                Canvas.Left="0"
+                Canvas.Top="387"
+                Width="800"
+                Height="32"
+                Fill="Black" />
             <Rectangle
-            Name="player"
-            Canvas.Left="110"
-            Canvas.Top="151"
-            Width="67"
-            Height="99"
-            Fill="Brown" />
+                Name="joueur"
+                Canvas.Left="110"
+                Canvas.Top="151"
+                Width="67"
+                Height="99"
+                Fill="Brown" />
             <Rectangle
-            Name="obstacle"
-            Canvas.Left="721"
-            Canvas.Top="320"
-            Width="55"
-            Height="80"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Fill="Red" />
+                Name="obstacle"
+                Canvas.Left="721"
+                Canvas.Top="320"
+                Width="55"
+                Height="80"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Fill="Red" />
             <Label
-            Name="scoreText"
-            Content="Score: 0"
-            FontSize="22"
-            FontWeight="Bold" />
+                Name="scoreText"
+                Content="Score: 0"
+                FontSize="22"
+                FontWeight="Bold" />
         </Canvas>
     </Grid>
-    
+
 </Window>
