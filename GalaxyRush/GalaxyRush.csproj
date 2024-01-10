@@ -8,9 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Images\fond_espace.jpg">
+    <None Remove="Images\fond_espace.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="Images\fond_espace.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </SplashScreen>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Images\fond_espace_jeu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

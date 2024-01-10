@@ -20,7 +20,7 @@
             Margin="0,245,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Background="Black"
+            Background="#00000000"
             BorderBrush="#00707070"
             BorderThickness="1,1,1,1"
             Click="ButJouer_Click"
