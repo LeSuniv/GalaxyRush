@@ -34,7 +34,7 @@ namespace GalaxyRush
             dispatcherTimer.Start();
             // chargement de l’image du joueur 
             SkinJoueur.ImageSource = new BitmapImage(new
-            Uri(AppDomain.CurrentDomain.BaseDirectory + "images/player.png"));
+            Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/fusée.png"));
             // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
         }
@@ -78,14 +78,14 @@ namespace GalaxyRush
             Canvas.SetRight(nouveauobstacle, right);
             Canvas.SetTop(nouveauobstacle,y)
             myCanvas.Children.Add(nouveauobstacle);
-            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "images/asteroide.png"));
+            textureobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
         }
         private void Jeu(object sender, EventArgs e)
         {
             // création d’un rectangle joueur pour la détection de collision
             Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
             joueur.Width, joueur.Height);
-            CreeObstacles();
+            scoreText.Content = scoreText + "points";
         }
         private bool goUp, goRight = true;
         private bool goDown = false;
@@ -93,5 +93,6 @@ namespace GalaxyRush
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
         private ImageBrush SkinJoueur = new ImageBrush();
+        private int score = 0;
     }
 }
