@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -75,32 +76,53 @@ namespace GalaxyRush
     {
         nbrObstacle += 1;
         Random ordonne = new Random();
-
         int y = ordonne.Next(0, 200);
         int right = 0;
 
-        ImageBrush texturobstacle = new ImageBrush();
+            #region Asteroide
+            ImageBrush texturObstacle = new ImageBrush();
 
-        Rectangle nouveauobstacle = new Rectangle
+        Rectangle nouveauObstacle = new Rectangle
         {
-            Tag = "laFrance",
+            Tag = "asteroide",
             Height = 200,
             Width = 50,
-            Fill = texturobstacle,
+            Fill = texturObstacle,
         };
 
-        Canvas.SetRight(nouveauobstacle, right);
+        Canvas.SetRight(nouveauObstacle, right);
 
-        Canvas.SetTop(nouveauobstacle, y);
+        Canvas.SetTop(nouveauObstacle, y);
 
-        myCanvas.Children.Add(nouveauobstacle);
+        myCanvas.Children.Add(nouveauObstacle);
 
         right -= 60;
-        texturobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
-    }
+        texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+            #endregion
+
+            #region Ovni
+            if (nbrObstacle > 10) //j'ai mis 10 juste pour contextualiser
+            {
+                y = ordonne.Next(0, 200);
+                ImageBrush textureOvni = new ImageBrush();
+                Rectangle nouveauOvni = new Rectangle
+                {
+                    Tag = "ovni",
+                    Height = 40,
+                    Width = 50,
+                    Fill = textureOvni,
+                };
+                Canvas.SetRight(nouveauOvni, right);
+                Canvas.SetTop(nouveauOvni, y);
+                myCanvas.Children.Add(nouveauOvni);
+                right -= 60;
+                textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
+            }
+            #endregion
+        }
 
 
-    private void Jeu(object sender, EventArgs e)
+        private void Jeu(object sender, EventArgs e)
     {
         // création d’un rectangle joueur pour la détection de collision
         Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
@@ -119,7 +141,8 @@ namespace GalaxyRush
     private ImageBrush SkinJoueur = new ImageBrush();
     private int nbrObstacle = 0;
     private int score = 0;
+    private List<Rectangle> enlever = new List<Rectangle>();
 
-    #endregion
-}
+        #endregion
+    }
 }
