@@ -15,6 +15,11 @@
   <ItemGroup>
     <Resource Include="fond_espace.jpg" />
     <Resource Include="LogoGalaxyRushR.png" />
+    <None Remove="fusée.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="fusée.png" />
   </ItemGroup>
 
   <ItemGroup>

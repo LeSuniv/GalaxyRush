@@ -20,19 +20,18 @@ namespace GalaxyRush
         public MainWindow()
         {
             InitializeComponent();
-
             //Dialog dialogNom = new Dialog();
             //dialogNom.ShowDialog();
             //dialogNom.Owner = this;
             //if (dialogNom.DialogResult == false)
             //    Application.Current.Shutdown();
-        
 
-        //InitializeGame();
 
-        // configure le Timer et les événements
-        // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
-        dispatcherTimer.Tick += Jeu;
+            //InitializeGame();
+
+            // configure le Timer et les événements
+            // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
+            dispatcherTimer.Tick += Jeu;
             // rafraissement toutes les 16 milliseconds
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(16);
             // lancement du timer
