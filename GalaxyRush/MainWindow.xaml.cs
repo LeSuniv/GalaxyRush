@@ -15,15 +15,13 @@ namespace GalaxyRush
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-
 
         public MainWindow()
         {
             InitializeComponent();
             Window1 fenetreNiveau = new Window1();
             fenetreNiveau.ShowDialog();
-            if (fenetreNiveau.DialogResult == false) 
+            if (fenetreNiveau.DialogResult == false)
             {
                 Application.Current.Shutdown();
             }
@@ -52,60 +50,60 @@ namespace GalaxyRush
         }
 
 
-    private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
-    {
-        // on gère les booléens gauche et droite en fonction de l’appui de la touche
-        if (e.Key == Key.Space && goUp == true)
+        private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
         {
-            goUp = false;
+            // on gère les booléens gauche et droite en fonction de l’appui de la touche
+            if (e.Key == Key.Space && goUp == true)
+            {
+                goUp = false;
+            }
+            if (e.Key == Key.Space && goUp == false)
+            {
+                goUp = true;
+            }
         }
-        if (e.Key == Key.Space && goUp == false)
-        {
-            goUp = true;
-        }
-    }
 
 
-    private void CleeCanvasRelachee(object sender, KeyEventArgs e)
-    {
-        // on gère les booléens gauche et droite en fonction de l’appui de la touche
-        if (e.Key == Key.Space && goUp == true)
+        private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
-            goDown = true;
+            // on gère les booléens gauche et droite en fonction de l’appui de la touche
+            if (e.Key == Key.Space && goUp == true)
+            {
+                goDown = true;
+            }
+            if (e.Key == Key.Space && goUp == false)
+            {
+                goUp = false;
+            }
         }
-        if (e.Key == Key.Space && goUp == false)
-        {
-            goUp = false;
-        }
-    }
 
 
-    private void CreeObstacles(object sender, KeyboardEventArgs e)
-    {
-        nbrObstacle += 1;
-        Random ordonne = new Random();
-        int y = ordonne.Next(0, 200);
-        int right = 0;
+        private void CreeObstacles(object sender, KeyboardEventArgs e)
+        {
+            nbrObstacle += 1;
+            Random ordonne = new Random();
+            int y = ordonne.Next(0, 200);
+            int right = 0;
 
             #region Asteroide
             ImageBrush texturObstacle = new ImageBrush();
 
-        Rectangle nouveauObstacle = new Rectangle
-        {
-            Tag = "asteroide",
-            Height = 200,
-            Width = 50,
-            Fill = texturObstacle,
-        };
+            Rectangle nouveauObstacle = new Rectangle
+            {
+                Tag = "asteroide",
+                Height = 200,
+                Width = 50,
+                Fill = texturObstacle,
+            };
 
-        Canvas.SetRight(nouveauObstacle, right);
+            Canvas.SetRight(nouveauObstacle, right);
 
-        Canvas.SetTop(nouveauObstacle, y);
+            Canvas.SetTop(nouveauObstacle, y);
 
-        myCanvas.Children.Add(nouveauObstacle);
+            myCanvas.Children.Add(nouveauObstacle);
 
-        right -= 60;
-        texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+            right -= 60;
+            texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
             #endregion
 
             #region Ovni
@@ -130,31 +128,60 @@ namespace GalaxyRush
         }
 
 
-
         private void Jeu(object sender, EventArgs e)
-    {
-        // création d’un rectangle joueur pour la détection de collision
-        Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
-        joueur.Width, joueur.Height);
-        scoreText.Content = score + "points";
+        {
+            // création d’un rectangle joueur pour la détection de collision
+            Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
+            joueur.Width, joueur.Height);
+            scoreText.Content = score + "points";
+        }
 
-    }
 
+        #region Constante
 
-    #region Constante
-
-    private bool goUp, goRight = true;
-    private bool goDown = false;
-    // crée une nouvelle instance de la classe dispatch timer
-    private DispatcherTimer dispatcherTimer = new DispatcherTimer();
-    // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
-    private ImageBrush SkinJoueur = new ImageBrush();
-    private int nbrObstacle = 0;
-    private int score = 0;
-    private List<Rectangle> enlever = new List<Rectangle>();
-    private ImageBrush fond = new ImageBrush();
-    private ImageBrush fusée = new ImageBrush();
+        private bool goUp, goRight = true;
+        private bool goDown = false;
+        // crée une nouvelle instance de la classe dispatch timer
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
+        private ImageBrush SkinJoueur = new ImageBrush();
+        private int nbrObstacle = 0;
+        private int score = 0;
+        private List<Rectangle> enlever = new List<Rectangle>();
+        private ImageBrush fond = new ImageBrush();
+        private ImageBrush fusée = new ImageBrush();
 
         #endregion
+
+
+        //timer variable
+        private int minutes = 0;
+        private int seconds = 0;
+        private DispatcherTimer timeTimer = new DispatcherTimer();
+
+        //setting up timer for time display
+        timeTimer.Tick += new EventHandler(timeSetter);
+        timeTimer.Interval = TimeSpan.FromSeconds(1);
+        timeTimer.Start();
+
+
+        private void timeSetter(object sender, EventArgs e)
+        {
+            seconds++;
+            if (seconds == 60)
+            {
+                minutes++;
+                seconds = 0;
+            }
+            if (seconds == 0 && minutes == 0)
+            {
+                time.Text = "0:00";
+            }
+            else if (minutes == 0)
+            {
+                time.Text = "0:" + seconds.ToString();
+            }
+            time.Text = minutes.ToString() + ":" + seconds.ToString();
+        }
     }
 }
