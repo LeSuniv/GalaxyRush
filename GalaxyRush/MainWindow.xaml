@@ -34,7 +34,16 @@
                 Canvas.Top="151"
                 Width="67"
                 Height="99"
-                Fill="Brown" />
+                Fill="Brown" RenderTransformOrigin="0.5,0.5" >
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90.52"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
             <Rectangle
                 Name="obstacle"
                 Canvas.Left="721"
@@ -48,7 +57,7 @@
                 Name="scoreText"
                 Content="Score: 0"
                 FontSize="22"
-                FontWeight="Bold" Foreground="White" />
+                FontWeight="Bold" Foreground="White" FontFamily="72 Black"/>
         </Canvas>
         <Grid>
             <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="736,10,0,0" Text="0:00" VerticalAlignment="Top" Height="22" Width="60" FontSize="22" FontWeight="Bold" FontFamily="72 Black" Foreground="White"/>
