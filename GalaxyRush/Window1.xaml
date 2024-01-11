@@ -60,8 +60,9 @@
             Margin="0,-17,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Source="/Images/LogoGalaxyRushR.png"
-            Stretch="Fill" />-->
+            Panel.ZIndex="100"
+            Source="/LogoGalaxyRushR.png"
+            Stretch="Fill" />
     </Grid>
 
 </Window>
