@@ -80,24 +80,24 @@ namespace GalaxyRush
         int y = ordonne.Next(0, 200);
         int right = 0;
 
-        ImageBrush texturobstacle = new ImageBrush();
+        ImageBrush texturObstacle = new ImageBrush();
 
-        Rectangle nouveauobstacle = new Rectangle
+        Rectangle nouveauObstacle = new Rectangle
         {
-            Tag = "laFrance",
+            Tag = "asteroide",
             Height = 200,
             Width = 50,
-            Fill = texturobstacle,
+            Fill = texturObstacle,
         };
 
-        Canvas.SetRight(nouveauobstacle, right);
+        Canvas.SetRight(nouveauObstacle, right);
 
-        Canvas.SetTop(nouveauobstacle, y);
+        Canvas.SetTop(nouveauObstacle, y);
 
-        myCanvas.Children.Add(nouveauobstacle);
+        myCanvas.Children.Add(nouveauObstacle);
 
         right -= 60;
-        texturobstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+        texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
     }
 
 
