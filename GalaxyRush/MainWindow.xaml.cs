@@ -253,3 +253,42 @@ namespace GalaxyRush
         #endregion
     }
 }
+
+
+
+//Pour plus tard mettre sur pause
+//private void OnSpaceDownHandler(object sender, KeyEventArgs e)
+//{
+//    if (e.Key == Key.Space)
+//    {
+//        if (velocity > 0)
+//            velocity = -leapDist;
+//        else
+//            velocity -= leapDist;
+//        //velocity -= leapDist;
+//        //llama.Margin = new Thickness(llama.Margin.Left, llama.Margin.Top - 50, llama.Margin.Right, llama.Margin.Bottom + 50);
+//    }
+//    else if (e.Key == Key.P)
+//    {
+//        if (timeTimer.IsEnabled)
+//        {
+//            gravTimer.Stop();
+//            timeTimer.Stop();
+//            genTimer.Stop();
+//        }
+//        else
+//        {
+//            gravTimer.Start();
+//            timeTimer.Start();
+//            genTimer.Start();
+//        }
+//    }
+//    else if (e.Key == Key.Escape)
+//    {
+//        gravTimer.Stop();
+//        timeTimer.Stop();
+//        genTimer.Stop();
+//        //add to open a popup to retry or go to new window
+//        GameOver(allFences.score);
+//    }
+//}

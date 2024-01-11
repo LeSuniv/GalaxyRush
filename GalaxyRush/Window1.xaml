@@ -42,6 +42,11 @@
             FontSize="48"
             FontWeight="Bold"
             Foreground="White" />
-    </Grid>
 
+        <Rectangle Fill="#FF31AAEA" HorizontalAlignment="Left" Height="156" Margin="500,157,0,0" Stroke="White" VerticalAlignment="Top" Width="257"/>
+        <TextBlock HorizontalAlignment="Left" Height="34" Margin="559,157,0,0" TextWrapping="Wrap" Text="Comment jouer" TextAlignment="Center" VerticalAlignment="Top" Width="149" Foreground="#FFFFFF" FontWeight="Bold" FontSize="22"/>
+        <TextBlock Height="73" Margin="559,238,0,0" TextWrapping="Wrap" TextAlignment="Justify" VerticalAlignment="Top" Foreground="#FFFFFF" FontSize="16" HorizontalAlignment="Left" Width="149"><Run Text="Changer de direction&#x9;- Espace&#xA;Pause&#x9;- P"/><LineBreak/><Run Text="ESC&#x9;- Quitter la partie"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="506,191,0,0" TextWrapping="Wrap" Text="Esquiver les ennemis et les obstacles sur votre chemin! Sinon la partie est terminée" TextAlignment="Center" VerticalAlignment="Top" Height="37" Width="244" Foreground="White"/>
+
+    </Grid>
 </Window>
