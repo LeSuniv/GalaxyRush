@@ -16,13 +16,29 @@ namespace GalaxyRush
     public partial class MainWindow : Window
     {
 
+        #region Constante
+
+        private bool goUp = true;
+        private bool goDown = false;
+        // crée une nouvelle instance de la classe dispatch timer
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
+        private ImageBrush SkinJoueur = new ImageBrush();
+        private int nbrObstacle = 0;
+        private int score = 0;
+        private List<Rectangle> enlever = new List<Rectangle>();
+        private ImageBrush fond = new ImageBrush();
+        private ImageBrush fusée = new ImageBrush();
+
+        #endregion
+
         public MainWindow()
         {
             InitializeComponent();
 
             Window1 fenetreNiveau = new Window1();
             fenetreNiveau.ShowDialog();
-            
+
 
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace_jeu.png")); background.Fill = fond;
 
@@ -85,6 +101,7 @@ namespace GalaxyRush
         {
             nbrObstacle += 1;
             Random ordonne = new Random();
+
             int y = ordonne.Next(0, 200);
             int right = 0;
 
@@ -110,7 +127,7 @@ namespace GalaxyRush
             #endregion
 
             #region Ovni
-            if (nbrObstacle > 10) //j'ai mis 10 juste pour contextualiser
+            if (nbrObstacle > 5) //j'ai mis 10 juste pour contextualiser
             {
                 y = ordonne.Next(0, 200);
                 ImageBrush textureOvni = new ImageBrush();
@@ -139,37 +156,19 @@ namespace GalaxyRush
             scoreText.Content = score + "points";
         }
 
-
-            //if (x is Rectangle && (string)x.Tag == "enemy")
-            //{
-            //    // On le déplace vers la droite selon enemySpeed
-            //    Canvas.SetLeft(x, Canvas.GetLeft(x) + enemySpeed);
-            //}
-            //// vérification de la collision avec le joueur
-            //Rect enemy = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
-            //if (player.IntersectsWith(enemy))
-            //{
-            //    // collision avec le joueur et fin de la partie
-            //    dispatcherTimer.Stop();
-            //    lose.Visibility = Visibility.Visible;
-            //}
-
-
-        #region Constante
-
-    private bool goUp = true;
-    private bool goDown = false;
-    // crée une nouvelle instance de la classe dispatch timer
-    private DispatcherTimer dispatcherTimer = new DispatcherTimer();
-    // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
-    private ImageBrush SkinJoueur = new ImageBrush();
-    private int nbrObstacle = 0;
-    private int score = 0;
-    private List<Rectangle> enlever = new List<Rectangle>();
-    private ImageBrush fond = new ImageBrush();
-    private ImageBrush fusée = new ImageBrush();
-
-        #endregion
+        //if (x is Rectangle && (string)x.Tag == "enemy")
+        //{
+        //    // On le déplace vers la droite selon enemySpeed
+        //    Canvas.SetLeft(x, Canvas.GetLeft(x) + enemySpeed);
+        //}
+        //// vérification de la collision avec le joueur
+        //Rect enemy = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+        //if (player.IntersectsWith(enemy))
+        //{
+        //    // collision avec le joueur et fin de la partie
+        //    dispatcherTimer.Stop();
+        //    lose.Visibility = Visibility.Visible;
+        //}
 
 
         #region Temps
