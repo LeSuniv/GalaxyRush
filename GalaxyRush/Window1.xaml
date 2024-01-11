@@ -38,7 +38,7 @@
     <Grid>
 
         <Rectangle x:Name="Fond" HorizontalAlignment="Center" Height="434" VerticalAlignment="Center" Width="800"/>
-        <Rectangle x:Name="FondLogo" HorizontalAlignment="Center" Height="240" VerticalAlignment="Top" Width="270"/>
+        <Rectangle x:Name="FondLogo" HorizontalAlignment="Center" Height="264" VerticalAlignment="Top" Width="348"/>
 
         <Button
             x:Name="ButJouer"
@@ -69,17 +69,32 @@
 
         <Button x:Name="butTuto" Content="Comment Jouer" HorizontalAlignment="Left" Margin="622,364,0,0" VerticalAlignment="Top" Height="60" Width="168" 
                 Background="#01DDDDDD" FontFamily="Stargaze Stencil normal" FontSize="11" BorderBrush="White" Foreground="#FFA000FF" Click="butTuto_Click"/>
-
-        <Button x:Name="ChoisirSkin" Content="" HorizontalAlignment="Left" Margin="48,91,0,0" VerticalAlignment="Top" 
-                Width="164" Height="293" Opacity="0" RenderTransformOrigin="0.5,0.5">
+        <Image x:Name="fusee" HorizontalAlignment="Left" Margin="36,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="1,0" Height="311" Width="194">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="4.312"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Button x:Name="ChoisirSkin" Content="Choisir" HorizontalAlignment="Left" Margin="15,61,0,0" VerticalAlignment="Top" 
+                Width="191" Height="323" Opacity="0" RenderTransformOrigin="0.5,0.5" Click="ChoisirSkin_Click" Background="White">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="8.325"/>
+                    <RotateTransform Angle="0.329"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        <TextBlock x:Name="TexteSkin" HorizontalAlignment="Left" Height="66" Margin="10,26,0,0" Text="Cliquer pour choisir un skin !" VerticalAlignment="Top" Width="265" Foreground="White" FontWeight="Bold" FontSize="18">
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect>
+        </TextBlock>
+
     </Grid>
 </Window>
