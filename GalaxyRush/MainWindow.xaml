@@ -21,7 +21,7 @@
                 Name="background"
                 Width="1262"
                 Height="400"
-                Fill="Orange" />
+                Fill="orange" />
             <Rectangle
                 Name="background2"
                 Canvas.Left="1262"
