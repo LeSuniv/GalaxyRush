@@ -218,28 +218,7 @@ namespace GalaxyRush
         //    lose.Visibility = Visibility.Visible;
         //}
 
-
-        #region Constante
-
-    private bool goUp = true;
-    private bool goDown = false;
-    // crée une nouvelle instance de la classe dispatch timer
-    private DispatcherTimer dispatcherTimer = new DispatcherTimer();
-    // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
-    private ImageBrush SkinJoueur = new ImageBrush();
-    private int nbrObstacle = 0;
-    private int score = 0;
-    private List<Rectangle> enlever = new List<Rectangle>();
-    private ImageBrush fond = new ImageBrush();
-    private ImageBrush fusée = new ImageBrush();
-    private int vitesseObstacle = 2;
-    private int vitesseOvni = 4;
-
-        #endregion
-
-
-        //timer variable
-        //fsd
+        
         #region Temps
         // variable pour le temps
         private int minutes = 0;
