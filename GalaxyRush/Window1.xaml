@@ -1,5 +1,4 @@
 ﻿<Window
-    SizeToContent="WidthAndHeight"
     x:Class="GalaxyRush.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,25 +8,31 @@
     Title="Menu"
     Width="800"
     Height="450"
+    Icon="P:\SAE 01.01-02\GalaxyRush\GalaxyRush\images\fusée.png"
+    ResizeMode="NoResize"
+    SizeToContent="WidthAndHeight"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d" Icon="P:\SAE 01.01-02\GalaxyRush\GalaxyRush\images\fusée.png" ResizeMode="NoResize">
+    mc:Ignorable="d">
     <Window.Resources>
         <Style x:Key="CustomButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <!-- Changement de la couleur du texte lors du survol de la souris -->
-                                <Setter Property="Foreground" Value="#FFA000FF"/>
+                                <!--  Changement de la couleur du texte lors du survol de la souris  -->
+                                <Setter Property="Foreground" Value="#FFA000FF" />
                             </Trigger>
-                            <!-- Autres états visuels si nécessaire -->
+                            <!--  Autres états visuels si nécessaire  -->
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -37,11 +42,22 @@
 
     <Grid>
 
-        <Rectangle x:Name="Fond" HorizontalAlignment="Center" Height="434" VerticalAlignment="Center" Width="800"/>
-        <Rectangle x:Name="FondLogo" HorizontalAlignment="Center" Height="264" VerticalAlignment="Top" Width="348"/>
+        <Rectangle
+            x:Name="Fond"
+            Width="800"
+            Height="434"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" />
+        <Rectangle
+            x:Name="FondLogo"
+            Width="348"
+            Height="264"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top" />
 
         <Button
             x:Name="ButJouer"
+            Width="218"
             Margin="0,240,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
@@ -52,8 +68,7 @@
             Content="Jouer"
             FontSize="55"
             FontWeight="Bold"
-            Width="218" 
-            Style="{StaticResource CustomButtonStyle}"/>
+            Style="{StaticResource CustomButtonStyle}" />
         <Button
             x:Name="ButQuitter"
             Margin="0,322,0,0"
@@ -65,34 +80,73 @@
             Content="Quitter"
             FontSize="45"
             FontWeight="Bold"
-            Style="{StaticResource CustomButtonStyle}"/>
+            Style="{StaticResource CustomButtonStyle}" />
 
-        <Button x:Name="butTuto" Content="Comment Jouer" HorizontalAlignment="Left" Margin="622,364,0,0" VerticalAlignment="Top" Height="60" Width="168" 
-                Background="#01DDDDDD" FontFamily="Stargaze Stencil normal" FontSize="11" BorderBrush="White" Foreground="#FFA000FF" Click="butTuto_Click"/>
-        <Image x:Name="fusee" HorizontalAlignment="Left" Margin="36,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="1,0" Height="311" Width="194">
+        <Button
+            x:Name="butTuto"
+            Width="168"
+            Height="60"
+            Margin="622,364,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#01DDDDDD"
+            BorderBrush="White"
+            Click="butTuto_Click"
+            Content="Comment Jouer"
+            FontFamily="Stargaze Stencil normal"
+            FontSize="11"
+            Foreground="#FFA000FF" />
+        <Image
+            x:Name="fusee"
+            Width="194"
+            Height="311"
+            Margin="36,76,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            RenderTransformOrigin="1,0">
             <Image.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="4.312"/>
-                    <TranslateTransform/>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="4.312" />
+                    <TranslateTransform />
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button x:Name="ChoisirSkin" Content="Choisir" HorizontalAlignment="Left" Margin="15,61,0,0" VerticalAlignment="Top" 
-                Width="191" Height="323" Opacity="0" RenderTransformOrigin="0.5,0.5" Click="ChoisirSkin_Click" Background="White">
+        <Button
+            x:Name="ChoisirSkin"
+            Width="191"
+            Height="323"
+            Margin="15,61,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="White"
+            Click="ChoisirSkin_Click"
+            Content="Choisir"
+            Opacity="0"
+            RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.329"/>
-                    <TranslateTransform/>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="0.329" />
+                    <TranslateTransform />
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBlock x:Name="TexteSkin" HorizontalAlignment="Left" Height="66" Margin="10,26,0,0" Text="Cliquer pour choisir un skin !" VerticalAlignment="Top" Width="265" Foreground="White" FontWeight="Bold" FontSize="18">
+        <TextBlock
+            x:Name="TexteSkin"
+            Width="265"
+            Height="66"
+            Margin="10,26,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="18"
+            FontWeight="Bold"
+            Foreground="White"
+            Text="Cliquer pour choisir un skin !">
             <TextBlock.Effect>
-                <DropShadowEffect/>
+                <DropShadowEffect />
             </TextBlock.Effect>
         </TextBlock>
 
