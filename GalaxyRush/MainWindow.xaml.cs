@@ -27,8 +27,6 @@ namespace GalaxyRush
                 Application.Current.Shutdown();
             }
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace_jeu.png")); background.Fill = fond;
-            
-            
 
             //Dialog dialogNom = new Dialog();
             //dialogNom.ShowDialog();
@@ -81,7 +79,7 @@ namespace GalaxyRush
         }
 
 
-        private void CreeObstacles(int x)
+        private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
             nbrObstacle += 1;
             Random ordonne = new Random();
@@ -129,9 +127,52 @@ namespace GalaxyRush
             }
             #endregion
         }
-        private void MouvementObstacle()
+        private void MouvementObstacle(object sender, EventArgs e)
         {
-           
+            foreach (Rectangle x in myCanvas.Children.OfType<Rectangle>())
+            {
+                if (x is Rectangle && (string)x.Tag == "asteroide")
+                {
+                    Canvas.SetRight(x, Canvas.GetRight(x) - vitesseObstacle);
+                    if (Canvas.GetRight(x) < 1262)
+                    {
+                        // si c’est le cas on l’ajoute à la liste des éléments à supprimer
+                        enlever.Add(x);
+                    }
+                }
+                if (x is Rectangle && (string)x.Tag == "ovni")
+                {
+                    Canvas.SetRight(x, Canvas.GetRight(x) - vitesseOvni);
+                    if (Canvas.GetRight(x) == 1000)
+                    {
+                        foreach (Rectangle y in myCanvas.Children.OfType<Rectangle>())
+                        {
+                            if (y is Rectangle && (string)x.Tag == "ovni")
+                            {
+                                for (int i = 0; i < 4; i++)
+                                {
+                                    Random numero = new Random();
+                                    int oba = numero.Next(0, 1);
+                                    if (oba == 0)
+                                    {
+                                        Canvas.SetTop(y, Canvas.GetTop(y) + vitesseOvni);
+                                    }
+                                    else if (oba == 1)
+                                    {
+                                        Canvas.SetTop(y, Canvas.GetTop(y) - vitesseOvni);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    int fuiteOvni = vitesseOvni * 10;
+                    Canvas.SetRight(x, Canvas.GetRight(x) - fuiteOvni);
+                    if (Canvas.GetRight(x) < 1262)
+                    {
+                        enlever.Add(x);
+                    }
+                }
+            }
         }
 
 
@@ -141,16 +182,6 @@ namespace GalaxyRush
             Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
             joueur.Width, joueur.Height);
             scoreText.Content = score + "points";
-            CreeObstacles(1);
-
-            foreach (Rectangle x in myCanvas.Children.OfType<Rectangle>())
-            {
-                if (x is Rectangle && (string)x.Tag == "asteroide")
-                {
-                    Canvas.SetRight(x, Canvas.GetRight(x) + vitesseObstacle);
-                }
-
-            }
         }
             //if (x is Rectangle && (string)x.Tag == "enemy")
             //{
@@ -192,6 +223,7 @@ namespace GalaxyRush
         private DispatcherTimer timeTimer = new DispatcherTimer();
 
         //setting up timer for time display
+
 
         private void timeSetter(object sender, EventArgs e)
         {
