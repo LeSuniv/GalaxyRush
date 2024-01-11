@@ -80,7 +80,8 @@ namespace GalaxyRush
         int y = ordonne.Next(0, 200);
         int right = 0;
 
-        ImageBrush texturObstacle = new ImageBrush();
+            #region Asteroide
+            ImageBrush texturObstacle = new ImageBrush();
 
         Rectangle nouveauObstacle = new Rectangle
         {
@@ -98,6 +99,9 @@ namespace GalaxyRush
 
         right -= 60;
         texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+            #endregion
+
+            #region Ovni
             if (nbrObstacle > 10) //j'ai mis 10 juste pour contextualiser
             {
                 y = ordonne.Next(0, 200);
@@ -115,10 +119,11 @@ namespace GalaxyRush
                 right -= 60;
                 textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
             }
+            #endregion
         }
 
 
-    private void Jeu(object sender, EventArgs e)
+        private void Jeu(object sender, EventArgs e)
     {
         // création d’un rectangle joueur pour la détection de collision
         Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
