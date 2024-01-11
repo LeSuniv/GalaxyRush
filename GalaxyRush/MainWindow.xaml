@@ -50,5 +50,9 @@
                 FontSize="22"
                 FontWeight="Bold" Foreground="White" />
         </Canvas>
+        <Grid>
+            <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="736,10,0,0" Text="0:00" VerticalAlignment="Top" Height="22" Width="60" FontSize="22" FontWeight="Bold" FontFamily="72 Black"/>
+            <TextBlock HorizontalAlignment="Left" Margin="650,10,0,0" Text="Temps: " VerticalAlignment="Top" Height="22" Width="82" FontSize="22" FontWeight="Bold" FontFamily="72 Black"/>
+        </Grid>
     </Grid>
 </Window>
