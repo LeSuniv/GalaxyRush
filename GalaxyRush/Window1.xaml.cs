@@ -30,6 +30,11 @@ namespace GalaxyRush
         {
             Application.Current.Shutdown();
         }
+
+        private void butTuto_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }
     }
 }
 
