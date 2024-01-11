@@ -135,6 +135,8 @@ namespace GalaxyRush
             joueur.Width, joueur.Height);
             scoreText.Content = score + "points";
         }
+
+
             //if (x is Rectangle && (string)x.Tag == "enemy")
             //{
             //    // On le déplace vers la droite selon enemySpeed
@@ -172,13 +174,8 @@ namespace GalaxyRush
         private int seconds = 0;
         private DispatcherTimer timeTimer = new DispatcherTimer();
 
-        //setting up timer for time display
-        timeTimer.Tick += new EventHandler(timeSetter);
-        timeTimer.Interval = TimeSpan.FromSeconds(1);
-        timeTimer.Start();
 
-
-        private void timeSetter(object sender, EventArgs e)
+        private void ComptageTemps(object sender, EventArgs e)
         {
             seconds++;
             if (seconds == 60)
