@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -76,7 +77,6 @@ namespace GalaxyRush
     {
         nbrObstacle += 1;
         Random ordonne = new Random();
-
         int y = ordonne.Next(0, 200);
         int right = 0;
 
@@ -98,7 +98,24 @@ namespace GalaxyRush
 
         right -= 60;
         texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
-    }
+            if (nbrObstacle > 10) //j'ai mis 10 juste pour contextualiser
+            {
+                y = ordonne.Next(0, 200);
+                ImageBrush textureOvni = new ImageBrush();
+                Rectangle nouveauOvni = new Rectangle
+                {
+                    Tag = "ovni",
+                    Height = 40,
+                    Width = 50,
+                    Fill = textureOvni,
+                };
+                Canvas.SetRight(nouveauOvni, right);
+                Canvas.SetTop(nouveauOvni, y);
+                myCanvas.Children.Add(nouveauOvni);
+                right -= 60;
+                textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
+            }
+        }
 
 
     private void Jeu(object sender, EventArgs e)
@@ -120,7 +137,8 @@ namespace GalaxyRush
     private ImageBrush SkinJoueur = new ImageBrush();
     private int nbrObstacle = 0;
     private int score = 0;
+    private List<Rectangle> enlever = new List<Rectangle>();
 
-    #endregion
-}
+        #endregion
+    }
 }
