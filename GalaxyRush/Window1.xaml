@@ -15,7 +15,7 @@
     <Grid>
 
         <Rectangle x:Name="Fond" HorizontalAlignment="Center" Height="434" VerticalAlignment="Center" Width="800"/>
-        <Rectangle x:Name="FondLogo" HorizontalAlignment="Center" Height="249" VerticalAlignment="Top" Width="376" Margin="0,10,0,0"/>
+        <Rectangle x:Name="FondLogo" HorizontalAlignment="Center" Height="240" VerticalAlignment="Top" Width="270"/>
 
         <Button
             x:Name="ButJouer"
@@ -23,7 +23,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Background="#00000000"
-            BorderBrush="#00707070"
+            BorderBrush="#00000000"
             BorderThickness="1,1,1,1"
             Click="ButJouer_Click"
             Content="Jouer"
@@ -42,27 +42,6 @@
             FontSize="48"
             FontWeight="Bold"
             Foreground="White" />
-        <!--<Label
-            x:Name="TitreJeuMenu"
-            Width="492"
-            Height="94"
-            Margin="0,10,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Content="Galaxy Rush"
-            FontFamily="Cascadia Code"
-            FontSize="72"
-            FontWeight="ExtraBold"
-            Foreground="White" />-->
-        <!--<Image
-            Width="338"
-            Height="271"
-            Margin="0,-17,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Panel.ZIndex="100"
-            Source="/LogoGalaxyRushR.png"
-            Stretch="Fill" />-->
     </Grid>
 
 </Window>

@@ -8,7 +8,7 @@
     Title="Jeu"
     Width="806"
     Height="450"
-    WindowStartupLocation="CenterOwner" Icon="/fusée.png"
+    WindowStartupLocation="CenterScreen" Icon="/fusée.png"
     mc:Ignorable="d" ResizeMode="NoResize">
     <Grid>
         <Canvas
@@ -60,7 +60,7 @@
                 FontWeight="Bold" Foreground="White" FontFamily="72 Black"/>
         </Canvas>
         <Grid>
-            <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="736,10,0,0" Text="0:00" VerticalAlignment="Top" Height="22" Width="60" FontSize="22" FontWeight="Bold" FontFamily="72 Black" Foreground="White"/>
+            <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="736,10,0,0" Text="0:0" VerticalAlignment="Top" Height="22" Width="60" FontSize="22" FontWeight="Bold" FontFamily="72 Black" Foreground="White"/>
             <TextBlock HorizontalAlignment="Left" Margin="650,10,0,0" Text="Temps: " VerticalAlignment="Top" Height="22" Width="82" FontSize="22" FontWeight="Bold" FontFamily="72 Black" Foreground="White"/>
         </Grid>
     </Grid>

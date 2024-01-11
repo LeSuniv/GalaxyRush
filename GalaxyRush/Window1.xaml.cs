@@ -28,7 +28,7 @@ namespace GalaxyRush
 
         private void ButQuitter_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = false;
+            Application.Current.Shutdown();
         }
     }
 }
