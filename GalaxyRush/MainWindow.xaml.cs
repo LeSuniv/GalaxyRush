@@ -147,6 +147,8 @@ namespace GalaxyRush
             }
             #endregion
         }
+
+
         private void MouvementObstacle(object sender, EventArgs e)
         {
             foreach (Rectangle x in myCanvas.Children.OfType<Rectangle>())
@@ -185,7 +187,7 @@ namespace GalaxyRush
                             }
                         }
                     }
-                    int fuiteOvni = vitesseOvni * 10;
+                    int fuiteOvni = (int)(vitesseOvni * 10);
                     Canvas.SetRight(x, Canvas.GetRight(x) - fuiteOvni);
                     if (Canvas.GetRight(x) < 1262)
                     {
@@ -224,7 +226,8 @@ namespace GalaxyRush
         private int minutes = 0;
         private int secondes = 0;
         private DispatcherTimer timeTimer = new DispatcherTimer();
-
+        private double vitesseObstacle;
+        private double vitesseOvni;
 
         private void ComptageTemps(object sender, EventArgs e)
         {
