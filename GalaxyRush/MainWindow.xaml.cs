@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -26,6 +27,8 @@ namespace GalaxyRush
                 Application.Current.Shutdown();
             }
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace_jeu.png")); background.Fill = fond;
+            
+            
 
             //Dialog dialogNom = new Dialog();
             //dialogNom.ShowDialog();
@@ -78,7 +81,7 @@ namespace GalaxyRush
         }
 
 
-        private void CreeObstacles(object sender, KeyboardEventArgs e)
+        private void CreeObstacles(int x)
         {
             nbrObstacle += 1;
             Random ordonne = new Random();
@@ -126,6 +129,10 @@ namespace GalaxyRush
             }
             #endregion
         }
+        private void MouvementObstacle()
+        {
+           
+        }
 
 
         private void Jeu(object sender, EventArgs e)
@@ -134,6 +141,16 @@ namespace GalaxyRush
             Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
             joueur.Width, joueur.Height);
             scoreText.Content = score + "points";
+            CreeObstacles(1);
+
+            foreach (Rectangle x in myCanvas.Children.OfType<Rectangle>())
+            {
+                if (x is Rectangle && (string)x.Tag == "asteroide")
+                {
+                    Canvas.SetRight(x, Canvas.GetRight(x) + vitesseObstacle);
+                }
+
+            }
         }
             //if (x is Rectangle && (string)x.Tag == "enemy")
             //{
@@ -163,6 +180,8 @@ namespace GalaxyRush
     private List<Rectangle> enlever = new List<Rectangle>();
     private ImageBrush fond = new ImageBrush();
     private ImageBrush fusée = new ImageBrush();
+    private int vitesseObstacle = 2;
+    private int vitesseOvni = 4;
 
         #endregion
 
@@ -173,10 +192,6 @@ namespace GalaxyRush
         private DispatcherTimer timeTimer = new DispatcherTimer();
 
         //setting up timer for time display
-        timeTimer.Tick += new EventHandler(timeSetter);
-        timeTimer.Interval = TimeSpan.FromSeconds(1);
-        timeTimer.Start();
-
 
         private void timeSetter(object sender, EventArgs e)
         {
