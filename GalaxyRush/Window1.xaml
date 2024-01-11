@@ -68,7 +68,18 @@
             Style="{StaticResource CustomButtonStyle}"/>
 
         <Button x:Name="butTuto" Content="Comment Jouer" HorizontalAlignment="Left" Margin="622,364,0,0" VerticalAlignment="Top" Height="60" Width="168" 
-                Background="#01DDDDDD" FontFamily="Stargaze Stencil normal" FontSize="11" BorderBrush="White" 
-                Foreground="#FFA000FF" Click="butTuto_Click"/>
+                Background="#01DDDDDD" FontFamily="Stargaze Stencil normal" FontSize="11" BorderBrush="White" Foreground="#FFA000FF" Click="butTuto_Click"/>
+
+        <Button x:Name="ChoisirSkin" Content="" HorizontalAlignment="Left" Margin="48,91,0,0" VerticalAlignment="Top" 
+                Width="164" Height="293" Opacity="0" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="8.325"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
     </Grid>
 </Window>
