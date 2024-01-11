@@ -20,13 +20,13 @@
             <Rectangle
                 Name="background"
                 Width="1262"
-                Height="400"
-                Fill="orange" />
+                Height="435"
+                Fill="orange" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <Rectangle
                 Name="background2"
                 Canvas.Left="1262"
                 Width="1262"
-                Height="400"
+                Height="435"
                 Fill="LightGreen" />
             <Rectangle
                 Name="joueur"
