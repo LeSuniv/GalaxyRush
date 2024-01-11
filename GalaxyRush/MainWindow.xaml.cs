@@ -21,6 +21,13 @@ namespace GalaxyRush
         public MainWindow()
         {
             InitializeComponent();
+            Window1 fenetreNiveau = new Window1();
+            fenetreNiveau.ShowDialog();
+            if (fenetreNiveau.DialogResult == false) 
+            {
+                Application.Current.Shutdown();
+            }
+
             //Dialog dialogNom = new Dialog();
             //dialogNom.ShowDialog();
             //dialogNom.Owner = this;
@@ -120,6 +127,7 @@ namespace GalaxyRush
             }
             #endregion
         }
+
 
 
         private void Jeu(object sender, EventArgs e)

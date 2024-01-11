@@ -23,14 +23,12 @@ namespace GalaxyRush
 
         private void ButJouer_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow m = new MainWindow();
-            m.Show();
-            this.Close();
+            this.DialogResult = true;
         }
 
         private void ButQuitter_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.DialogResult = false;
         }
     }
 }
