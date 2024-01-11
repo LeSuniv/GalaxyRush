@@ -15,7 +15,7 @@ namespace GalaxyRush
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ImageBrush fusée = new ImageBrush();
+        
 
 
         public MainWindow()
@@ -27,6 +27,7 @@ namespace GalaxyRush
             {
                 Application.Current.Shutdown();
             }
+            fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace_jeu.png")); background.Fill = fond;
 
             //Dialog dialogNom = new Dialog();
             //dialogNom.ShowDialog();
@@ -151,6 +152,8 @@ namespace GalaxyRush
     private int nbrObstacle = 0;
     private int score = 0;
     private List<Rectangle> enlever = new List<Rectangle>();
+    private ImageBrush fond = new ImageBrush();
+    private ImageBrush fusée = new ImageBrush();
 
         #endregion
     }
