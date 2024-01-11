@@ -170,7 +170,7 @@ namespace GalaxyRush
         //    lose.Visibility = Visibility.Visible;
         //}
 
-        //fsd
+        
         #region Temps
         // variable pour le temps
         private int minutes = 0;
