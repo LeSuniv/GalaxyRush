@@ -39,7 +39,7 @@
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="52.524"/>
+                        <RotateTransform Angle="45"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Rectangle.RenderTransform>
@@ -56,12 +56,16 @@
             <Label
                 Name="scoreText"
                 Content="Score: 0"
-                FontSize="22"
-                FontWeight="Bold" Foreground="White" FontFamily="72 Black"/>
+                FontSize="30"
+                FontWeight="Bold" Foreground="White" FontFamily="Stargaze Stencil normal"/>
         </Canvas>
         <Grid>
-            <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="736,10,0,0" Text="0:0" VerticalAlignment="Top" Height="22" Width="60" FontSize="22" FontWeight="Bold" FontFamily="72 Black" Foreground="White"/>
-            <TextBlock HorizontalAlignment="Left" Margin="650,10,0,0" Text="Temps: " VerticalAlignment="Top" Height="22" Width="82" FontSize="22" FontWeight="Bold" FontFamily="72 Black" Foreground="White"/>
+            <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="736,10,0,0" Text="0:0" VerticalAlignment="Top" Height="33" Width="60" FontSize="25" FontWeight="Bold" FontFamily="Stargaze Stencil normal" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="620,10,0,0" Text="Temps: " VerticalAlignment="Top" Height="34" Width="112" FontSize="25" FontWeight="Bold" FontFamily="Stargaze Stencil normal" Foreground="White"/>
         </Grid>
+        <TextBlock x:Name="pauseText" Text="PAUSE" Visibility="Collapsed" 
+               HorizontalAlignment="Center" VerticalAlignment="Center" 
+               FontSize="72" FontWeight="ExtraBold" 
+               Foreground="#FFA000FF" FontFamily="Stargaze Stencil normal"/>
     </Grid>
 </Window>

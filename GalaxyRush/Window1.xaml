@@ -35,9 +35,6 @@
         </Style>
     </Window.Resources>
 
-
-
-
     <Grid>
 
         <Rectangle x:Name="Fond" HorizontalAlignment="Center" Height="434" VerticalAlignment="Center" Width="800"/>
@@ -70,7 +67,8 @@
             FontWeight="Bold"
             Style="{StaticResource CustomButtonStyle}"/>
 
-
-        <Button x:Name="butTuto" Content="Comment Jouer" HorizontalAlignment="Left" Margin="622,364,0,0" VerticalAlignment="Top" Height="60" Width="168" Background="#01DDDDDD" FontFamily="Stargaze Stencil normal" FontSize="11" BorderBrush="White" Foreground="#FFA000FF" Click="butTuto_Click"/>
+        <Button x:Name="butTuto" Content="Comment Jouer" HorizontalAlignment="Left" Margin="622,364,0,0" VerticalAlignment="Top" Height="60" Width="168" 
+                Background="#01DDDDDD" FontFamily="Stargaze Stencil normal" FontSize="11" BorderBrush="White" 
+                Foreground="#FFA000FF" Click="butTuto_Click"/>
     </Grid>
 </Window>

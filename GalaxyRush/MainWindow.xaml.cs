@@ -216,7 +216,6 @@ namespace GalaxyRush
         }
 
 
-
         private void MettrePause()
         {
             enPause = !enPause;
@@ -226,6 +225,7 @@ namespace GalaxyRush
                 // Arrêter les timers pour mettre le jeu en pause
                 dispatcherTimer.Stop();
                 timeTimer.Stop();
+                pauseText.Visibility = Visibility.Visible;
                 // Autres timers si nécessaire
             }
             else
@@ -233,6 +233,7 @@ namespace GalaxyRush
                 // Redémarrer les timers pour reprendre le jeu
                 dispatcherTimer.Start();
                 timeTimer.Start();
+                pauseText.Visibility = Visibility.Collapsed;
                 // Autres timers si nécessaire
             }
         }
