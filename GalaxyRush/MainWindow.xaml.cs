@@ -123,7 +123,7 @@ namespace GalaxyRush
         }
 
 
-        private void Jeu(object sender, EventArgs e)
+    private void Jeu(object sender, EventArgs e)
     {
         // création d’un rectangle joueur pour la détection de collision
         Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
