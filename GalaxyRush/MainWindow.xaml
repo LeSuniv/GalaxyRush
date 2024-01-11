@@ -48,7 +48,7 @@
                 Name="scoreText"
                 Content="Score: 0"
                 FontSize="22"
-                FontWeight="Bold" />
+                FontWeight="Bold" Foreground="White" />
         </Canvas>
     </Grid>
 </Window>

@@ -132,18 +132,30 @@ namespace GalaxyRush
 
 
         private void Jeu(object sender, EventArgs e)
-    {
-        // création d’un rectangle joueur pour la détection de collision
-        Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
-        joueur.Width, joueur.Height);
-        scoreText.Content = score + "points";
-
-    }
+        {
+            // création d’un rectangle joueur pour la détection de collision
+            Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
+            joueur.Width, joueur.Height);
+            scoreText.Content = score + "points";
+        }
+            //if (x is Rectangle && (string)x.Tag == "enemy")
+            //{
+            //    // On le déplace vers la droite selon enemySpeed
+            //    Canvas.SetLeft(x, Canvas.GetLeft(x) + enemySpeed);
+            //}
+            //// vérification de la collision avec le joueur
+            //Rect enemy = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+            //if (player.IntersectsWith(enemy))
+            //{
+            //    // collision avec le joueur et fin de la partie
+            //    dispatcherTimer.Stop();
+            //    lose.Visibility = Visibility.Visible;
+            //}
 
 
     #region Constante
 
-    private bool goUp, goRight = true;
+    private bool goUp = true;
     private bool goDown = false;
     // crée une nouvelle instance de la classe dispatch timer
     private DispatcherTimer dispatcherTimer = new DispatcherTimer();
