@@ -17,15 +17,30 @@ namespace GalaxyRush
     public partial class MainWindow : Window
     {
 
+        #region Constante
+
+        private bool goUp = true;
+        private bool goDown = false;
+        // crée une nouvelle instance de la classe dispatch timer
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
+        private ImageBrush SkinJoueur = new ImageBrush();
+        private int nbrObstacle = 0;
+        private int score = 0;
+        private List<Rectangle> enlever = new List<Rectangle>();
+        private ImageBrush fond = new ImageBrush();
+        private ImageBrush fusée = new ImageBrush();
+
+        #endregion
+
         public MainWindow()
         {
             InitializeComponent();
+
             Window1 fenetreNiveau = new Window1();
             fenetreNiveau.ShowDialog();
-            if (fenetreNiveau.DialogResult == false)
-            {
-                Application.Current.Shutdown();
-            }
+
+
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace_jeu.png")); background.Fill = fond;
 
             //Dialog dialogNom = new Dialog();
@@ -48,6 +63,10 @@ namespace GalaxyRush
             SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fusée.png"));
             // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
+
+            timeTimer.Tick += ComptageTemps;
+            timeTimer.Interval = TimeSpan.FromSeconds(1);
+            timeTimer.Start();
         }
 
 
@@ -83,6 +102,7 @@ namespace GalaxyRush
         {
             nbrObstacle += 1;
             Random ordonne = new Random();
+
             int y = ordonne.Next(0, 200);
             int right = 0;
 
@@ -108,7 +128,7 @@ namespace GalaxyRush
             #endregion
 
             #region Ovni
-            if (nbrObstacle > 10) //j'ai mis 10 juste pour contextualiser
+            if (nbrObstacle > 5) //j'ai mis 10 juste pour contextualiser
             {
                 y = ordonne.Next(0, 200);
                 ImageBrush textureOvni = new ImageBrush();
@@ -181,21 +201,22 @@ namespace GalaxyRush
             // création d’un rectangle joueur pour la détection de collision
             Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
             joueur.Width, joueur.Height);
-            scoreText.Content = score + "points";
+            scoreText.Content = "Score: " + score;
         }
-            //if (x is Rectangle && (string)x.Tag == "enemy")
-            //{
-            //    // On le déplace vers la droite selon enemySpeed
-            //    Canvas.SetLeft(x, Canvas.GetLeft(x) + enemySpeed);
-            //}
-            //// vérification de la collision avec le joueur
-            //Rect enemy = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
-            //if (player.IntersectsWith(enemy))
-            //{
-            //    // collision avec le joueur et fin de la partie
-            //    dispatcherTimer.Stop();
-            //    lose.Visibility = Visibility.Visible;
-            //}
+
+        //if (x is Rectangle && (string)x.Tag == "enemy")
+        //{
+        //    // On le déplace vers la droite selon enemySpeed
+        //    Canvas.SetLeft(x, Canvas.GetLeft(x) + enemySpeed);
+        //}
+        //// vérification de la collision avec le joueur
+        //Rect enemy = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+        //if (player.IntersectsWith(enemy))
+        //{
+        //    // collision avec le joueur et fin de la partie
+        //    dispatcherTimer.Stop();
+        //    lose.Visibility = Visibility.Visible;
+        //}
 
 
         #region Constante
@@ -218,30 +239,35 @@ namespace GalaxyRush
 
 
         //timer variable
+        //fsd
+        #region Temps
+        // variable pour le temps
         private int minutes = 0;
-        private int seconds = 0;
+        private int secondes = 0;
         private DispatcherTimer timeTimer = new DispatcherTimer();
 
-        //setting up timer for time display
 
-
-        private void timeSetter(object sender, EventArgs e)
+        private void ComptageTemps(object sender, EventArgs e)
         {
-            seconds++;
-            if (seconds == 60)
+            secondes++;
+            if (secondes == 60)
             {
                 minutes++;
-                seconds = 0;
+                secondes = 0;
             }
-            if (seconds == 0 && minutes == 0)
+            if (secondes == 0 && minutes == 0)
             {
                 time.Text = "0:00";
             }
             else if (minutes == 0)
             {
-                time.Text = "0:" + seconds.ToString();
+                time.Text = "0:" + secondes.ToString();
             }
-            time.Text = minutes.ToString() + ":" + seconds.ToString();
+            else
+            {
+                time.Text = minutes.ToString() + ":" + secondes.ToString();
+            }
         }
+        #endregion
     }
 }
