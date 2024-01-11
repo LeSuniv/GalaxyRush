@@ -15,25 +15,32 @@ namespace GalaxyRush
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ImageBrush fusée = new ImageBrush();
+        
 
 
         public MainWindow()
         {
             InitializeComponent();
+            Window1 fenetreNiveau = new Window1();
+            fenetreNiveau.ShowDialog();
+            if (fenetreNiveau.DialogResult == false) 
+            {
+                Application.Current.Shutdown();
+            }
+            fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace_jeu.png")); background.Fill = fond;
 
             //Dialog dialogNom = new Dialog();
             //dialogNom.ShowDialog();
             //dialogNom.Owner = this;
             //if (dialogNom.DialogResult == false)
             //    Application.Current.Shutdown();
-        
 
-        //InitializeGame();
 
-        // configure le Timer et les événements
-        // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
-        dispatcherTimer.Tick += Jeu;
+            //InitializeGame();
+
+            // configure le Timer et les événements
+            // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
+            dispatcherTimer.Tick += Jeu;
             // rafraissement toutes les 16 milliseconds
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(16);
             // lancement du timer
@@ -123,12 +130,14 @@ namespace GalaxyRush
         }
 
 
-    private void Jeu(object sender, EventArgs e)
+
+        private void Jeu(object sender, EventArgs e)
     {
         // création d’un rectangle joueur pour la détection de collision
         Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
         joueur.Width, joueur.Height);
-        scoreText.Content = scoreText + "points";
+        scoreText.Content = score + "points";
+
     }
 
 
@@ -143,6 +152,8 @@ namespace GalaxyRush
     private int nbrObstacle = 0;
     private int score = 0;
     private List<Rectangle> enlever = new List<Rectangle>();
+    private ImageBrush fond = new ImageBrush();
+    private ImageBrush fusée = new ImageBrush();
 
         #endregion
     }

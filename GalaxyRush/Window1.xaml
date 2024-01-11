@@ -62,7 +62,7 @@
             VerticalAlignment="Top"
             Panel.ZIndex="100"
             Source="/LogoGalaxyRushR.png"
-            Stretch="Fill" />
+            Stretch="Fill" />-->
     </Grid>
 
 </Window>
