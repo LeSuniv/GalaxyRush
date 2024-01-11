@@ -19,12 +19,11 @@ namespace GalaxyRush
         public MainWindow()
         {
             InitializeComponent();
+
             Window1 fenetreNiveau = new Window1();
             fenetreNiveau.ShowDialog();
-            if (fenetreNiveau.DialogResult == false)
-            {
-                Application.Current.Shutdown();
-            }
+            
+
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace_jeu.png")); background.Fill = fond;
 
             //Dialog dialogNom = new Dialog();
@@ -47,6 +46,10 @@ namespace GalaxyRush
             SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fusée.png"));
             // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
+
+            timeTimer.Tick += ComptageTemps;
+            timeTimer.Interval = TimeSpan.FromSeconds(1);
+            timeTimer.Start();
         }
 
 
@@ -169,29 +172,34 @@ namespace GalaxyRush
         #endregion
 
 
-        //timer variable
+        #region Temps
+        // variable pour le temps
         private int minutes = 0;
-        private int seconds = 0;
+        private int secondes = 0;
         private DispatcherTimer timeTimer = new DispatcherTimer();
 
 
         private void ComptageTemps(object sender, EventArgs e)
         {
-            seconds++;
-            if (seconds == 60)
+            secondes++;
+            if (secondes == 60)
             {
                 minutes++;
-                seconds = 0;
+                secondes = 0;
             }
-            if (seconds == 0 && minutes == 0)
+            if (secondes == 0 && minutes == 0)
             {
                 time.Text = "0:00";
             }
             else if (minutes == 0)
             {
-                time.Text = "0:" + seconds.ToString();
+                time.Text = "0:" + secondes.ToString();
             }
-            time.Text = minutes.ToString() + ":" + seconds.ToString();
+            else
+            {
+                time.Text = minutes.ToString() + ":" + secondes.ToString();
+            }
         }
+        #endregion
     }
 }
