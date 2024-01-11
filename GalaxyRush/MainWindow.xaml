@@ -8,7 +8,7 @@
     Title="Jeu"
     Width="806"
     Height="450"
-    WindowStartupLocation="CenterScreen" Icon="/fusée.png"
+    WindowStartupLocation="CenterScreen" Icon="P:\SAE 01.01-02\GalaxyRush\GalaxyRush\images\fusée.png"
     mc:Ignorable="d" ResizeMode="NoResize">
     <Grid>
         <Canvas
@@ -39,7 +39,7 @@
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="90.52"/>
+                        <RotateTransform Angle="52.524"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Rectangle.RenderTransform>

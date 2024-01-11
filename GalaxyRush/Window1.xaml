@@ -10,7 +10,33 @@
     Width="800"
     Height="450"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d" Icon="/fusée.png" ResizeMode="NoResize">
+    mc:Ignorable="d" Icon="P:\SAE 01.01-02\GalaxyRush\GalaxyRush\images\fusée.png" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Changement de la couleur du texte lors du survol de la souris -->
+                                <Setter Property="Foreground" Value="#FFA000FF"/>
+                            </Trigger>
+                            <!-- Autres états visuels si nécessaire -->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+
 
     <Grid>
 
@@ -19,7 +45,7 @@
 
         <Button
             x:Name="ButJouer"
-            Margin="0,245,0,0"
+            Margin="0,240,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Background="#00000000"
@@ -27,26 +53,24 @@
             BorderThickness="1,1,1,1"
             Click="ButJouer_Click"
             Content="Jouer"
-            FontSize="48"
+            FontSize="55"
             FontWeight="Bold"
-            Foreground="White" />
+            Width="218" 
+            Style="{StaticResource CustomButtonStyle}"/>
         <Button
             x:Name="ButQuitter"
-            Margin="0,318,0,0"
+            Margin="0,322,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Background="#00DDDDDD"
             BorderBrush="#00707070"
             Click="ButQuitter_Click"
             Content="Quitter"
-            FontSize="48"
+            FontSize="45"
             FontWeight="Bold"
-            Foreground="White" />
+            Style="{StaticResource CustomButtonStyle}"/>
 
-        <Rectangle Fill="#FF31AAEA" HorizontalAlignment="Left" Height="156" Margin="500,157,0,0" Stroke="White" VerticalAlignment="Top" Width="257"/>
-        <TextBlock HorizontalAlignment="Left" Height="34" Margin="559,157,0,0" TextWrapping="Wrap" Text="Comment jouer" TextAlignment="Center" VerticalAlignment="Top" Width="149" Foreground="#FFFFFF" FontWeight="Bold" FontSize="22"/>
-        <TextBlock Height="73" Margin="559,238,0,0" TextWrapping="Wrap" TextAlignment="Justify" VerticalAlignment="Top" Foreground="#FFFFFF" FontSize="16" HorizontalAlignment="Left" Width="149"><Run Text="Changer de direction&#x9;- Espace&#xA;Pause&#x9;- P"/><LineBreak/><Run Text="ESC&#x9;- Quitter la partie"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="506,191,0,0" TextWrapping="Wrap" Text="Esquiver les ennemis et les obstacles sur votre chemin! Sinon la partie est terminée" TextAlignment="Center" VerticalAlignment="Top" Height="37" Width="244" Foreground="White"/>
 
+        <Button x:Name="butTuto" Content="Comment Jouer" HorizontalAlignment="Left" Margin="622,364,0,0" VerticalAlignment="Top" Height="60" Width="168" Background="#01DDDDDD" FontFamily="Stargaze Stencil normal" FontSize="11" BorderBrush="White" Foreground="#FFA000FF" Click="butTuto_Click"/>
     </Grid>
 </Window>

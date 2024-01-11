@@ -8,21 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="fond_espace.jpg" />
-    <None Remove="LogoGalaxyRushR.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="fond_espace.jpg" />
-    <Resource Include="LogoGalaxyRushR.png" />
-    <None Remove="fusée.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="fusée.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="images\asteroide.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

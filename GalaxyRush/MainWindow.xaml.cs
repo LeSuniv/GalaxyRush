@@ -31,11 +31,15 @@ namespace GalaxyRush
         private ImageBrush fond = new ImageBrush();
         private ImageBrush fusée = new ImageBrush();
 
+        private bool enPause = false;
+
+
         #endregion
 
         public MainWindow()
         {
             InitializeComponent();
+            myCanvas.Focus();
 
             Window1 fenetreNiveau = new Window1();
             fenetreNiveau.ShowDialog();
@@ -80,6 +84,11 @@ namespace GalaxyRush
             if (e.Key == Key.Space && goUp == false)
             {
                 goUp = true;
+            }
+
+            if (e.Key == Key.P)
+            {
+                MettrePause();
             }
         }
 
@@ -206,6 +215,28 @@ namespace GalaxyRush
             scoreText.Content = "Score: " + score;
         }
 
+
+
+        private void MettrePause()
+        {
+            enPause = !enPause;
+
+            if (enPause)
+            {
+                // Arrêter les timers pour mettre le jeu en pause
+                dispatcherTimer.Stop();
+                timeTimer.Stop();
+                // Autres timers si nécessaire
+            }
+            else
+            {
+                // Redémarrer les timers pour reprendre le jeu
+                dispatcherTimer.Start();
+                timeTimer.Start();
+                // Autres timers si nécessaire
+            }
+        }
+
         //if (x is Rectangle && (string)x.Tag == "enemy")
         //{
         //    // On le déplace vers la droite selon enemySpeed
@@ -220,7 +251,7 @@ namespace GalaxyRush
         //    lose.Visibility = Visibility.Visible;
         //}
 
-        
+
         #region Temps
         // variable pour le temps
         private int minutes = 0;

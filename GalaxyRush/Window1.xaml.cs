@@ -31,12 +31,15 @@ namespace GalaxyRush
             Application.Current.Shutdown();
         }
 
-        //private void butTuto_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.DialogResult = true;
-        //}
+        private void ShowRules_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void butTuto_Click(object sender, RoutedEventArgs e)
+        {
+            CommentJouer rulesWindow = new CommentJouer();
+                rulesWindow.Show();
+        }
     }
 }
-
-
-
