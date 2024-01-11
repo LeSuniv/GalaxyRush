@@ -153,7 +153,7 @@ namespace GalaxyRush
             // création d’un rectangle joueur pour la détection de collision
             Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
             joueur.Width, joueur.Height);
-            scoreText.Content = score + "points";
+            scoreText.Content = "Score: " + score;
         }
 
         //if (x is Rectangle && (string)x.Tag == "enemy")
