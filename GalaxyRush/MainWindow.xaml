@@ -8,8 +8,8 @@
     Title="Jeu"
     Width="806"
     Height="450"
-    WindowStartupLocation="CenterOwner"
-    mc:Ignorable="d">
+    WindowStartupLocation="CenterOwner" Icon="/fusée.png"
+    mc:Ignorable="d" ResizeMode="NoResize">
     <Grid>
         <Canvas
             Name="myCanvas"

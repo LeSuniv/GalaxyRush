@@ -10,7 +10,7 @@
     Width="800"
     Height="450"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d" Icon="/fusée.png" MinWidth="800" MinHeight="450" MaxWidth="800" MaxHeight="450">
+    mc:Ignorable="d" Icon="/fusée.png" ResizeMode="NoResize">
 
     <Grid>
 
