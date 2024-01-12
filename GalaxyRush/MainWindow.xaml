@@ -89,7 +89,7 @@
             FontFamily="Stargaze Stencil normal"
             FontSize="72"
             FontWeight="ExtraBold"
-            Foreground="#FFA000FF"
+            Foreground="#FFFFFF"
             Text="PAUSE"
             Visibility="Collapsed" />
     </Grid>

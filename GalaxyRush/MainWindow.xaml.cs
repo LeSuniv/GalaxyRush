@@ -44,14 +44,7 @@ namespace GalaxyRush
             Menu fenetreNiveau = new Menu();
             fenetreNiveau.ShowDialog();
 
-
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png")); background.Fill = fond;
-
-            //Dialog dialogNom = new Dialog();
-            //dialogNom.ShowDialog();
-            //dialogNom.Owner = this;
-            //if (dialogNom.DialogResult == false)
-            //    Application.Current.Shutdown();
 
 
             //InitializeGame();
@@ -90,8 +83,23 @@ namespace GalaxyRush
             {
                 MettrePause();
             }
+            if (e.Key == Key.Escape)
+            {
+                QuitterPartie();
+            }
         }
 
+        private void QuitterPartie()
+        {
+            //Stope les temps
+            dispatcherTimer.Stop();
+            timeTimer.Stop();
+
+            Menu menuWindow = new Menu();
+            menuWindow.Show();
+            this.DialogResult = false;
+            this.Close();   
+        }
 
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
