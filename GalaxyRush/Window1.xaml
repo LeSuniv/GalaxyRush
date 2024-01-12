@@ -113,7 +113,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <!--<Button
+        <Button
             x:Name="ChoisirSkin"
             Width="191"
             Height="323"
@@ -148,7 +148,7 @@
             <TextBlock.Effect>
                 <DropShadowEffect />
             </TextBlock.Effect>
-        </TextBlock>-->
+        </TextBlock>
         
     </Grid>
 </Window>
