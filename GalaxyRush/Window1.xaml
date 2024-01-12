@@ -8,7 +8,7 @@
     Title="Menu"
     Width="800"
     Height="450"
-    Icon="P:\SAE 01.01-02\GalaxyRush\GalaxyRush\images\fusée.png"
+    Icon="\fusee.png"
     ResizeMode="NoResize"
     SizeToContent="WidthAndHeight"
     WindowStartupLocation="CenterScreen"

@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GalaxyRush"
         mc:Ignorable="d"
-        Title="Comment jouer ?" Height="319" Width="401" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="P:\SAE 01.01-02\GalaxyRush\GalaxyRush\images\fusée.png" Background="Transparent" >
+        Title="Comment jouer ?" Height="319" Width="401" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="\fusee.png" Background="Transparent" >
     <Grid>
 
         <Rectangle Fill="#FF175779" HorizontalAlignment="Center" Height="303" Width="401" Stroke="#00000000" VerticalAlignment="Center" />
         <TextBlock HorizontalAlignment="Center" Height="36" Margin="0,19,0,0" TextWrapping="Wrap" Text="Comment jouer" TextAlignment="Center" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="22" FontFamily="Stargaze Stencil normal" Width="289"/>
-        <TextBlock Height="75" Margin="0,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFDFDFD" HorizontalAlignment="Center" Width="326" FontFamily="Stargaze Stencil normal" FontSize="15"><Run Text="Changer de direction&#x9;- Espace&#xA;Pause&#x9;                                         - P" /><LineBreak/><Run FontFamily="Stargaze Stencil normal" Text="Quitter la partie&#x9;              - ESC"/></TextBlock>
+        <TextBlock Height="75" Margin="0,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFDFDFD" HorizontalAlignment="Center" Width="326" FontFamily="Stargaze Stencil normal" FontSize="15"><Run Text="Changer de direction&#x9;- Espace&#xA;Pause&#x9;                             - P" /><LineBreak/><Run FontFamily="Stargaze Stencil normal" Text="Quitter la partie&#x9;              - ESC"/></TextBlock>
         <TextBlock Margin="10,76,10,0" TextWrapping="Wrap" FontFamily="Stargaze Stencil normal" Text="Esquiver les ennemis et les obstacles sur votre chemin! Sinon la partie est terminée" TextAlignment="Center" VerticalAlignment="Top" Height="76" Foreground="White" FontSize="16"/>
         <Button Content="Retour" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Click="Retour_Click" Background="#00DDDDDD" Foreground="#FFA000FF" BorderBrush="White" Height="36" Width="113" FontFamily="Stargaze Stencil normal"/>
 

@@ -23,7 +23,7 @@ namespace GalaxyRush
             skinFusee basiqueFusee = new DefaultFusee();
             fuseeChoisi = basiqueFusee.getSkin();
 
-            fondMenu.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace.jpg")); Fond.Fill = fondMenu;
+            fondMenu.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace.jpg")); Fond.Fill = fondMenu;
             fondMenuLogo.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\LogoGalaxyRushR.png")); FondLogo.Fill = fondMenuLogo;
         }
 
@@ -37,10 +37,6 @@ namespace GalaxyRush
             Application.Current.Shutdown();
         }
 
-        private void ShowRules_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void butTuto_Click(object sender, RoutedEventArgs e)
         {

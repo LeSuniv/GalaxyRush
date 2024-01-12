@@ -45,7 +45,7 @@ namespace GalaxyRush
             fenetreNiveau.ShowDialog();
 
 
-            fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace_jeu.png")); background.Fill = fond;
+            fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png")); background.Fill = fond;
 
             //Dialog dialogNom = new Dialog();
             //dialogNom.ShowDialog();
@@ -64,7 +64,7 @@ namespace GalaxyRush
             // lancement du timer
             dispatcherTimer.Start();
             // chargement de l’image du joueur 
-            SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fusée.png"));
+            SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fusee.png"));
             // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
 
