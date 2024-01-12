@@ -66,10 +66,10 @@
             BorderThickness="1,1,1,1"
             Click="ButJouer_Click"
             Content="Jouer"
+            FontFamily="Stargaze Stencil normal"
             FontSize="55"
             FontWeight="Bold"
-            Style="{StaticResource CustomButtonStyle}" 
-            FontFamily="Stargaze Stencil normal"/>
+            Style="{StaticResource CustomButtonStyle}" />
         <Button
             x:Name="ButQuitter"
             Margin="0,322,0,0"
@@ -79,10 +79,10 @@
             BorderBrush="#00707070"
             Click="ButQuitter_Click"
             Content="Quitter"
+            FontFamily="Stargaze Stencil normal"
             FontSize="45"
             FontWeight="Bold"
-            Style="{StaticResource CustomButtonStyle}" 
-            FontFamily="Stargaze Stencil normal"/>
+            Style="{StaticResource CustomButtonStyle}" />
 
         <Button
             x:Name="butTuto"
@@ -151,6 +151,6 @@
                 <DropShadowEffect />
             </TextBlock.Effect>
         </TextBlock>-->
-        
+
     </Grid>
 </Window>
