@@ -94,7 +94,7 @@
             Click="butTuto_Click"
             Content="Comment Jouer"
             FontFamily="Stargaze Stencil normal"
-            FontSize="11"
+            FontSize="15"
             Foreground="#FFA000FF" />
         <Image
             x:Name="fusee"
@@ -113,7 +113,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button
+        <!--<Button
             x:Name="ChoisirSkin"
             Width="191"
             Height="323"
@@ -148,7 +148,7 @@
             <TextBlock.Effect>
                 <DropShadowEffect />
             </TextBlock.Effect>
-        </TextBlock>
-
+        </TextBlock>-->
+        
     </Grid>
 </Window>
