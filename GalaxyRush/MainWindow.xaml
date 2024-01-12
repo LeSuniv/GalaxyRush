@@ -44,15 +44,6 @@
                     </TransformGroup>
                 </Rectangle.RenderTransform>
             </Rectangle>
-            <Rectangle
-                Name="obstacle"
-                Canvas.Left="721"
-                Canvas.Top="320"
-                Width="55"
-                Height="80"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Fill="Red" />
             <Label
                 Name="scoreText"
                 Content="Score: 0"
