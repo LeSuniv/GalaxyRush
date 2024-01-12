@@ -57,7 +57,8 @@
                 Name="scoreText"
                 Content="Score: 0"
                 FontSize="30"
-                FontWeight="Bold" Foreground="White" FontFamily="Stargaze Stencil normal"/>
+                FontWeight="Bold" Foreground="White" 
+                FontFamily="Stargaze Stencil normal"/>
         </Canvas>
         <Grid>
             <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="736,10,0,0" Text="0:0" VerticalAlignment="Top" Height="33" Width="60" FontSize="25" FontWeight="Bold" FontFamily="Stargaze Stencil normal" Foreground="White"/>

@@ -43,40 +43,39 @@ namespace GalaxyRush
             Tuto.Show();
         }
 
-        private void ChoisirSkin_Click(object sender, RoutedEventArgs e)
-        {
+        //private void ChoisirSkin_Click(object sender, RoutedEventArgs e)
+        //{
 
-            skinNum = (skinNum + 1) % 6;
-            skinFusee basiqueFusee;
+        //    skinNum = (skinNum + 1) % 6;
+        //    skinFusee basiqueFusee;
 
-            switch (skinNum)
+        //    switch (skinNum)
 
-            {
-                case 1:
-                    basiqueFusee = new Fusee_vert(new DefaultFusee());
-                    break;
-                case 2:
-                    basiqueFusee = new Fusee_missile(new DefaultFusee());
-                    break;
-                case 3:
-                    basiqueFusee = new Fusee_violet(new DefaultFusee());
-                    break;
-                case 4:
-                    basiqueFusee = new Fusee_rouge(new DefaultFusee());
-                    break;
-                case 5:
-                    basiqueFusee = new Fusee_noir(new DefaultFusee());
-                    break;
-                default:
-                    basiqueFusee = new DefaultFusee();
-                    skinNum = 0;
-                    break;
-            }
-            fuseeChoisi = basiqueFusee.getSkin();
+        //    {
+        //        case 1:
+        //            basiqueFusee = new Fusee_vert(new DefaultFusee());
+        //            break;
+        //        case 2:
+        //            basiqueFusee = new Fusee_missile(new DefaultFusee());
+        //            break;
+        //        case 3:
+        //            basiqueFusee = new Fusee_violet(new DefaultFusee());
+        //            break;
+        //        case 4:
+        //            basiqueFusee = new Fusee_rouge(new DefaultFusee());
+        //            break;
+        //        case 5:
+        //            basiqueFusee = new Fusee_noir(new DefaultFusee());
+        //            break;
+        //        default:
+        //            basiqueFusee = new DefaultFusee();
+        //            skinNum = 0;
+        //            break;
+        //    }
 
-            fuseeChoisi = basiqueFusee.getSkin();
-            fusee.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + fuseeChoisi));
-        }
+        //    fuseeChoisi = basiqueFusee.getSkin();
+        //    fusee.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + fuseeChoisi));
+        //}
     }
 
 }

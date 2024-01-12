@@ -68,7 +68,8 @@
             Content="Jouer"
             FontSize="55"
             FontWeight="Bold"
-            Style="{StaticResource CustomButtonStyle}" />
+            Style="{StaticResource CustomButtonStyle}" 
+            FontFamily="Stargaze Stencil normal"/>
         <Button
             x:Name="ButQuitter"
             Margin="0,322,0,0"
@@ -80,7 +81,8 @@
             Content="Quitter"
             FontSize="45"
             FontWeight="Bold"
-            Style="{StaticResource CustomButtonStyle}" />
+            Style="{StaticResource CustomButtonStyle}" 
+            FontFamily="Stargaze Stencil normal"/>
 
         <Button
             x:Name="butTuto"
@@ -96,7 +98,7 @@
             FontFamily="Stargaze Stencil normal"
             FontSize="15"
             Foreground="#FFA000FF" />
-        <Image
+        <!--<Image
             x:Name="fusee"
             Width="194"
             Height="311"
@@ -148,7 +150,7 @@
             <TextBlock.Effect>
                 <DropShadowEffect />
             </TextBlock.Effect>
-        </TextBlock>
+        </TextBlock>-->
         
     </Grid>
 </Window>
