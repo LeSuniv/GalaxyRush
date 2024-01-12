@@ -11,7 +11,7 @@
     Icon="/fusee.png"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+    mc:Ignorable="d" FontFamily="Stargaze Stencil normal">
     <Grid>
         <Canvas
             Name="myCanvas"
@@ -59,21 +59,21 @@
         </Canvas>
         <Grid>
             <TextBlock
-                x:Name="time"
-                Width="60"
+                x:Name="temps"
+                Width="86"
                 Height="33"
-                Margin="736,10,0,0"
+                Margin="698,10,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 FontFamily="Stargaze Stencil normal"
                 FontSize="25"
                 FontWeight="Bold"
                 Foreground="White"
-                Text="0:0" />
+                Text="00:00" />
             <TextBlock
                 Width="112"
                 Height="34"
-                Margin="620,10,0,0"
+                Margin="579,10,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 FontFamily="Stargaze Stencil normal"

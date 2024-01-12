@@ -269,18 +269,9 @@ namespace GalaxyRush
                 minutes++;
                 secondes = 0;
             }
-            if (secondes == 0 && minutes == 0)
-            {
-                time.Text = "0:00";
-            }
-            else if (minutes == 0)
-            {
-                time.Text = "0:" + secondes.ToString();
-            }
-            else
-            {
-                time.Text = minutes.ToString() + ":" + secondes.ToString();
-            }
+
+            string tempsFormat = minutes.ToString("D2") + ":" + secondes.ToString("D2");
+            temps.Text = tempsFormat;
         }
         #endregion
     }
