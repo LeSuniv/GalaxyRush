@@ -17,7 +17,7 @@ namespace GalaxyRush
 
         public string getSkin()
         {
-            return "P:\\SAE 01.01-02\\GalaxyRush\\GalaxyRush\\images\\fusée_noirs.png";
+            return "\\images\\fusée_noirs.png";
         }
     }
 }
