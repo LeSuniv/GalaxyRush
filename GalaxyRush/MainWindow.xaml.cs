@@ -95,7 +95,7 @@ namespace GalaxyRush
 
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
-            // on gère les booléens gauche et droite en fonction de l’appui de la touche
+            // on gère les booléens espace en fonction de l’appui de la touche
             if (e.Key == Key.Space && goUp == true)
             {
                 goDown = true;
@@ -226,7 +226,6 @@ namespace GalaxyRush
                 dispatcherTimer.Stop();
                 timeTimer.Stop();
                 pauseText.Visibility = Visibility.Visible;
-                // Autres timers si nécessaire
             }
             else
             {
@@ -234,7 +233,6 @@ namespace GalaxyRush
                 dispatcherTimer.Start();
                 timeTimer.Start();
                 pauseText.Visibility = Visibility.Collapsed;
-                // Autres timers si nécessaire
             }
         }
 
