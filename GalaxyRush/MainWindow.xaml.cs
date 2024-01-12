@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml.Linq;
 
 namespace GalaxyRush
 {
@@ -25,11 +26,14 @@ namespace GalaxyRush
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
         private ImageBrush SkinJoueur = new ImageBrush();
+        // vitesse du joueur
+        private int vitesseJoueur = 5;
+        // liste des éléments rectangles
         private int nbrObstacle = 0;
         private int score = 0;
         private List<Rectangle> enlever = new List<Rectangle>();
         private ImageBrush fond = new ImageBrush();
-        private ImageBrush fusée = new ImageBrush();
+        private ImageBrush fusee = new ImageBrush();
 
         private bool enPause = false;
 
@@ -76,14 +80,19 @@ namespace GalaxyRush
 
         private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
         {
-            // on gère les booléens gauche et droite en fonction de l’appui de la touche
-            if (e.Key == Key.Space && goUp == true)
+            if (e.Key == Key.Space)
             {
-                goUp = false;
-            }
-            if (e.Key == Key.Space && goUp == false)
-            {
-                goUp = true;
+                if (goUp == false)
+                {
+                    goUp = true;
+                    goDown = false;
+                }
+                else
+                {
+                    goDown = true;
+                    goUp = false;
+                    //RotateTransform fusee = new RotateTransform(135);
+                }
             }
 
             if (e.Key == Key.P)
@@ -91,21 +100,6 @@ namespace GalaxyRush
                 MettrePause();
             }
         }
-
-
-        private void CleeCanvasRelachee(object sender, KeyEventArgs e)
-        {
-            // on gère les booléens gauche et droite en fonction de l’appui de la touche
-            if (e.Key == Key.Space && goUp == true)
-            {
-                goDown = true;
-            }
-            if (e.Key == Key.Space && goUp == false)
-            {
-                goUp = false;
-            }
-        }
-
 
         private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
@@ -210,11 +204,23 @@ namespace GalaxyRush
         private void Jeu(object sender, EventArgs e)
         {
             // création d’un rectangle joueur pour la détection de collision
-            Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
-            joueur.Width, joueur.Height);
+            Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
             scoreText.Content = "Score: " + score;
+            if (goDown && Canvas.GetTop(joueur) > 0)
+            {
+                RotateTransform fusee = new RotateTransform(135);
+                Canvas.SetTop(joueur, Canvas.GetTop(joueur) - vitesseJoueur);
+            }
+            else if (goUp && Canvas.GetTop(joueur) + joueur.Width < Application.Current.MainWindow.Width)
+            {
+                Canvas.SetTop(joueur, Canvas.GetTop(joueur) + vitesseJoueur);
+            }
         }
 
+        private void RetireObjet(object sender, EventArgs e)
+        {
+
+        }
 
         private void MettrePause()
         {
@@ -298,7 +304,7 @@ namespace GalaxyRush
 //        else
 //            velocity -= leapDist;
 //        //velocity -= leapDist;
-//        //llama.Margin = new Thickness(llama.Margin.Left, llama.Margin.Top - 50, llama.Margin.Right, llama.Margin.Bottom + 50);
+//        //llama.Margin = new Thickness(llama.Margin.Left, llama.Margin.Top - 50, llama.Margin.Right, llama.Margin.Top + 50);
 //    }
 //    else if (e.Key == Key.P)
 //    {

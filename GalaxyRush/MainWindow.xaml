@@ -8,20 +8,23 @@
     Title="Jeu"
     Width="806"
     Height="450"
-    WindowStartupLocation="CenterScreen" Icon="/fusee.png"
-    mc:Ignorable="d" ResizeMode="NoResize">
+    Icon="/fusee.png"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
     <Grid>
         <Canvas
             Name="myCanvas"
             Background="LightBlue"
             Focusable="True"
-            KeyDown="CleeCanvasAppuyee"
-            KeyUp="CleeCanvasRelachee">
+            KeyDown="CleeCanvasAppuyee">
             <Rectangle
                 Name="background"
                 Width="1262"
                 Height="435"
-                Fill="Orange" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Fill="Orange" />
             <Rectangle
                 Name="background2"
                 Canvas.Left="1262"
@@ -34,13 +37,14 @@
                 Canvas.Top="151"
                 Width="67"
                 Height="99"
-                Fill="Brown" RenderTransformOrigin="0.5,0.5" >
+                Fill="Brown"
+                RenderTransformOrigin="0.5,0.5">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="45"/>
-                        <TranslateTransform/>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="45" />
+                        <TranslateTransform />
                     </TransformGroup>
                 </Rectangle.RenderTransform>
             </Rectangle>
@@ -56,16 +60,45 @@
             <Label
                 Name="scoreText"
                 Content="Score: 0"
+                FontFamily="Stargaze Stencil normal"
                 FontSize="30"
-                FontWeight="Bold" Foreground="White" FontFamily="Stargaze Stencil normal"/>
+                FontWeight="Bold"
+                Foreground="White" />
         </Canvas>
         <Grid>
-            <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="736,10,0,0" Text="0:0" VerticalAlignment="Top" Height="33" Width="60" FontSize="25" FontWeight="Bold" FontFamily="Stargaze Stencil normal" Foreground="White"/>
-            <TextBlock HorizontalAlignment="Left" Margin="620,10,0,0" Text="Temps: " VerticalAlignment="Top" Height="34" Width="112" FontSize="25" FontWeight="Bold" FontFamily="Stargaze Stencil normal" Foreground="White"/>
+            <TextBlock
+                x:Name="time"
+                Width="60"
+                Height="33"
+                Margin="736,10,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontFamily="Stargaze Stencil normal"
+                FontSize="25"
+                FontWeight="Bold"
+                Foreground="White"
+                Text="0:0" />
+            <TextBlock
+                Width="112"
+                Height="34"
+                Margin="620,10,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontFamily="Stargaze Stencil normal"
+                FontSize="25"
+                FontWeight="Bold"
+                Foreground="White"
+                Text="Temps: " />
         </Grid>
-        <TextBlock x:Name="pauseText" Text="PAUSE" Visibility="Collapsed" 
-               HorizontalAlignment="Center" VerticalAlignment="Center" 
-               FontSize="72" FontWeight="ExtraBold" 
-               Foreground="#FFA000FF" FontFamily="Stargaze Stencil normal"/>
+        <TextBlock
+            x:Name="pauseText"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontFamily="Stargaze Stencil normal"
+            FontSize="72"
+            FontWeight="ExtraBold"
+            Foreground="#FFA000FF"
+            Text="PAUSE"
+            Visibility="Collapsed" />
     </Grid>
 </Window>
