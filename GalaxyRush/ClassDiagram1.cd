@@ -1,18 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="GalaxyRush.MainWindow" Collapsed="true">
-    <Position X="3.25" Y="3.25" Width="1.5" />
+  <Class Name="GalaxyRush.MainWindow">
+    <Position X="6.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAIARAAQIBQgAIAAAAIAAAAAAAAGABEQaAAAAAAIAI=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="GalaxyRush.CommentJouer" Collapsed="true">
-    <Position X="1.5" Y="3.25" Width="1.5" />
+  <Class Name="GalaxyRush.CommentJouer">
+    <Position X="10.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CommentJouer.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="GalaxyRush.Menu">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAEAQAAAIAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Menu.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
