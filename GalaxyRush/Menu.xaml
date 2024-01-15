@@ -12,6 +12,7 @@
     ResizeMode="NoResize"
     SizeToContent="WidthAndHeight"
     WindowStartupLocation="CenterScreen"
+    FontFamily="Stargaze stencil classic"
     mc:Ignorable="d">
     <Window.Resources>
         <Style x:Key="CustomButtonStyle" TargetType="Button">

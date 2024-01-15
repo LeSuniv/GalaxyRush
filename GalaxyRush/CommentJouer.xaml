@@ -44,7 +44,7 @@
             FontFamily="Stargaze Stencil normal"
             FontSize="15"
             Foreground="#FFFDFDFD"
-            TextWrapping="Wrap"><Run Text="Changer de direction&#x9;- Espace&#xA;Pause&#x9;                             - P" /><LineBreak /><Run FontFamily="Stargaze Stencil normal" Text="Quitter la partie&#x9;              - ESC" /></TextBlock>
+            TextWrapping="Wrap"><Run Text="Changer de direction&#x9;- Espace&#xA;Pause&#x9;                                         - P" /><LineBreak /><Run FontFamily="Stargaze Stencil normal" Text="Quitter la partie&#x9;              - ESC" /></TextBlock>
         <TextBlock
             Height="76"
             Margin="10,76,10,0"

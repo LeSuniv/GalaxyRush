@@ -17,8 +17,7 @@
             Name="myCanvas"
             Background="LightBlue"
             Focusable="True"
-            KeyDown="CleeCanvasAppuyee"
-            KeyUp="CleeCanvasRelachee">
+            KeyDown="CleeCanvasAppuyee">
             <Rectangle
                 Name="background"
                 Width="1262"
@@ -89,7 +88,7 @@
             FontFamily="Stargaze Stencil normal"
             FontSize="72"
             FontWeight="ExtraBold"
-            Foreground="#FFA000FF"
+            Foreground="#FFFFFF"
             Text="PAUSE"
             Visibility="Collapsed" />
     </Grid>

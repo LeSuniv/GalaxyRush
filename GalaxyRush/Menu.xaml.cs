@@ -10,7 +10,6 @@ namespace GalaxyRush
 
         private ImageBrush fondMenu = new ImageBrush();
         private ImageBrush fondMenuLogo = new ImageBrush();
-        private ImageBrush fuseeRouge = new ImageBrush();
 
         public Menu()
         {
@@ -21,9 +20,14 @@ namespace GalaxyRush
             fondMenuLogo.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\LogoGalaxyRushR.png")); FondLogo.Fill = fondMenuLogo;
 
         }
+
         private void ButJouer_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            //MainWindow gameWindow = new MainWindow();
+            //gameWindow.Show(); 
+            //this.DialogResult = true;
+            this.Close();
+            
         }
 
         private void ButQuitter_Click(object sender, RoutedEventArgs e)
