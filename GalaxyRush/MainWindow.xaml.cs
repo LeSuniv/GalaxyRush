@@ -64,7 +64,7 @@ namespace GalaxyRush
             timeTimer.Tick += ComptageTemps;
             timeTimer.Interval = TimeSpan.FromSeconds(1);
             timeTimer.Start();
-        }
+        }   
 
 
         private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
@@ -95,10 +95,10 @@ namespace GalaxyRush
             dispatcherTimer.Stop();
             timeTimer.Stop();
 
-            Menu menuWindow = new Menu();
-            menuWindow.Show();
+            //Menu menuWindow = new Menu();
+            //menuWindow.Show();
+            //this.Close();
             this.DialogResult = false;
-            this.Close();   
         }
 
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)

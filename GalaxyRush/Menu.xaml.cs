@@ -10,7 +10,6 @@ namespace GalaxyRush
 
         private ImageBrush fondMenu = new ImageBrush();
         private ImageBrush fondMenuLogo = new ImageBrush();
-        private ImageBrush fuseeRouge = new ImageBrush();
 
         public Menu()
         {
@@ -24,8 +23,9 @@ namespace GalaxyRush
 
         private void ButJouer_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow gameWindow = new MainWindow();
-            gameWindow.Show(); this.DialogResult = true;
+            //MainWindow gameWindow = new MainWindow();
+            //gameWindow.Show(); 
+            //this.DialogResult = true;
             this.Close();
             
         }
