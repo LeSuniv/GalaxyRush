@@ -94,7 +94,7 @@
             VerticalAlignment="Top"
             Background="#01DDDDDD"
             BorderBrush="White"
-            Click="butTuto_Click"
+            Click="ButTuto_Click"
             Content="Comment Jouer"
             FontFamily="Stargaze Stencil normal"
             FontSize="15"

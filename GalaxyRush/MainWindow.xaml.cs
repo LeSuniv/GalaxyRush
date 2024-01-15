@@ -50,17 +50,26 @@ namespace GalaxyRush
 
         #endregion
 
+
+
         public MainWindow()
         {
             InitializeComponent();
             myCanvas.Focus();
             //MainWindow mainWindow = new MainWindow();
             //mainWindow.Hide();
-            Menu menu = new Menu();
-            menu.ShowDialog();
+            //Menu menu = new Menu();
+            //menu.ShowDialog();
+
+            if ((Application.Current.MainWindow is Menu menu))
+            {
+                menu.Hide();
+                Menu newMenu = new Menu();
+                newMenu.ShowDialog();
+            }
+
 
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png")); background.Fill = fond;
-
 
 
             // configure le Timer et les événements
@@ -115,11 +124,13 @@ namespace GalaxyRush
             dispatcherTimer.Stop();
             timeTimer.Stop();
 
-            
-            Menu menuWindow = new Menu();
-            menuWindow.Show();
+            Menu menu = new Menu();
+            menu.Show();
+                
+            //Menu menuWindow = new Menu();
+            //menuWindow.Show();
             this.Close();
-            //this.DialogResult = false;
+            //DialogResult = false;
         }
 
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
