@@ -48,17 +48,10 @@ namespace GalaxyRush
             InitializeComponent();
             myCanvas.Focus();
 
-            Window1 fenetreNiveau = new Window1();
+            Menu fenetreNiveau = new Menu();
             fenetreNiveau.ShowDialog();
 
-
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png")); background.Fill = fond;
-
-            //Dialog dialogNom = new Dialog();
-            //dialogNom.ShowDialog();
-            //dialogNom.Owner = this;
-            //if (dialogNom.DialogResult == false)
-            //    Application.Current.Shutdown();
 
 
             //InitializeGame();
@@ -99,7 +92,26 @@ namespace GalaxyRush
                 }
             }
 
-            if (e.Key == Key.P)
+        private void QuitterPartie()
+        {
+            //Stope les temps
+            dispatcherTimer.Stop();
+            timeTimer.Stop();
+
+            Menu menuWindow = new Menu();
+            menuWindow.Show();
+            this.DialogResult = false;
+            this.Close();   
+        }
+
+        private void CleeCanvasRelachee(object sender, KeyEventArgs e)
+        {
+            // on gère les booléens espace en fonction de l’appui de la touche
+            if (e.Key == Key.Space && goUp == true)
+            {
+                goDown = true;
+            }
+            if (e.Key == Key.Space && goUp == false)
             {
                 MettrePause();
             }
@@ -239,7 +251,6 @@ namespace GalaxyRush
                 dispatcherTimer.Stop();
                 timeTimer.Stop();
                 pauseText.Visibility = Visibility.Visible;
-                // Autres timers si nécessaire
             }
             else
             {
@@ -247,7 +258,6 @@ namespace GalaxyRush
                 dispatcherTimer.Start();
                 timeTimer.Start();
                 pauseText.Visibility = Visibility.Collapsed;
-                // Autres timers si nécessaire
             }
         }
 
@@ -282,18 +292,9 @@ namespace GalaxyRush
                 minutes++;
                 secondes = 0;
             }
-            if (secondes == 0 && minutes == 0)
-            {
-                time.Text = "0:00";
-            }
-            else if (minutes == 0)
-            {
-                time.Text = "0:" + secondes.ToString();
-            }
-            else
-            {
-                time.Text = minutes.ToString() + ":" + secondes.ToString();
-            }
+
+            string tempsFormat = minutes.ToString("D2") + ":" + secondes.ToString("D2");
+            temps.Text = tempsFormat;
         }
         #endregion
     }

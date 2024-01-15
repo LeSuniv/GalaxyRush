@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Class="GalaxyRush.Window1"
+    x:Class="GalaxyRush.Menu"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,6 +12,7 @@
     ResizeMode="NoResize"
     SizeToContent="WidthAndHeight"
     WindowStartupLocation="CenterScreen"
+    FontFamily="Stargaze stencil classic"
     mc:Ignorable="d">
     <Window.Resources>
         <Style x:Key="CustomButtonStyle" TargetType="Button">
@@ -66,6 +67,7 @@
             BorderThickness="1,1,1,1"
             Click="ButJouer_Click"
             Content="Jouer"
+            FontFamily="Stargaze Stencil normal"
             FontSize="55"
             FontWeight="Bold"
             Style="{StaticResource CustomButtonStyle}" />
@@ -78,6 +80,7 @@
             BorderBrush="#00707070"
             Click="ButQuitter_Click"
             Content="Quitter"
+            FontFamily="Stargaze Stencil normal"
             FontSize="45"
             FontWeight="Bold"
             Style="{StaticResource CustomButtonStyle}" />
@@ -94,9 +97,9 @@
             Click="butTuto_Click"
             Content="Comment Jouer"
             FontFamily="Stargaze Stencil normal"
-            FontSize="11"
+            FontSize="15"
             Foreground="#FFA000FF" />
-        <Image
+        <!--<Image
             x:Name="fusee"
             Width="194"
             Height="311"
@@ -148,7 +151,7 @@
             <TextBlock.Effect>
                 <DropShadowEffect />
             </TextBlock.Effect>
-        </TextBlock>
+        </TextBlock>-->
 
     </Grid>
 </Window>
