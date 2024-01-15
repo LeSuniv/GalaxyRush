@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Permissions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -9,7 +8,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Xml.Linq;
 
 namespace GalaxyRush
 {
@@ -58,15 +56,15 @@ namespace GalaxyRush
             myCanvas.Focus();
             //MainWindow mainWindow = new MainWindow();
             //mainWindow.Hide();
-            //Menu menu = new Menu();
-            //menu.ShowDialog();
 
-            if ((Application.Current.MainWindow is Menu menu))
-            {
-                menu.Hide();
-                Menu newMenu = new Menu();
-                newMenu.ShowDialog();
-            }
+            Rejouer();
+
+            //if ((Application.Current.MainWindow is Menu menu))
+            //{
+            //    menu.Hide();
+            //    Menu newMenu = new Menu();
+            //    newMenu.ShowDialog();
+            //}
 
 
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png")); background.Fill = fond;
@@ -87,8 +85,14 @@ namespace GalaxyRush
             timeTimer.Tick += ComptageTemps;
             timeTimer.Interval = TimeSpan.FromSeconds(1);
             timeTimer.Start();
-        }   
+        }
 
+        private void Rejouer()
+        {
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            this.Close();
+        }
 
         private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
         {
@@ -113,7 +117,7 @@ namespace GalaxyRush
             }
             if (e.Key == Key.Escape)
             {
-                QuitterPartie();
+                Rejouer();
             }
         }
 
@@ -125,8 +129,8 @@ namespace GalaxyRush
             timeTimer.Stop();
 
             Menu menu = new Menu();
-            menu.Show();
-                
+            menu.ShowDialog();
+
             //Menu menuWindow = new Menu();
             //menuWindow.Show();
             this.Close();
@@ -245,7 +249,7 @@ namespace GalaxyRush
                         }
                     }
                 }
-               
+
                 if (Canvas.GetRight(ovni) > 802)
                 {
                     declencheur = aleatoire.Next(50, 400);
@@ -264,21 +268,21 @@ namespace GalaxyRush
         {
             foreach (Rectangle asteroide in myCanvas.Children.OfType<Rectangle>())
             {
-                    if (asteroide is Rectangle && (string)asteroide.Tag == "asteroide" )
+                if (asteroide is Rectangle && (string)asteroide.Tag == "asteroide")
+                {
+                    if (Canvas.GetTop(asteroide) < Canvas.GetTop(joueur))
                     {
-                        if (Canvas.GetTop(asteroide) < Canvas.GetTop(joueur)) 
-                        {
-                            score += 1;
-                        }
+                        score += 1;
                     }
+                }
             }
 
         }
 
 
-        private void Vitesse() 
-        { 
-            if (score >= 10 * repere) 
+        private void Vitesse()
+        {
+            if (score >= 10 * repere)
             {
                 repere = repere + 1;
                 vitesseObstacle += 1;
@@ -296,7 +300,7 @@ namespace GalaxyRush
             {
                 Canvas.SetTop(joueur, Canvas.GetTop(joueur) - vitesseJoueur);
             }
-            else if (goUp && Canvas.GetTop(joueur) + joueur.Height  < Application.Current.MainWindow.Height)
+            else if (goUp && Canvas.GetTop(joueur) + joueur.Height < Application.Current.MainWindow.Height)
             {
                 Canvas.SetTop(joueur, Canvas.GetTop(joueur) + vitesseJoueur);
             }
@@ -376,42 +380,3 @@ namespace GalaxyRush
         #endregion
     }
 }
-
-
-
-//Pour plus tard mettre sur pause
-//private void OnSpaceDownHandler(object sender, KeyEventArgs e)
-//{
-//    if (e.Key == Key.Space)
-//    {
-//        if (velocity > 0)
-//            velocity = -leapDist;
-//        else
-//            velocity -= leapDist;
-//        //velocity -= leapDist;
-//        //llama.Margin = new Thickness(llama.Margin.Left, llama.Margin.Top - 50, llama.Margin.Right, llama.Margin.Top + 50);
-//    }
-//    else if (e.Key == Key.P)
-//    {
-//        if (timeTimer.IsEnabled)
-//        {
-//            gravTimer.Stop();
-//            timeTimer.Stop();
-//            genTimer.Stop();
-//        }
-//        else
-//        {
-//            gravTimer.Start();
-//            timeTimer.Start();
-//            genTimer.Start();
-//        }
-//    }
-//    else if (e.Key == Key.Escape)
-//    {
-//        gravTimer.Stop();
-//        timeTimer.Stop();
-//        genTimer.Stop();
-//        //add to open a popup to retry or go to new window
-//        GameOver(allFences.score);
-//    }
-//}

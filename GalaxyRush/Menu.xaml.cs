@@ -23,11 +23,11 @@ namespace GalaxyRush
         {
             //MainWindow gameWindow = new MainWindow();
             //gameWindow.ShowDialog();
-            MainWindow jeu = new MainWindow();
-            jeu.ShowDialog();
-            this.Hide();
+            //MainWindow jeu = new MainWindow();
+            //jeu.ShowDialog();
+            //this.Hide();
             
-            //this.DialogResult = true;
+            this.DialogResult = true;
             //this.Close();
         }
 
