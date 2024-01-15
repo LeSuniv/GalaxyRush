@@ -91,7 +91,6 @@ namespace GalaxyRush
                     joueur.RenderTransform = rotation2;
                 }
             }
-
             if (e.Key == Key.P)
             {
                 MettrePause();
