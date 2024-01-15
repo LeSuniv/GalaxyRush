@@ -54,14 +54,14 @@ namespace GalaxyRush
         {
             InitializeComponent();
             myCanvas.Focus();
-
-            Menu fenetreNiveau = new Menu();
-            fenetreNiveau.ShowDialog();
+            //MainWindow mainWindow = new MainWindow();
+            //mainWindow.Hide();
+            Menu menu = new Menu();
+            menu.ShowDialog();
 
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png")); background.Fill = fond;
 
 
-            //InitializeGame();
 
             // configure le Timer et les événements
             // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
@@ -102,7 +102,12 @@ namespace GalaxyRush
             {
                 MettrePause();
             }
+            if (e.Key == Key.Escape)
+            {
+                QuitterPartie();
+            }
         }
+
 
         private void QuitterPartie()
         {
@@ -110,10 +115,11 @@ namespace GalaxyRush
             dispatcherTimer.Stop();
             timeTimer.Stop();
 
-            //Menu menuWindow = new Menu();
-            //menuWindow.Show();
-            //this.Close();
-            this.DialogResult = false;
+            
+            Menu menuWindow = new Menu();
+            menuWindow.Show();
+            this.Close();
+            //this.DialogResult = false;
         }
 
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
@@ -186,6 +192,7 @@ namespace GalaxyRush
             }
         }
 
+
         private void MouvementObstacle(int declencheur)
         {
             foreach (Rectangle asteroide in myCanvas.Children.OfType<Rectangle>())
@@ -240,6 +247,8 @@ namespace GalaxyRush
                 myCanvas.Children.Remove(z);
             }
         }
+
+
         private void ComptagePoint()
         {
             foreach (Rectangle asteroide in myCanvas.Children.OfType<Rectangle>())
@@ -254,6 +263,8 @@ namespace GalaxyRush
             }
 
         }
+
+
         private void Vitesse() 
         { 
             if (score >= 10 * repere) 
@@ -263,6 +274,7 @@ namespace GalaxyRush
                 vitesseOvni += 1;
             }
         }
+
 
         private void Jeu(object sender, EventArgs e)
         {
@@ -286,10 +298,12 @@ namespace GalaxyRush
             MouvementObstacle(declencheur);
         }
 
+
         private void RetireObjet(object sender, EventArgs e)
         {
 
         }
+
 
         private void MettrePause()
         {
@@ -300,6 +314,7 @@ namespace GalaxyRush
                 // Arrêter les timers pour mettre le jeu en pause
                 dispatcherTimer.Stop();
                 timeTimer.Stop();
+
                 pauseText.Visibility = Visibility.Visible;
             }
             else
@@ -310,6 +325,7 @@ namespace GalaxyRush
                 timeTimer.Start();
             }
         }
+
 
         //if (x is Rectangle && (string)x.Tag == "enemy")
         //{
