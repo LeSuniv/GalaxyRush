@@ -17,8 +17,7 @@
             Name="myCanvas"
             Background="LightBlue"
             Focusable="True"
-            KeyDown="CleeCanvasAppuyee"
-            KeyUp="CleeCanvasRelachee">
+            KeyDown="CleeCanvasAppuyee">
             <Rectangle
                 Name="background"
                 Width="1262"

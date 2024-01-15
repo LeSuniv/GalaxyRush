@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml.Linq;
 
 namespace GalaxyRush
 {
@@ -19,17 +20,23 @@ namespace GalaxyRush
 
         #region Constante
 
-        private bool goUp = true;
-        private bool goDown = false;
+        private bool goUp = false;
+        private bool goDown = true;
+        RotateTransform rotation1 = new RotateTransform(135);
+        RotateTransform rotation2 = new RotateTransform(45);
+        RotateTransform rotation3 = new RotateTransform(90);
         // crée une nouvelle instance de la classe dispatch timer
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
         private ImageBrush SkinJoueur = new ImageBrush();
+        // vitesse du joueur
+        private int vitesseJoueur = 5;
+        // liste des éléments rectangles
         private int nbrObstacle = 0;
         private int score = 0;
         private List<Rectangle> enlever = new List<Rectangle>();
         private ImageBrush fond = new ImageBrush();
-        private ImageBrush fusée = new ImageBrush();
+        private ImageBrush fusee = new ImageBrush();
 
         private bool enPause = false;
 
@@ -69,23 +76,20 @@ namespace GalaxyRush
 
         private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
         {
-            // on gère les booléens gauche et droite en fonction de l’appui de la touche
-            if (e.Key == Key.Space && goUp == true)
+            if (e.Key == Key.Space)
             {
-                goUp = false;
-            }
-            if (e.Key == Key.Space && goUp == false)
-            {
-                goUp = true;
-            }
-
-            if (e.Key == Key.P)
-            {
-                MettrePause();
-            }
-            if (e.Key == Key.Escape)
-            {
-                QuitterPartie();
+                if (goUp == false)
+                {
+                    goUp = true;
+                    goDown = false;
+                    joueur.RenderTransform = rotation1;
+                }
+                else
+                {
+                    goDown = true;
+                    goUp = false;
+                    joueur.RenderTransform = rotation2;
+                }
             }
         }
 
@@ -110,10 +114,9 @@ namespace GalaxyRush
             }
             if (e.Key == Key.Space && goUp == false)
             {
-                goUp = false;
+                MettrePause();
             }
         }
-
 
         private void CreeObstacles(object sender, KeyboardEventArgs e)
         {
@@ -218,11 +221,26 @@ namespace GalaxyRush
         private void Jeu(object sender, EventArgs e)
         {
             // création d’un rectangle joueur pour la détection de collision
-            Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur),
-            joueur.Width, joueur.Height);
+            Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
             scoreText.Content = "Score: " + score;
+            if (goDown && Canvas.GetTop(joueur) > 0)
+            {
+                Canvas.SetTop(joueur, Canvas.GetTop(joueur) - vitesseJoueur);
+            }
+            else if (goUp && Canvas.GetTop(joueur) + joueur.Height  < Application.Current.MainWindow.Height)
+            {
+                Canvas.SetTop(joueur, Canvas.GetTop(joueur) + vitesseJoueur);
+            }
+            else
+            {
+                joueur.RenderTransform = rotation3;
+            }
         }
 
+        private void RetireObjet(object sender, EventArgs e)
+        {
+
+        }
 
         private void MettrePause()
         {
@@ -295,7 +313,7 @@ namespace GalaxyRush
 //        else
 //            velocity -= leapDist;
 //        //velocity -= leapDist;
-//        //llama.Margin = new Thickness(llama.Margin.Left, llama.Margin.Top - 50, llama.Margin.Right, llama.Margin.Bottom + 50);
+//        //llama.Margin = new Thickness(llama.Margin.Left, llama.Margin.Top - 50, llama.Margin.Right, llama.Margin.Top + 50);
 //    }
 //    else if (e.Key == Key.P)
 //    {
