@@ -91,6 +91,11 @@ namespace GalaxyRush
                     joueur.RenderTransform = rotation2;
                 }
             }
+
+            if (e.Key == Key.P)
+            {
+                MettrePause();
+            }
         }
 
         private void QuitterPartie()
@@ -256,9 +261,9 @@ namespace GalaxyRush
             else
             {
                 // Redémarrer les timers pour reprendre le jeu
+                pauseText.Visibility = Visibility.Collapsed;
                 dispatcherTimer.Start();
                 timeTimer.Start();
-                pauseText.Visibility = Visibility.Collapsed;
             }
         }
 
