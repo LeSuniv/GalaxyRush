@@ -20,8 +20,11 @@ namespace GalaxyRush
 
         #region Constante
 
-        private bool goUp = true;
-        private bool goDown = false;
+        private bool goUp = false;
+        private bool goDown = true;
+        RotateTransform rotation1 = new RotateTransform(135);
+        RotateTransform rotation2 = new RotateTransform(45);
+        RotateTransform rotation3 = new RotateTransform(90);
         // crée une nouvelle instance de la classe dispatch timer
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         // classe de pinceau d'image que nous utiliserons comme image du joueur appelée skin du joueur
@@ -86,12 +89,13 @@ namespace GalaxyRush
                 {
                     goUp = true;
                     goDown = false;
+                    joueur.RenderTransform = rotation1;
                 }
                 else
                 {
                     goDown = true;
                     goUp = false;
-                    //RotateTransform fusee = new RotateTransform(135);
+                    joueur.RenderTransform = rotation2;
                 }
             }
 
@@ -208,12 +212,15 @@ namespace GalaxyRush
             scoreText.Content = "Score: " + score;
             if (goDown && Canvas.GetTop(joueur) > 0)
             {
-                RotateTransform fusee = new RotateTransform(135);
                 Canvas.SetTop(joueur, Canvas.GetTop(joueur) - vitesseJoueur);
             }
-            else if (goUp && Canvas.GetTop(joueur) + joueur.Width < Application.Current.MainWindow.Width)
+            else if (goUp && Canvas.GetTop(joueur) + joueur.Height  < Application.Current.MainWindow.Height)
             {
                 Canvas.SetTop(joueur, Canvas.GetTop(joueur) + vitesseJoueur);
+            }
+            else
+            {
+                joueur.RenderTransform = rotation3;
             }
         }
 
