@@ -91,6 +91,7 @@ namespace GalaxyRush
                     joueur.RenderTransform = rotation2;
                 }
             }
+        }
 
         private void QuitterPartie()
         {
