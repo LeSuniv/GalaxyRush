@@ -114,18 +114,18 @@ namespace GalaxyRush
             timeTimer.Stop();
             Quitter.Visibility = Visibility.Visible;
             Rejouer.Visibility = Visibility.Visible;
-            Menu.Visibility = Visibility.Visible;
+            //Menu.Visibility = Visibility.Visible;
             perduText.Visibility = Visibility.Visible;
         }
         private void QuitterBoutton(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-        private void MenuBoutton(object sender, RoutedEventArgs e)
-        {
-            Menu menu = new Menu();
-            menu.Show();
-        }
+        //private void MenuBoutton(object sender, RoutedEventArgs e)
+        //{
+        //    Menu menu = new Menu();
+        //    menu.Show();
+        //}
         
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {

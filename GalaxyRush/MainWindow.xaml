@@ -8,10 +8,11 @@
     Title="Jeu"
     Width="806"
     Height="450"
+    FontFamily="Stargaze Stencil normal"
     Icon="/fusee.png"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d" FontFamily="Stargaze Stencil normal">
+    mc:Ignorable="d">
     <Grid>
         <Canvas
             Name="myCanvas"
@@ -113,8 +114,8 @@
             Click="QuitterBoutton"
             Content="Quitter"
             FontFamily="Stargaze Stencil normal"
-            Foreground="#FFFFFF" 
-            Visibility="Collapsed"/>
+            Foreground="#FFFFFF"
+            Visibility="Collapsed" />
         <Button
             x:Name="Rejouer"
             Width="100"
@@ -124,11 +125,12 @@
             VerticalAlignment="Bottom"
             Background="#0000DD"
             BorderBrush="Black"
+            Click="Rejouer_Click"
             Content="Rejouer"
             FontFamily="Stargaze Stencil normal"
-            Foreground="#FFFFFF" 
-            Visibility="Collapsed" Click="Rejouer_Click"/>
-        <Button
+            Foreground="#FFFFFF"
+            Visibility="Collapsed" />
+        <!--<Button
             x:Name="Menu"
             Width="100"
             Height="40"
@@ -140,7 +142,7 @@
             Click="MenuBoutton"
             Content="Menu"
             FontFamily="Stargaze Stencil normal"
-            Foreground="#FFFFFF" 
-            Visibility="Collapsed"/>
+            Foreground="#FFFFFF"
+            Visibility="Collapsed"/>-->
     </Grid>
 </Window>
