@@ -15,6 +15,8 @@
     FontFamily="Stargaze stencil classic"
     mc:Ignorable="d">
     <Window.Resources>
+        <FontFamily x:Key="Stargaze Stencil">/GalaxyRush;component/Stargaze Stencil.otf#Stargaze Stencil</FontFamily>
+
         <Style x:Key="CustomButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderBrush" Value="Transparent" />
@@ -67,7 +69,7 @@
             BorderThickness="1,1,1,1"
             Click="ButJouer_Click"
             Content="Jouer"
-            FontFamily="Stargaze Stencil normal"
+            FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="55"
             FontWeight="Bold"
             Style="{StaticResource CustomButtonStyle}" />
@@ -80,7 +82,7 @@
             BorderBrush="#00707070"
             Click="ButQuitter_Click"
             Content="Quitter"
-            FontFamily="Stargaze Stencil normal"
+            FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="45"
             FontWeight="Bold"
             Style="{StaticResource CustomButtonStyle}" />
@@ -96,7 +98,7 @@
             BorderBrush="White"
             Click="ButTuto_Click"
             Content="Comment Jouer"
-            FontFamily="Stargaze Stencil normal"
+            FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="15"
             Foreground="#FFA000FF" />
         <!--<Image

@@ -48,8 +48,6 @@ namespace GalaxyRush
 
         #endregion
 
-
-
         public MainWindow()
         {
             InitializeComponent();
@@ -57,7 +55,9 @@ namespace GalaxyRush
             //MainWindow mainWindow = new MainWindow();
             //mainWindow.Hide();
 
-            Rejouer();
+            Menu main = new Menu();
+            main.ShowDialog();
+            //Rejouer();
 
             //if ((Application.Current.MainWindow is Menu menu))
             //{

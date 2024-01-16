@@ -28,6 +28,5 @@ namespace GalaxyRush
             this.Close();
 
         }
-
     }
 }

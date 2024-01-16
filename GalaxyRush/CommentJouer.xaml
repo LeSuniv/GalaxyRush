@@ -13,6 +13,9 @@
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.Resources>
+        <FontFamily x:Key="Stargaze Stencil">/GalaxyRush;component/Stargaze Stencil.otf#Stargaze Stencil</FontFamily>
+    </Window.Resources>
     <Grid>
 
         <Rectangle
@@ -28,7 +31,7 @@
             Margin="0,19,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            FontFamily="Stargaze Stencil normal"
+            FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="22"
             FontWeight="Bold"
             Foreground="White"
@@ -41,15 +44,15 @@
             Margin="0,157,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            FontFamily="Stargaze Stencil normal"
+            FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="15"
             Foreground="#FFFDFDFD"
-            TextWrapping="Wrap"><Run Text="Changer de direction&#x9;- Espace&#xA;Pause&#x9;                             - P" /><LineBreak /><Run FontFamily="Stargaze Stencil normal" Text="Quitter la partie&#x9;              - ESC" /></TextBlock>
+            TextWrapping="Wrap"><Run Text="Changer de direction&#x9;- Espace&#xA;Pause&#x9;                                         - P" /><LineBreak /><Run FontFamily="{StaticResource Stargaze Stencil}" Text="Quitter la partie&#x9;              - ESC" /></TextBlock>
         <TextBlock
             Height="76"
             Margin="10,76,10,0"
             VerticalAlignment="Top"
-            FontFamily="Stargaze Stencil normal"
+            FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="16"
             Foreground="White"
             Text="Esquiver les ennemis et les obstacles sur votre chemin! Sinon la partie est terminée"
@@ -65,7 +68,7 @@
             BorderBrush="White"
             Click="Retour_Click"
             Content="Retour"
-            FontFamily="Stargaze Stencil normal"
+            FontFamily="{StaticResource Stargaze Stencil}"
             Foreground="#FFA000FF" />
 
     </Grid>

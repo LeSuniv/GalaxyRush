@@ -39,7 +39,7 @@ namespace GalaxyRush
         private void ButTuto_Click(object sender, RoutedEventArgs e)
         {
             CommentJouer Tuto = new CommentJouer();
-            Tuto.Show();
+            Tuto.Show();    
         }
     }
 }
