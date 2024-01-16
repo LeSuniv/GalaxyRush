@@ -132,7 +132,7 @@ namespace GalaxyRush
             int y = 0;
             for (int i = asteroide; i < limiteAsteroide; i++)
             {
-                score += 1;
+                nbrObstacle += 1;
                 y = aleatoire.Next(0, 350);
                 if (i < limiteAsteroide)
                 {
@@ -234,20 +234,11 @@ namespace GalaxyRush
             foreach (Rectangle z in enlever)
             {
                 myCanvas.Children.Remove(z);
+                score = nbrObstacle -1;
             }
         }
         private void ComptagePoint()
         {
-            foreach (Rectangle asteroide in myCanvas.Children.OfType<Rectangle>())
-            {
-                    if (asteroide is Rectangle && (string)asteroide.Tag == "asteroide" )
-                    {
-                        if (Canvas.GetTop(asteroide) < Canvas.GetTop(joueur)) 
-                        {
-                            score += 1;
-                        }
-                    }
-            }
 
         }
         private void Vitesse() 
@@ -260,10 +251,10 @@ namespace GalaxyRush
             }
         }
 
-        private void Jeu(object sender, EventArgs e)
+        private void MouvementFusee()
         {
             // création d’un rectangle joueur pour la détection de collision
-            Rect player = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
+            Rect fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
             scoreText.Content = "Score: " + score;
             if (goDown && Canvas.GetTop(joueur) > 0)
             {
@@ -277,16 +268,15 @@ namespace GalaxyRush
             {
                 joueur.RenderTransform = rotation3;
             }
+        }
+        private void Jeu(object sender, EventArgs e)
+        {
+            MouvementFusee();
             CreeObstacles();
             Vitesse();
             MouvementObstacle(declencheur);
+            ComptagePoint();
         }
-
-        private void RetireObjet(object sender, EventArgs e)
-        {
-
-        }
-
         private void MettrePause()
         {
             enPause = !enPause;
