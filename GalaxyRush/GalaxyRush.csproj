@@ -9,6 +9,13 @@
 
   <ItemGroup>
     <None Remove="fusee.png" />
+    <None Remove="Stargaze Stencil.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Stargaze Stencil.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -32,12 +39,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="images\ovni.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Stargaze Regular.otf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Stargaze Stencil.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

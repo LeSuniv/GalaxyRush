@@ -61,14 +61,23 @@ namespace GalaxyRush
         {
             InitializeComponent();
             myCanvas.Focus();
+            //MainWindow mainWindow = new MainWindow();
+            //mainWindow.Hide();
 
-            Menu fenetreNiveau = new Menu();
-            fenetreNiveau.ShowDialog();
+            Menu main = new Menu();
+            main.ShowDialog();
+            //Rejouer();
+
+            //if ((Application.Current.MainWindow is Menu menu))
+            //{
+            //    menu.Hide();
+            //    Menu newMenu = new Menu();
+            //    newMenu.ShowDialog();
+            //}
+
 
             fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png")); background.Fill = fond;
 
-
-            //InitializeGame();
 
             // configure le Timer et les événements
             // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
@@ -87,6 +96,12 @@ namespace GalaxyRush
             timeTimer.Start();
         }
 
+        private void Rejouer()
+        {
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            this.Close();
+        }
 
         private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
         {
@@ -105,7 +120,16 @@ namespace GalaxyRush
                     joueur.RenderTransform = rotation2;
                 }
             }
+            if (e.Key == Key.P)
+            {
+                MettrePause();
+            }
+            if (e.Key == Key.Escape)
+            {
+                Rejouer();
+            }
         }
+
 
         private void QuitterPartie()
         {
@@ -113,10 +137,13 @@ namespace GalaxyRush
             dispatcherTimer.Stop();
             timeTimer.Stop();
 
+            Menu menu = new Menu();
+            menu.ShowDialog();
+
             //Menu menuWindow = new Menu();
             //menuWindow.Show();
-            //this.Close();
-            this.DialogResult = false;
+            this.Close();
+            //DialogResult = false;
         }
 
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
@@ -301,6 +328,7 @@ namespace GalaxyRush
             }
         }
 
+
         private void Jeu(object sender, EventArgs e)
         {
             // création d’un rectangle joueur pour la détection de collision
@@ -324,6 +352,7 @@ namespace GalaxyRush
             MouvementObstacle();
         }
 
+
         private void MettrePause()
         {
             enPause = !enPause;
@@ -333,16 +362,18 @@ namespace GalaxyRush
                 // Arrêter les timers pour mettre le jeu en pause
                 dispatcherTimer.Stop();
                 timeTimer.Stop();
+
                 pauseText.Visibility = Visibility.Visible;
             }
             else
             {
                 // Redémarrer les timers pour reprendre le jeu
+                pauseText.Visibility = Visibility.Collapsed;
                 dispatcherTimer.Start();
                 timeTimer.Start();
-                pauseText.Visibility = Visibility.Collapsed;
             }
         }
+
 
         //if (x is Rectangle && (string)x.Tag == "enemy")
         //{
@@ -381,42 +412,3 @@ namespace GalaxyRush
         #endregion
     }
 }
-
-
-
-//Pour plus tard mettre sur pause
-//private void OnSpaceDownHandler(object sender, KeyEventArgs e)
-//{
-//    if (e.Key == Key.Space)
-//    {
-//        if (velocity > 0)
-//            velocity = -leapDist;
-//        else
-//            velocity -= leapDist;
-//        //velocity -= leapDist;
-//        //llama.Margin = new Thickness(llama.Margin.Left, llama.Margin.Top - 50, llama.Margin.Right, llama.Margin.Top + 50);
-//    }
-//    else if (e.Key == Key.P)
-//    {
-//        if (timeTimer.IsEnabled)
-//        {
-//            gravTimer.Stop();
-//            timeTimer.Stop();
-//            genTimer.Stop();
-//        }
-//        else
-//        {
-//            gravTimer.Start();
-//            timeTimer.Start();
-//            genTimer.Start();
-//        }
-//    }
-//    else if (e.Key == Key.Escape)
-//    {
-//        gravTimer.Stop();
-//        timeTimer.Stop();
-//        genTimer.Stop();
-//        //add to open a popup to retry or go to new window
-//        GameOver(allFences.score);
-//    }
-//}
