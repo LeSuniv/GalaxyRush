@@ -8,7 +8,7 @@
     Title="Comment jouer ?"
     Width="401"
     Height="319"
-    Background="Transparent"
+    Background="#011638"
     Icon="\fusee.png"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
@@ -17,14 +17,6 @@
         <FontFamily x:Key="Stargaze Stencil">/GalaxyRush;component/Stargaze Stencil.otf#Stargaze Stencil</FontFamily>
     </Window.Resources>
     <Grid>
-
-        <Rectangle
-            Width="401"
-            Height="303"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Fill="#FF175779"
-            Stroke="#00000000" />
         <TextBlock
             Width="289"
             Height="36"
@@ -34,7 +26,7 @@
             FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="22"
             FontWeight="Bold"
-            Foreground="White"
+            Foreground="#BFDBF7"
             Text="Comment jouer"
             TextAlignment="Center"
             TextWrapping="Wrap" />
@@ -69,7 +61,6 @@
             Click="Retour_Click"
             Content="Retour"
             FontFamily="{StaticResource Stargaze Stencil}"
-            Foreground="#FFA000FF" />
-
+            Foreground="#D499B9" />
     </Grid>
 </Window>

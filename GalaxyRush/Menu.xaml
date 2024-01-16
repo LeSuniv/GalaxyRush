@@ -33,7 +33,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <!--  Changement de la couleur du texte lors du survol de la souris  -->
-                                <Setter Property="Foreground" Value="#FFA000FF" />
+                                <Setter Property="Foreground" Value="#D499B9" />
                             </Trigger>
                             <!--  Autres états visuels si nécessaire  -->
                         </ControlTemplate.Triggers>
@@ -100,7 +100,7 @@
             Content="Comment Jouer"
             FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="15"
-            Foreground="#FFA000FF" />
+            Foreground="#D499B9" />
         <!--<Image
             x:Name="fusee"
             Width="194"

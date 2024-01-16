@@ -23,17 +23,11 @@
             KeyDown="CleeCanvasAppuyee">
             <Rectangle
                 Name="background"
-                Width="1262"
+                Width="807"
                 Height="435"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
                 Fill="Orange" />
-            <Rectangle
-                Name="background2"
-                Canvas.Left="1262"
-                Width="1262"
-                Height="435"
-                Fill="LightGreen" />
             <Rectangle
                 Name="joueur"
                 Canvas.Left="110"
