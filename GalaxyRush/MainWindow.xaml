@@ -13,6 +13,9 @@
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.Resources>
+        <FontFamily x:Key="Stargaze Stencil">/GalaxyRush;component/Stargaze Stencil.otf#Stargaze Stencil</FontFamily>
+    </Window.Resources>
     <Grid>
         <Canvas
             Name="myCanvas"
@@ -52,7 +55,7 @@
             <Label
                 Name="scoreText"
                 Content="Score: 0"
-                FontFamily="Stargaze Stencil normal"
+                FontFamily="{StaticResource Stargaze Stencil}"
                 FontSize="30"
                 FontWeight="Bold"
                 Foreground="White" />
@@ -65,7 +68,7 @@
                 Margin="698,10,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                FontFamily="Stargaze Stencil normal"
+                FontFamily="{StaticResource Stargaze Stencil}"
                 FontSize="25"
                 FontWeight="Bold"
                 Foreground="White"
@@ -76,7 +79,7 @@
                 Margin="579,10,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                FontFamily="Stargaze Stencil normal"
+                FontFamily="{StaticResource Stargaze Stencil}"
                 FontSize="25"
                 FontWeight="Bold"
                 Foreground="White"
@@ -86,7 +89,7 @@
             x:Name="pauseText"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontFamily="Stargaze Stencil normal"
+            FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="72"
             FontWeight="ExtraBold"
             Foreground="#FFFFFF"

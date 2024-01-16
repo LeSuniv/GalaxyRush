@@ -26,7 +26,7 @@ namespace GalaxyRush
         private void Retour_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
 
+        }
     }
 }
