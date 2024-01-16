@@ -91,5 +91,56 @@
             Foreground="#FFFFFF"
             Text="PAUSE"
             Visibility="Collapsed" />
+        <TextBlock
+            x:Name="perduText"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontFamily="Stargaze Stencil normal"
+            FontSize="72"
+            FontWeight="ExtraBold"
+            Foreground="#FFFFFF"
+            Text="VOUS ETES MAUVAIS"
+            Visibility="Collapsed" />
+        <Button
+            x:Name="Quitter"
+            Width="100"
+            Height="40"
+            Margin="0,0,160,40"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Background="#0000DD"
+            BorderBrush="Black"
+            Click="QuitterBoutton"
+            Content="Quitter"
+            FontFamily="Stargaze Stencil normal"
+            Foreground="#FFFFFF" 
+            Visibility="Collapsed"/>
+        <Button
+            x:Name="Rejouer"
+            Width="100"
+            Height="40"
+            Margin="0,0,350,40"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Background="#0000DD"
+            BorderBrush="Black"
+            Content="Rejouer"
+            FontFamily="Stargaze Stencil normal"
+            Foreground="#FFFFFF" 
+            Visibility="Collapsed" Click="Rejouer_Click"/>
+        <Button
+            x:Name="Menu"
+            Width="100"
+            Height="40"
+            Margin="0,0,550,40"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Background="#0000DD"
+            BorderBrush="Black"
+            Click="MenuBoutton"
+            Content="Menu"
+            FontFamily="Stargaze Stencil normal"
+            Foreground="#FFFFFF" 
+            Visibility="Collapsed"/>
     </Grid>
 </Window>

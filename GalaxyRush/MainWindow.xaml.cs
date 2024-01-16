@@ -98,20 +98,35 @@ namespace GalaxyRush
                     joueur.RenderTransform = rotation2;
                 }
             }
+            if (e.Key == Key.P)
+            {
+                MettrePause();
+            }
+            if (e.Key == Key.O)
+            {
+                QuitterPartie();
+            }
         }
 
         private void QuitterPartie()
         {
-            //Stope les temps
             dispatcherTimer.Stop();
             timeTimer.Stop();
-
-            //Menu menuWindow = new Menu();
-            //menuWindow.Show();
-            //this.Close();
-            this.DialogResult = false;
+            Quitter.Visibility = Visibility.Visible;
+            Rejouer.Visibility = Visibility.Visible;
+            Menu.Visibility = Visibility.Visible;
+            perduText.Visibility = Visibility.Visible;
         }
-
+        private void QuitterBoutton(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        private void MenuBoutton(object sender, RoutedEventArgs e)
+        {
+            Menu menu = new Menu();
+            menu.Show();
+        }
+        
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
             // on gère les booléens espace en fonction de l’appui de la touche
@@ -119,13 +134,14 @@ namespace GalaxyRush
             {
                 goDown = true;
             }
-            if (e.Key == Key.Space && goUp == false)
-            {
-                MettrePause();
-            }
         }
 
-
+        /*private void FinDuJeu()
+        {
+            dispatcherTimer.Stop();
+            timeTimer.Stop();
+            perduText.Visibility = Visibility.Visible;
+        }*/
         private void CreeObstacles()
         {
             int right = 0;
@@ -163,7 +179,7 @@ namespace GalaxyRush
             {
                 for (int i = ovni; i < limiteOvni; i++)
                 {
-
+                    nbrObstacle += 1;
                     y = aleatoire.Next(0, 350);
                     ImageBrush textureOvni = new ImageBrush();
                     Rectangle nouveauOvni = new Rectangle
@@ -200,6 +216,7 @@ namespace GalaxyRush
             foreach (Rectangle x in enlever)
             {
                 myCanvas.Children.Remove(x);
+                score = nbrObstacle - 1;
             }
             foreach (Rectangle ovni in myCanvas.Children.OfType<Rectangle>())
             {
@@ -231,9 +248,9 @@ namespace GalaxyRush
                     this.ovni = 0;
                 }
             }
-            foreach (Rectangle z in enlever)
+            foreach (Rectangle ovni in enlever)
             {
-                myCanvas.Children.Remove(z);
+                myCanvas.Children.Remove(ovni);
                 score = nbrObstacle -1;
             }
         }
@@ -333,6 +350,15 @@ namespace GalaxyRush
             temps.Text = tempsFormat;
         }
         #endregion
+
+        private void Rejouer_Click(object sender, RoutedEventArgs e)
+        {
+            //foreach (Rectangle x in myCanvas.Children.OfType<Rectangle>())
+            //{
+            //    myCanvas.Children.Remove(x);
+            //}
+
+        }
     }
 }
 
