@@ -341,7 +341,7 @@ namespace GalaxyRush
                     Rect boite_ovni = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
                     if (rect_fusee.IntersectsWith(boite_ovni))
                     {
-                        dispatcherTimer.Stop();
+                        dispatcherTimer.Stop();       
                         MessageBox.Show("Vous avez été touché par un ovni", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
                     }
                 }
@@ -443,6 +443,8 @@ namespace GalaxyRush
                 Canvas.SetLeft(background2, Canvas.GetLeft(background) + background.Width);
             }
         }
+
+
         private void Rejouer_Click(object sender, RoutedEventArgs e)
         {
 
