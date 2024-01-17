@@ -24,8 +24,8 @@
             KeyDown="CleeCanvasAppuyee">
             <Rectangle
                 Name="background"
-                Width="1262"
-                Height="435"
+                Width="800"
+                Height="450"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Canvas.Left="0"
