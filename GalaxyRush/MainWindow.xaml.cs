@@ -64,12 +64,8 @@ namespace GalaxyRush
             InitializeComponent();
             myCanvas.Focus();
 
-            //MainWindow mainWindow = new MainWindow();
-            //mainWindow.Hide();
-
             Menu main = new Menu();
             main.ShowDialog();
-            //Rejouer();
 
             //if ((Application.Current.MainWindow is Menu menu))
             //{
@@ -90,11 +86,9 @@ namespace GalaxyRush
             // rafraissement toutes les 16 milliseconds
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(16);
             dispatcherTimer.Tick += Jeu;
-            // lancement du timer
             dispatcherTimer.Start();
             // chargement de l’image du joueur 
             SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fusee.png"));
-            // assignement de skin du joueur au rectangle associé
             joueur.Fill = SkinJoueur;
 
             timeTimer.Tick += ComptageTemps;
@@ -103,12 +97,13 @@ namespace GalaxyRush
 
         }
 
-        //private void Rejouer()
-        //{
-        //    Menu menu = new Menu();
-        //    menu.ShowDialog();
-        //    this.Close();
-        //}
+
+        private void Rejouer()
+        {
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            this.Close();
+        }
 
 
         private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
@@ -132,6 +127,10 @@ namespace GalaxyRush
             {
                 MettrePause();
             }
+            if (e.Key == Key.Escape)
+            {
+                Rejouer();
+            }
             if (e.Key == Key.O)
             {
                 QuitterPartie();
@@ -144,9 +143,9 @@ namespace GalaxyRush
             dispatcherTimer.Stop();
             timeTimer.Stop();
             Quitter.Visibility = Visibility.Visible;
-            Rejouer.Visibility = Visibility.Visible;
+            //Rejouer.Visibility = Visibility.Visible;
             //Menu.Visibility = Visibility.Visible;
-            perduText.Visibility = Visibility.Visible;
+            //perduText.Visibility = Visibility.Visible;
         }
         private void QuitterBoutton(object sender, RoutedEventArgs e)
         {
@@ -304,13 +303,13 @@ namespace GalaxyRush
                 vitesseObstacle += 0.5;
                 vitesseOvni += 0.5;
             }
-            if ( score >= change_qnt_asteroide * repere_qnt_asteroide) 
+            if (score >= change_qnt_asteroide * repere_qnt_asteroide)
             {
                 change_qnt_asteroide = Math.Pow(change_qnt_asteroide,3);
                 repere_qnt_asteroide = repere_qnt_asteroide + 1;
                 limiteAsteroide += 1;
             }
-            if (score >= change_qnt_ovni * repere_qnt_ovni) 
+            if (score >= change_qnt_ovni * repere_qnt_ovni)
             {
                 repere_qnt_ovni = repere_qnt_ovni + 1;
                 change_qnt_ovni = Math.Pow(change_qnt_ovni,3);
@@ -396,21 +395,6 @@ namespace GalaxyRush
                 timeTimer.Start();
             }
         }
-
-
-        //if (x is Rectangle && (string)x.Tag == "enemy")
-        //{
-        //    // On le déplace vers la droite selon enemySpeed
-        //    Canvas.SetLeft(x, Canvas.GetLeft(x) + enemySpeed);
-        //}
-        //// vérification de la collision avec le joueur
-        //Rect enemy = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
-        //if (player.IntersectsWith(enemy))
-        //{
-        //    // collision avec le joueur et fin de la partie
-        //    dispatcherTimer.Stop();
-        //    lose.Visibility = Visibility.Visible;
-        //}
 
 
         #region Temps

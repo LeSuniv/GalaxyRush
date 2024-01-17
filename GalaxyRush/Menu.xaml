@@ -95,7 +95,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#01DDDDDD"
-            BorderBrush="White"
+            BorderBrush="#FFD499B9"
             Click="ButTuto_Click"
             Content="Comment Jouer"
             FontFamily="{StaticResource Stargaze Stencil}"

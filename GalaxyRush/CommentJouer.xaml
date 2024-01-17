@@ -57,7 +57,7 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Background="#00DDDDDD"
-            BorderBrush="White"
+            BorderBrush="#FFD499B9"
             Click="Retour_Click"
             Content="Retour"
             FontFamily="{StaticResource Stargaze Stencil}"
