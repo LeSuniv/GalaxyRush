@@ -32,10 +32,10 @@ namespace GalaxyRush
         private int vitesseJoueur = 5;
         // liste des éléments rectangles
         private int nbrObstacle = 0;
-        private int score = 2;
+        private int score = 7;
         private List<Rectangle> enlever = new List<Rectangle>();
         private ImageBrush fond = new ImageBrush();
-        private ImageBrush fusée = new ImageBrush();
+        private ImageBrush fusee = new ImageBrush();
         private int limiteAsteroide = 1;
         private int nb_asteroide = 0;
         private int nb_ovni = 0;
@@ -44,15 +44,13 @@ namespace GalaxyRush
         Random aleatoire = new Random();
         private bool enPause = false;
         private int declencheur = 300;
-        private double vitesseObstacle = 10;
+        private double vitesseAsteroide = 10;
         private double vitesseOvni = 6;
         private double changement_vitesse = 10;
         private double change_qnt_asteroide = 4;
         private double change_qnt_ovni = 7;
-        private double repere_qnt_asteroide = 1;
-        private double repere_qnt_ovni = 1;
         private int delai = 1;
-        private int temps_apparition = 20;
+        private int temps_apparition = 10;
 
 
         #endregion
@@ -165,34 +163,34 @@ namespace GalaxyRush
             int y = 0;
             for (int i = nb_asteroide; i < limiteAsteroide; i++)
             {
-                score += 1;
                 delai -= 1;
                 y = aleatoire.Next(0, 350);
                 if (i < limiteAsteroide && delai == 0)
                 {
-                        #region Asteroide
-                        ImageBrush texturObstacle = new ImageBrush();
-                        Rectangle nouveauObstacle = new Rectangle
-                        {
-                            Tag = "asteroide",
-                            Height = 100,
-                            Width = 50,
-                            Fill = texturObstacle,
-                        };
-                        Canvas.SetRight(nouveauObstacle, right);
-                        Canvas.SetTop(nouveauObstacle, y);
-                        myCanvas.Children.Add(nouveauObstacle);
-                        texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
-                        nb_asteroide += 1;
-                        delai = temps_apparition;   
+                    #region Asteroide
+                    ImageBrush texturObstacle = new ImageBrush();
+                    Rectangle nouveauObstacle = new Rectangle
+                    {
+                        Tag = "asteroide",
+                        Height = 100,
+                        Width = 50,
+                        Fill = texturObstacle,
+                    };
+                    Canvas.SetRight(nouveauObstacle, right);
+                    Canvas.SetTop(nouveauObstacle, y);
+                    myCanvas.Children.Add(nouveauObstacle);
+                    texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
+                    nb_asteroide += 1;
+                    delai = temps_apparition;
                 }
                 #endregion
             }
             if (score >= 5)
             {
+                
                 for (int i = nb_ovni; i < limiteOvni; i++)
                 {
-
+                    delai -= 1;
                     y = aleatoire.Next(0, 350);
                     ImageBrush textureOvni = new ImageBrush();
                     Rectangle nouveauOvni = new Rectangle
@@ -207,6 +205,7 @@ namespace GalaxyRush
                     myCanvas.Children.Add(nouveauOvni);
                     textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
                     nb_ovni += 1;
+                    delai = temps_apparition;
                 }
             }
         }
@@ -217,11 +216,12 @@ namespace GalaxyRush
             {
                 if (asteroide is Rectangle && (string)asteroide.Tag == "asteroide")
                 {
-                    Canvas.SetRight(asteroide, Canvas.GetRight(asteroide) + vitesseObstacle);
+                    Canvas.SetRight(asteroide, Canvas.GetRight(asteroide) + vitesseAsteroide);
                 }
 
                 if (Canvas.GetRight(asteroide) > ActualWidth)
                 {
+                    score += 1;
                     enlever.Add(asteroide);
                     nb_asteroide = 0;
                 }
@@ -236,7 +236,7 @@ namespace GalaxyRush
                 if (ovni is Rectangle && (string)ovni.Tag == "ovni")
                 {
                     Canvas.SetRight(ovni, Canvas.GetRight(ovni) + vitesseOvni);
-                    if (Canvas.GetRight(ovni) == declencheur)
+                    if (Canvas.GetLeft(ovni) / 2 == declencheur)
                     {
                         for (int i = 0; i < 4; i++)
                         {
@@ -250,7 +250,7 @@ namespace GalaxyRush
                                 Canvas.SetTop(ovni, Canvas.GetTop(ovni) + vitesseOvni);
                             }
                         }
-                    }  
+                    }
                 }
                 if (Canvas.GetRight(ovni) > ActualWidth)
                 {
@@ -281,24 +281,22 @@ namespace GalaxyRush
         }
         private void Vitesse_Et_Quantite()
         {
-            if (score >= 10 * repere_vitesse)
+            /*if (score >= 10 * repere_vitesse)
             {
                 repere_vitesse = repere_vitesse + 1;
-                vitesseObstacle += 0.5;
-                vitesseOvni += 0.5;
+                vitesseAsteroide += 0.25;
+                vitesseOvni += 0.25;
             }
-            if ( score >= change_qnt_asteroide * repere_qnt_asteroide) 
+            if (score >= (change_qnt_asteroide * limiteAsteroide))
             {
-                change_qnt_asteroide = Math.Pow(change_qnt_asteroide,3);
-                repere_qnt_asteroide = repere_qnt_asteroide + 1;
-                limiteAsteroide += 1;
+                change_qnt_asteroide = change_qnt_asteroide * 2;
+                limiteAsteroide = limiteAsteroide + 1;
             }
-            if (score >= change_qnt_ovni * repere_qnt_ovni) 
+            if (score >= (change_qnt_ovni * limiteOvni))
             {
-                repere_qnt_ovni = repere_qnt_ovni + 1;
-                change_qnt_ovni = Math.Pow(change_qnt_ovni,3);
-                limiteOvni += 1;
-            }
+                change_qnt_ovni = change_qnt_ovni * 2;                 
+                limiteOvni = limiteOvni + 1;
+            }*/
         }
 
         private void Collision(Rect rect_fusee)
@@ -316,7 +314,7 @@ namespace GalaxyRush
                     }
                 }
                 else if (y is Rectangle && (string)y.Tag == "ovni")
-                    {
+                {
                     Rect boite_ovni = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
                     if (rect_fusee.IntersectsWith(boite_ovni))
                     {
@@ -324,10 +322,8 @@ namespace GalaxyRush
                         MessageBox.Show("Vous avez été touché par un ovni", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
                     }
                 }
-               
             }
         }
-
 
         private void Jeu(object sender, EventArgs e)
         {
