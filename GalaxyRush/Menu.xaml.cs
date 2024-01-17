@@ -10,6 +10,7 @@ namespace GalaxyRush
 
         private ImageBrush fondMenu = new ImageBrush();
         private ImageBrush fondMenuLogo = new ImageBrush();
+        private bool fenetreRegle = false;
 
         public Menu()
         {
@@ -38,8 +39,13 @@ namespace GalaxyRush
 
         private void ButTuto_Click(object sender, RoutedEventArgs e)
         {
-            CommentJouer Tuto = new CommentJouer();
-            Tuto.Show();    
-        }
+            if (!fenetreRegle)
+            {
+                CommentJouer commentJouer = new CommentJouer();
+                commentJouer.Closed += (s, args) => fenetreRegle = false;
+                commentJouer.Show();
+                fenetreRegle = true;
+            }
+                }
     }
 }

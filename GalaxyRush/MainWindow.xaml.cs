@@ -377,7 +377,7 @@ namespace GalaxyRush
         {
             Canvas.SetLeft(background, Canvas.GetLeft(background) - 9);
             Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 9);
-            MouvementFusee();
+            //MouvementFusee();
             CreeObstacles();
             Vitesse_Et_Quantite();
             //Collision(rect_fusee);
@@ -430,6 +430,8 @@ namespace GalaxyRush
             temps.Text = tempsFormat;
         }
         #endregion
+
+
         private void mooveGroundAndBackground()
         {
             if (Canvas.GetLeft(background) <= -1262)
