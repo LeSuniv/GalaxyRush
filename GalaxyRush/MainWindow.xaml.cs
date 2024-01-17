@@ -55,12 +55,15 @@ namespace GalaxyRush
         private int temps_apparition = 20;
                 ImageBrush backgroundImg = new ImageBrush();
 
+        private double vitesseDefilement = 5;
+
         #endregion
 
         public MainWindow()
         {
             InitializeComponent();
             myCanvas.Focus();
+
             //MainWindow mainWindow = new MainWindow();
             //mainWindow.Hide();
 
@@ -97,6 +100,7 @@ namespace GalaxyRush
             timeTimer.Tick += ComptageTemps;
             timeTimer.Interval = TimeSpan.FromSeconds(1);
             timeTimer.Start();
+
         }
 
         //private void Rejouer()
@@ -105,6 +109,7 @@ namespace GalaxyRush
         //    menu.ShowDialog();
         //    this.Close();
         //}
+
 
         private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
         {
@@ -341,16 +346,24 @@ namespace GalaxyRush
         //}
 
 
-        private void MouvementFusee()
+        private void AnimerFond()
         {
+            double newPos = Canvas.GetLeft(background) - vitesseDefilement;
+            Canvas.SetLeft(background, newPos);
+
+            newPos = Canvas.GetLeft(background2) - vitesseDefilement;
+            Canvas.SetLeft(background2, newPos);
+
+            if (Canvas.GetLeft(background) < -background.Width)
             // création d’un rectangle joueur pour la détection de collision
             Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
             scoreText.Content = "Score: " + score;
             if (goDown && Canvas.GetTop(joueur) > 0)
             {
-                Canvas.SetTop(joueur, Canvas.GetTop(joueur) - vitesseJoueur);
+                Canvas.SetLeft(background, Canvas.GetLeft(background2) + background2.Width);
             }
-            else if (goUp && Canvas.GetTop(joueur) + joueur.Height < Application.Current.MainWindow.Height)
+
+            if (Canvas.GetLeft(background2) < -background2.Width)
             {
                 Canvas.SetTop(joueur, Canvas.GetTop(joueur) + vitesseJoueur);
             }

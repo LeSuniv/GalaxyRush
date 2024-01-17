@@ -32,10 +32,10 @@
                 Fill="Orange" />
             <Rectangle
                 Name="background2"
-                Canvas.Left="1262"
-                Width="1262"
-                Height="435"
-                Fill="LightGreen" />
+                Canvas.Left="800"
+                Width="800"
+                Height="450"
+                Fill="LightGreen" HorizontalAlignment="Left" VerticalAlignment="Center" />
             <Rectangle
                 Name="joueur"
                 Canvas.Left="110"
