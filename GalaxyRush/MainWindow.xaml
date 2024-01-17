@@ -24,11 +24,11 @@
             KeyDown="CleeCanvasAppuyee">
             <Rectangle
                 Name="background"
+                Width="1262"
+                Height="435"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
                 Canvas.Left="0"
-                Width="800"
-                Height="450"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
                 Fill="Orange" />
             <Rectangle
                 Name="background2"
@@ -99,13 +99,14 @@
         <TextBlock
             x:Name="perduText"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontFamily="Stargaze Stencil normal"
-            FontSize="72"
+            VerticalAlignment="Top"
+            FontFamily="{StaticResource Stargaze Stencil}"            
+            FontSize="30"
             FontWeight="ExtraBold"
             Foreground="#FFFFFF"
-            Text="VOUS ETES MAUVAIS"
-            Visibility="Collapsed" />
+            Text="Appuyer sur echap pour quitter"
+            Visibility="Collapsed"
+            Margin="0,307,0,0" />
         <Button
             x:Name="Quitter"
             Width="100"
@@ -113,27 +114,28 @@
             Margin="0,0,160,40"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Background="#0000DD"
-            BorderBrush="Black"
+            Background="#00000000"
+            BorderBrush="#FFD499B9"
             Click="QuitterBoutton"
             Content="Quitter"
-            FontFamily="Stargaze Stencil normal"
-            Foreground="#FFFFFF"
+            FontFamily="{StaticResource Stargaze Stencil}"
+            Foreground="#FFD499B9"
             Visibility="Collapsed" />
         <Button
-            x:Name="Rejouer"
+            x:Name="Rejouer1"
             Width="100"
             Height="40"
             Margin="0,0,350,40"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Background="#0000DD"
-            BorderBrush="Black"
+            Background="#000000DD"
+            BorderBrush= "#D499B9"
             Click="Rejouer_Click"
             Content="Rejouer"
-            FontFamily="Stargaze Stencil normal"
-            Foreground="#FFFFFF"
-            Visibility="Collapsed" />
+            FontFamily="{StaticResource Stargaze Stencil}"
+            Visibility="Collapsed" 
+            Foreground="#FFD499B9"
+            />
         <!--<Button
             x:Name="Menu"
             Width="100"
