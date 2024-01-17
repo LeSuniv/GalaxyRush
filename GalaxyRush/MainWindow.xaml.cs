@@ -53,6 +53,7 @@ namespace GalaxyRush
         private double repere_qnt_ovni = 1;
         private int delai = 1;
         private int temps_apparition = 20;
+                ImageBrush backgroundImg = new ImageBrush();
 
         private double vitesseDefilement = 5;
 
@@ -72,6 +73,7 @@ namespace GalaxyRush
 
             dispatcherTimer.Tick += Jeu;
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(16);
+            dispatcherTimer.Tick += Jeu;
             dispatcherTimer.Start();
 
             SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fusee.png"));
@@ -354,7 +356,6 @@ namespace GalaxyRush
 
             if (Canvas.GetLeft(background) < -background.Width)
             {
-                // création d’un rectangle joueur pour la détection de collision
                 Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
             }
             scoreText.Content = "Score: " + score;
@@ -371,36 +372,17 @@ namespace GalaxyRush
             {
                 joueur.RenderTransform = rotation3;
             }
-            Canvas.SetLeft(background2, Canvas.GetLeft(background) + background.Width);
         }
-
-
-        // on va avancer le background simultanement et infini
-        // si le 1er background X position en dessous de -1262 pixels
-        //if (Canvas.GetLeft(background) < -1262)
-        //{
-        //    // alors en met le 1er background derrière le 2ème background
-        //    //on met les background à gauche (la position de X) à la largeur de background2
-        //    Canvas.SetLeft(background, Canvas.GetLeft(background2) + background2.Width);
-        //}
-        //// meme procédé background 2 
-        //// si background 2 X en dessous de -1262
-        //if (Canvas.GetLeft(background2) < -1262)
-        //{
-        //    //2ème background derrière background 1
-        //    // on met background 2 à gauche (la position de X) à la largeur de background
-        //    Canvas.SetLeft(background2, Canvas.GetLeft(background) + background.Width);
-        //}
-
-
         private void Jeu(object sender, EventArgs e)
         {
-            Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
-            //MouvementFusee();
+            Canvas.SetLeft(background, Canvas.GetLeft(background) - 9);
+            Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 9);
+            MouvementFusee();
             CreeObstacles();
             Vitesse_Et_Quantite();
-            Collision(rect_fusee);
+            //Collision(rect_fusee);
             MouvementObstacle();
+            mooveGroundAndBackground();
             AnimerFond();
         }
 
@@ -448,8 +430,17 @@ namespace GalaxyRush
             temps.Text = tempsFormat;
         }
         #endregion
-
-
+        private void mooveGroundAndBackground()
+        {
+            if (Canvas.GetLeft(background) <= -1262)
+            {
+                Canvas.SetLeft(background, Canvas.GetLeft(background2) + background2.Width);
+            }
+            if (Canvas.GetLeft(background2) <= -1262)
+            {
+                Canvas.SetLeft(background2, Canvas.GetLeft(background) + background.Width);
+            }
+        }
         private void Rejouer_Click(object sender, RoutedEventArgs e)
         {
             foreach (Rectangle x in myCanvas.Children.OfType<Rectangle>())
