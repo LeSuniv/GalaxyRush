@@ -53,7 +53,7 @@ namespace GalaxyRush
         private double repere_qnt_ovni = 1;
         private int delai = 1;
         private int temps_apparition = 20;
-
+                ImageBrush backgroundImg = new ImageBrush();
 
         #endregion
 
@@ -76,14 +76,17 @@ namespace GalaxyRush
             //}
 
 
-            fond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png")); background.Fill = fond;
 
 
+            backgroundImg.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png"));
+            background.Fill = backgroundImg;
+            background2.Fill = backgroundImg;
             // configure le Timer et les événements
             // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
-            dispatcherTimer.Tick += Jeu;
+
             // rafraissement toutes les 16 milliseconds
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(16);
+            dispatcherTimer.Tick += Jeu;
             // lancement du timer
             dispatcherTimer.Start();
             // chargement de l’image du joueur 
@@ -96,12 +99,12 @@ namespace GalaxyRush
             timeTimer.Start();
         }
 
-        private void Rejouer()
-        {
-            Menu menu = new Menu();
-            menu.ShowDialog();
-            this.Close();
-        }
+        //private void Rejouer()
+        //{
+        //    Menu menu = new Menu();
+        //    menu.ShowDialog();
+        //    this.Close();
+        //}
 
         private void CleeCanvasAppuyee(object sender, KeyEventArgs e)
         {
@@ -119,14 +122,6 @@ namespace GalaxyRush
                     goUp = false;
                     joueur.RenderTransform = rotation2;
                 }
-            }
-            if (e.Key == Key.P)
-            {
-                MettrePause();
-            }
-            if (e.Key == Key.Escape)
-            {
-                Rejouer();
             }
             if (e.Key == Key.P)
             {
@@ -157,7 +152,7 @@ namespace GalaxyRush
         //    Menu menu = new Menu();
         //    menu.Show();
         //}
-        
+
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
             // on gère les booléens espace en fonction de l’appui de la touche
@@ -244,7 +239,7 @@ namespace GalaxyRush
             }
             foreach (Rectangle asteroide in enlever)
             {
-                myCanvas.Children.Remove(x);
+                myCanvas.Children.Remove(asteroide);
                 score = nbrObstacle - 1;
             }
             foreach (Rectangle ovni in myCanvas.Children.OfType<Rectangle>())
@@ -318,35 +313,35 @@ namespace GalaxyRush
             }
         }
 
-        private void Collision(Rect rect_fusee)
-        {
-            foreach (var y in myCanvas.Children.OfType<Rectangle>())
-            {
-                // si le rectangle est un ennemi
-                if (y is Rectangle && (string)y.Tag == "asteroide")
-                {
-                    Rect boite_asteroide = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
-                    if (rect_fusee.IntersectsWith(boite_asteroide))
-                    {
-                        dispatcherTimer.Stop();
-                        MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
-                    }
-                }
-                else if (y is Rectangle && (string)y.Tag == "ovni")
-                    {
-                    Rect boite_ovni = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
-                    if (rect_fusee.IntersectsWith(boite_ovni))
-                    {
-                        dispatcherTimer.Stop();
-                        MessageBox.Show("Vous avez été touché par un ovni", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
-                    }
-                }
+        //private void Collision(Rect rect_fusee)
+        //{
+        //    foreach (var y in myCanvas.Children.OfType<Rectangle>())
+        //    {
+        //        // si le rectangle est un ennemi
+        //        if (y is Rectangle && (string)y.Tag == "asteroide")
+        //        {
+        //            Rect boite_asteroide = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+        //            if (rect_fusee.IntersectsWith(boite_asteroide))
+        //            {
+        //                dispatcherTimer.Stop();
+        //                MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
+        //            }
+        //        }
+        //        else if (y is Rectangle && (string)y.Tag == "ovni")
+        //            {
+        //            Rect boite_ovni = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+        //            if (rect_fusee.IntersectsWith(boite_ovni))
+        //            {
+        //                dispatcherTimer.Stop();
+        //                MessageBox.Show("Vous avez été touché par un ovni", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
+        //            }
+        //        }
                
-            }
-        }
+        //    }
+        //}
 
 
-        private void Jeu(object sender, EventArgs e)
+        private void MouvementFusee()
         {
             // création d’un rectangle joueur pour la détection de collision
             Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
@@ -366,11 +361,14 @@ namespace GalaxyRush
         }
         private void Jeu(object sender, EventArgs e)
         {
+            Canvas.SetLeft(background, Canvas.GetLeft(background) - 9);
+            Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 9);
             MouvementFusee();
             CreeObstacles();
             Vitesse_Et_Quantite();
-            Collision(rect_fusee);
+            //Collision(rect_fusee);
             MouvementObstacle();
+            mooveGroundAndBackground();
         }
 
 
@@ -431,14 +429,20 @@ namespace GalaxyRush
             temps.Text = tempsFormat;
         }
         #endregion
-
+        private void mooveGroundAndBackground()
+        {
+            if (Canvas.GetLeft(background) <= -1262)
+            {
+                Canvas.SetLeft(background, Canvas.GetLeft(background2) + background2.Width);
+            }
+            if (Canvas.GetLeft(background2) <= -1262)
+            {
+                Canvas.SetLeft(background2, Canvas.GetLeft(background) + background.Width);
+            }
+        }
         private void Rejouer_Click(object sender, RoutedEventArgs e)
         {
-            //foreach (Rectangle x in myCanvas.Children.OfType<Rectangle>())
-            //{
-            //    myCanvas.Children.Remove(x);
-            //}
-
+            
         }
     }
 }

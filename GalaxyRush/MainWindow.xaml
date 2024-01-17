@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:GalaxyRush"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Jeu"
-    Width="806"
+    Width="800"
     Height="450"
     FontFamily="Stargaze Stencil normal"
     Icon="/fusee.png"
@@ -28,6 +28,7 @@
                 Height="435"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
+                Canvas.Left="0"
                 Fill="Orange" />
             <Rectangle
                 Name="background2"
