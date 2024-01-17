@@ -27,7 +27,7 @@ namespace GalaxyRush
             //MainWindow jeu = new MainWindow();
             //jeu.ShowDialog();
             //this.Hide();
-            
+
             this.DialogResult = true;
             //this.Close();
         }
@@ -46,6 +46,6 @@ namespace GalaxyRush
                 commentJouer.Show();
                 fenetreRegle = true;
             }
-                }
+        }
     }
 }
