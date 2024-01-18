@@ -42,13 +42,12 @@
             </Setter>
         </Style>
     </Window.Resources>
-
     <Grid>
 
         <Rectangle
             x:Name="Fond"
             Width="800"
-            Height="434"
+            Height="450"
             HorizontalAlignment="Center"
             VerticalAlignment="Center" />
         <Rectangle

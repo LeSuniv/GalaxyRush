@@ -99,19 +99,18 @@
         <TextBlock
             x:Name="perduText"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             FontFamily="{StaticResource Stargaze Stencil}"            
-            FontSize="30"
+            FontSize="100"
             FontWeight="ExtraBold"
             Foreground="#FFFFFF"
-            Text="Appuyer sur echap pour quitter"
-            Visibility="Collapsed"
-            Margin="0,307,0,0" />
+            Text="Perdu"
+            Visibility="Collapsed"/>
         <Button
             x:Name="Quitter"
-            Width="100"
-            Height="40"
-            Margin="0,0,160,40"
+            Width="140"
+            Height="60"
+            Margin="0,0,200,40"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Background="#00000000"
@@ -120,21 +119,21 @@
             Content="Quitter"
             FontFamily="{StaticResource Stargaze Stencil}"
             Foreground="#FFD499B9"
-            Visibility="Collapsed" />
+            Visibility="Visible" FontSize="20" />
         <Button
             x:Name="Rejouer1"
-            Width="100"
-            Height="40"
-            Margin="0,0,350,40"
-            HorizontalAlignment="Right"
+            Width="140"
+            Height="60"
+            Margin="200,0,0,40"
+            HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
             Background="#000000DD"
             BorderBrush= "#D499B9"
             Click="Rejouer_Click"
             Content="Rejouer"
             FontFamily="{StaticResource Stargaze Stencil}"
-            Visibility="Collapsed" 
-            Foreground="#FFD499B9"
+            Visibility="Visible" 
+            Foreground="#FFD499B9" FontSize="20"
             />
         <!--<Button
             x:Name="Menu"
