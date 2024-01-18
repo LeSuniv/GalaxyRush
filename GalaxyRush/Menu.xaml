@@ -13,7 +13,7 @@
     SizeToContent="WidthAndHeight"
     WindowStartupLocation="CenterScreen"
     FontFamily="Stargaze stencil classic"
-    mc:Ignorable="d">
+    mc:Ignorable="d" >
     <Window.Resources>
         <FontFamily x:Key="Stargaze Stencil">/GalaxyRush;component/Stargaze Stencil.otf#Stargaze Stencil</FontFamily>
 
@@ -35,7 +35,6 @@
                                 <!--  Changement de la couleur du texte lors du survol de la souris  -->
                                 <Setter Property="Foreground" Value="#D499B9" />
                             </Trigger>
-                            <!--  Autres états visuels si nécessaire  -->
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -43,7 +42,8 @@
         </Style>
     </Window.Resources>
     <Grid>
-
+        <MediaElement x:Name="MusiqueMenu" Source="musiqueMenu.mp3" LoadedBehavior="Manual" />
+        
         <Rectangle
             x:Name="Fond"
             Width="800"

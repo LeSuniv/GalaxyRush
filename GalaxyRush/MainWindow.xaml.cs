@@ -61,6 +61,7 @@ namespace GalaxyRush
         {
             InitializeComponent();
             myCanvas.Focus();
+            MusiqueMenu.Play();
 
             Menu main = new Menu();
             main.ShowDialog();
@@ -139,7 +140,9 @@ namespace GalaxyRush
 
         private void QuitterBoutton(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            this.Close();
         }
 
 
@@ -447,9 +450,6 @@ namespace GalaxyRush
 
         private void Rejouer_Click(object sender, RoutedEventArgs e)
         {
-            Menu menu = new Menu();
-            menu.ShowDialog();
-            this.Close();
         }
     }
 }

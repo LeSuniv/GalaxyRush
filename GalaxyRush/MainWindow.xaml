@@ -17,6 +17,7 @@
         <FontFamily x:Key="Stargaze Stencil">/GalaxyRush;component/Stargaze Stencil.otf#Stargaze Stencil</FontFamily>
     </Window.Resources>
     <Grid>
+        <MediaElement x:Name="MusiqueMenu" Source="musiqueMenu.mp3" LoadedBehavior="Manual" />
         <Canvas
             Name="myCanvas"
             Background="LightBlue"
@@ -116,7 +117,7 @@
             Background="#00000000"
             BorderBrush="#FFD499B9"
             Click="QuitterBoutton"
-            Content="Quitter"
+            Content="Menu"
             FontFamily="{StaticResource Stargaze Stencil}"
             Foreground="#FFD499B9"
             Visibility="Collapsed" 
@@ -128,12 +129,12 @@
             Margin="200,0,0,40"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            Background="#000000DD"
+            Background="#00000000"
             BorderBrush= "#D499B9"
             Click="Rejouer_Click"
             Content="Rejouer"
             FontFamily="{StaticResource Stargaze Stencil}"
-            Visibility="Visible" 
+            Visibility="Collapsed" 
             Foreground="#FFD499B9" FontSize="20"
             />
         <!--<Button
