@@ -384,7 +384,7 @@ namespace GalaxyRush
             Vitesse_Et_Quantite();
             //Collision(rect_fusee);
             MouvementObstacle();
-            bougerFond();
+            BougerFond();
         }
 
 
@@ -432,7 +432,7 @@ namespace GalaxyRush
         #endregion
 
 
-        private void bougerFond()
+        private void BougerFond()
         {
             if (Canvas.GetLeft(background) <= -800)
             {
@@ -447,7 +447,9 @@ namespace GalaxyRush
 
         private void Rejouer_Click(object sender, RoutedEventArgs e)
         {
-
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            this.Close();
         }
     }
 }
