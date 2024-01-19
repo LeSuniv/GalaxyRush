@@ -181,7 +181,6 @@ namespace GalaxyRush
                 delai -= 1;
                 nbrObstacle += 1;
                 y = aleatoire.Next(0, 350);
-                #region Asteroide
                 if (i < limiteAsteroide && delai == 0)
                 {
                     #region Asteroide
@@ -229,7 +228,7 @@ namespace GalaxyRush
             }
             #endregion
         }
-        private void bouclier()
+        private void Bouclier()
         {
                 bonus = true;
                 int right = 0;
@@ -397,7 +396,7 @@ namespace GalaxyRush
             Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 9);
             MouvementFusee();
             CreeObstacles();
-            bouclier();
+            Bouclier();
             /*Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
             foreach (Rectangle x in myCanvas.Children.OfType<Rectangle>()) 
             {
@@ -436,7 +435,7 @@ namespace GalaxyRush
                         {
                             // Si la protection n'est pas activée, arrêter le jeu
                             dispatcherTimer.Stop();
-                            timeTimer.Stop();
+                            tempsJeu.Stop();
                             MessageBox.Show("Vous avez été touché par un astéroïde", "La mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
                         }
                     }
