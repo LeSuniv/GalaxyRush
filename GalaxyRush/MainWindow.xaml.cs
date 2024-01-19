@@ -62,19 +62,10 @@ namespace GalaxyRush
         {
             InitializeComponent();
             myCanvas.Focus();
+            MusiqueMenu.Play();
 
             Menu main = new Menu();
             main.ShowDialog();
-
-            //if ((Application.Current.MainWindow is Menu menu))
-            //{
-            //    menu.Hide();
-            //    Menu newMenu = new Menu();
-            //    newMenu.ShowDialog();
-            //}
-
-
-
 
             backgroundImg.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png"));
             background.Fill = backgroundImg;
@@ -90,9 +81,9 @@ namespace GalaxyRush
             SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fusee.png"));
             joueur.Fill = SkinJoueur;
 
-            timeTimer.Tick += ComptageTemps;
-            timeTimer.Interval = TimeSpan.FromSeconds(1);
-            timeTimer.Start();
+            tempsJeu.Tick += ComptageTemps;
+            tempsJeu.Interval = TimeSpan.FromSeconds(1);
+            tempsJeu.Start();
 
         }
 
@@ -140,21 +131,28 @@ namespace GalaxyRush
         private void QuitterPartie()
         {
             dispatcherTimer.Stop();
-            timeTimer.Stop();
+            tempsJeu.Stop();
             Quitter.Visibility = Visibility.Visible;
             //Rejouer.Visibility = Visibility.Visible;
             //Menu.Visibility = Visibility.Visible;
-            //perduText.Visibility = Visibility.Visible;
+            perduText.Visibility = Visibility.Visible;
         }
+
+
         private void QuitterBoutton(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            this.Close();
         }
+
+
         //private void MenuBoutton(object sender, RoutedEventArgs e)
         //{
         //    Menu menu = new Menu();
         //    menu.Show();
         //}
+
 
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
@@ -165,12 +163,15 @@ namespace GalaxyRush
             }
         }
 
-        /*private void FinDuJeu()
+
+        private void FinDuJeu()
         {
             dispatcherTimer.Stop();
-            timeTimer.Stop();
+            tempsJeu.Stop();
             perduText.Visibility = Visibility.Visible;
-        }*/
+        }
+
+
         private void CreeObstacles()
         {
             int right = 0;
@@ -180,6 +181,7 @@ namespace GalaxyRush
                 delai -= 1;
                 nbrObstacle += 1;
                 y = aleatoire.Next(0, 350);
+                #region Asteroide
                 if (i < limiteAsteroide && delai == 0)
                 {
                     #region Asteroide
@@ -200,6 +202,7 @@ namespace GalaxyRush
                 }
                 #endregion
             }
+            #region Ovni
             if (score >= 5)
             {
 
@@ -224,6 +227,7 @@ namespace GalaxyRush
                     delai = temps_apparition;
                 }
             }
+            #endregion
         }
         private void bouclier()
         {
@@ -244,6 +248,7 @@ namespace GalaxyRush
                 myCanvas.Children.Add(bouclier);
                 apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.jpg"));
         }
+
 
         private void MouvementObstacle()
         {
@@ -361,6 +366,8 @@ namespace GalaxyRush
                 joueur.RenderTransform = rotation3;
             }
         }
+
+
         private void Jeu(object sender, EventArgs e)
         {
             /* Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
@@ -451,7 +458,7 @@ namespace GalaxyRush
             Vitesse_Et_Quantite();
             //Collision();
             MouvementObstacle();
-            mooveGroundAndBackground();
+            BougerFond();
         }
 
 
@@ -464,7 +471,7 @@ namespace GalaxyRush
             {
                 // Arrêter les timers pour mettre le jeu en pause
                 dispatcherTimer.Stop();
-                timeTimer.Stop();
+                tempsJeu.Stop();
 
                 pauseText.Visibility = Visibility.Visible;
             }
@@ -473,7 +480,7 @@ namespace GalaxyRush
                 // Redémarrer les timers pour reprendre le jeu
                 pauseText.Visibility = Visibility.Collapsed;
                 dispatcherTimer.Start();
-                timeTimer.Start();
+                tempsJeu.Start();
             }
         }
 
@@ -483,7 +490,7 @@ namespace GalaxyRush
         // variable pour le temps
         private int minutes = 0;
         private int secondes = 0;
-        private DispatcherTimer timeTimer = new DispatcherTimer();
+        private DispatcherTimer tempsJeu = new DispatcherTimer();
 
 
         private void ComptageTemps(object sender, EventArgs e)
@@ -499,7 +506,9 @@ namespace GalaxyRush
             temps.Text = tempsFormat;
         }
         #endregion
-        private void mooveGroundAndBackground()
+
+
+        private void BougerFond()
         {
             if (Canvas.GetLeft(background) <= -800)
             {
@@ -510,6 +519,8 @@ namespace GalaxyRush
                 Canvas.SetLeft(background2, Canvas.GetLeft(background) + background.Width);
             }
         }
+
+
         private void Rejouer_Click(object sender, RoutedEventArgs e)
         {
 

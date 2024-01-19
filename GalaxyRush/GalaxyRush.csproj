@@ -5,14 +5,21 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;TestGalaxyRush</Configurations>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="audio\musiqueMenu.mp3" />
+    <None Remove="audio\sb_indreams%28chosic.com%29.mp3" />
     <None Remove="fusee.png" />
     <None Remove="Stargaze Stencil.otf" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="audio\musiqueMenu.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Stargaze Stencil.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -23,6 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="images\antenne .png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="images\asteroide.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

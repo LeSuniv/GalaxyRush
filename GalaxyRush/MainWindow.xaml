@@ -17,6 +17,7 @@
         <FontFamily x:Key="Stargaze Stencil">/GalaxyRush;component/Stargaze Stencil.otf#Stargaze Stencil</FontFamily>
     </Window.Resources>
     <Grid>
+        <MediaElement x:Name="MusiqueMenu" Source="musiqueMenu.mp3" LoadedBehavior="Manual" />
         <Canvas
             Name="myCanvas"
             Background="LightBlue"
@@ -99,42 +100,42 @@
         <TextBlock
             x:Name="perduText"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             FontFamily="{StaticResource Stargaze Stencil}"            
-            FontSize="30"
+            FontSize="100"
             FontWeight="ExtraBold"
             Foreground="#FFFFFF"
-            Text="Appuyer sur echap pour quitter"
-            Visibility="Collapsed"
-            Margin="0,307,0,0" />
+            Text="Perdu"
+            Visibility="Collapsed"/>
         <Button
             x:Name="Quitter"
-            Width="100"
-            Height="40"
-            Margin="0,0,160,40"
+            Width="140"
+            Height="60"
+            Margin="0,0,200,40"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Background="#00000000"
             BorderBrush="#FFD499B9"
             Click="QuitterBoutton"
-            Content="Quitter"
+            Content="Menu"
             FontFamily="{StaticResource Stargaze Stencil}"
             Foreground="#FFD499B9"
-            Visibility="Collapsed" />
+            Visibility="Collapsed" 
+            FontSize="20" />
         <Button
             x:Name="Rejouer1"
-            Width="100"
-            Height="40"
-            Margin="0,0,350,40"
-            HorizontalAlignment="Right"
+            Width="140"
+            Height="60"
+            Margin="200,0,0,40"
+            HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            Background="#000000DD"
+            Background="#00000000"
             BorderBrush= "#D499B9"
             Click="Rejouer_Click"
             Content="Rejouer"
             FontFamily="{StaticResource Stargaze Stencil}"
             Visibility="Collapsed" 
-            Foreground="#FFD499B9"
+            Foreground="#FFD499B9" FontSize="20"
             />
         <!--<Button
             x:Name="Menu"
