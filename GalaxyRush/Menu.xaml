@@ -48,6 +48,7 @@
             Height="450"
             HorizontalAlignment="Center"
             VerticalAlignment="Center" />
+
         <Rectangle
             x:Name="FondLogo"
             Width="348"
@@ -82,7 +83,6 @@
             FontSize="45"
             FontWeight="Bold"
             Style="{StaticResource CustomButtonStyle}" />
-
         <Button
             x:Name="butTuto"
             Width="168"
@@ -97,59 +97,9 @@
             FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="15"
             Foreground="#D499B9" />
-        <!--<Image
-            x:Name="fusee"
-            Width="194"
-            Height="311"
-            Margin="36,76,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            RenderTransformOrigin="1,0">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="4.312" />
-                    <TranslateTransform />
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Button
-            x:Name="ChoisirSkin"
-            Width="191"
-            Height="323"
-            Margin="15,61,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="White"
-            Click="ChoisirSkin_Click"
-            Content="Choisir"
-            Opacity="0"
-            RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="0.329" />
-                    <TranslateTransform />
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <TextBlock
-            x:Name="TexteSkin"
-            Width="265"
-            Height="66"
-            Margin="10,26,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="18"
-            FontWeight="Bold"
-            Foreground="White"
-            Text="Cliquer pour choisir un skin !">
-            <TextBlock.Effect>
-                <DropShadowEffect />
-            </TextBlock.Effect>
-        </TextBlock>-->
 
+        <MediaElement x:Name="MusiqueMenu"  Source="audio/musiqueMenu.mp3" LoadedBehavior="Manual" Margin="52,244,592,109" />
+        <Button x:Name="butSon" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" Margin="50,240,0,0" VerticalAlignment="Top" Height="85" Width="160" Click="ButSon_Click"/>
+        <Image x:Name="sonStatut"  MouseLeftButtonDown="SonStatut_MouseLeftButtonDown" Margin="46,236,589,108"/>
     </Grid>
 </Window>

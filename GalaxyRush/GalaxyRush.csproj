@@ -10,15 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="audio\**" />
-    <EmbeddedResource Remove="audio\**" />
-    <None Remove="audio\**" />
-    <Page Remove="audio\**" />
+    <None Remove="fusee.png" />
+    <None Remove="Images\son.png" />
+    <None Remove="Images\son_couper.png" />
+    <None Remove="Stargaze Stencil.otf" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="fusee.png" />
-    <None Remove="Stargaze Stencil.otf" />
+    <Resource Include="Images\son.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\son_couper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +36,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Audio\musiqueJeu.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Audio\musiqueMenu.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="images\antenne .png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

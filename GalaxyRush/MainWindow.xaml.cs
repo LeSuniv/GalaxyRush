@@ -21,6 +21,7 @@ namespace GalaxyRush
 
         private bool goUp = false;
         private bool goDown = true;
+        bool imageAffiche = true;
         RotateTransform rotation1 = new RotateTransform(135);
         RotateTransform rotation2 = new RotateTransform(45);
         RotateTransform rotation3 = new RotateTransform(90);
@@ -62,7 +63,7 @@ namespace GalaxyRush
         {
             InitializeComponent();
             myCanvas.Focus();
-            MusiqueMenu.Play();
+            MusiqueJeu.Play();
 
             Menu main = new Menu();
             main.ShowDialog();
@@ -90,7 +91,7 @@ namespace GalaxyRush
 
         private void Rejouer()
         {
-            Menu menu = new Menu();
+            MainWindow menu = new();
             menu.ShowDialog();
             this.Close();
         }
@@ -156,7 +157,6 @@ namespace GalaxyRush
 
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
-            // on gère les booléens espace en fonction de l’appui de la touche
             if (e.Key == Key.Space && goUp == true)
             {
                 goDown = true;
@@ -228,6 +228,8 @@ namespace GalaxyRush
             }
             #endregion
         }
+
+
         private void Bouclier()
         {
                 bonus = true;
@@ -245,7 +247,7 @@ namespace GalaxyRush
                 Canvas.SetRight(bouclier, right);
                 Canvas.SetTop(bouclier, y);
                 myCanvas.Children.Add(bouclier);
-                apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.jpg"));
+                //apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.jpg"));
         }
 
 
@@ -305,6 +307,7 @@ namespace GalaxyRush
             }
         }
 
+
         private void Vitesse_Et_Quantite()
         {
             if (score > change_vitesse * repere_vitesse)
@@ -325,6 +328,7 @@ namespace GalaxyRush
             }
         }
 
+
         /*private void Collision()
         {
             
@@ -343,11 +347,13 @@ namespace GalaxyRush
             }
         }*/
 
+
         private void AnimerFond()
         {
             double newPos = Canvas.GetLeft(background) - vitesseDefilement;
             Canvas.SetLeft(background, newPos);
         }
+
 
         private void MouvementFusee()
         {
@@ -461,28 +467,33 @@ namespace GalaxyRush
         }
 
 
-
         private void MettrePause()
         {
             enPause = !enPause;
 
             if (enPause)
             {
-                // Arrêter les timers pour mettre le jeu en pause
                 dispatcherTimer.Stop();
                 tempsJeu.Stop();
-
                 pauseText.Visibility = Visibility.Visible;
+                MusiqueJeu.Visibility = Visibility.Visible;
+                butSon.Visibility = Visibility.Visible;
+                sonStatut.Visibility = Visibility.Visible;
+                Rejouer1.Visibility = Visibility.Visible;
+                Quitter.Visibility = Visibility.Visible;
             }
             else
             {
-                // Redémarrer les timers pour reprendre le jeu
                 pauseText.Visibility = Visibility.Collapsed;
                 dispatcherTimer.Start();
                 tempsJeu.Start();
+                MusiqueJeu.Visibility = Visibility.Collapsed;
+                butSon.Visibility = Visibility.Collapsed;
+                sonStatut.Visibility = Visibility.Collapsed;
+                Rejouer1.Visibility = Visibility.Collapsed;
+                Quitter.Visibility = Visibility.Collapsed;
             }
         }
-
 
 
         #region Temps
@@ -510,19 +521,48 @@ namespace GalaxyRush
         private void BougerFond()
         {
             if (Canvas.GetLeft(background) <= -800)
-            {
                 Canvas.SetLeft(background, Canvas.GetLeft(background2) + background2.Width);
-            }
+
             if (Canvas.GetLeft(background2) <= -800)
-            {
-                Canvas.SetLeft(background2, Canvas.GetLeft(background) + background.Width);
-            }
+                Canvas.SetLeft(background2, Canvas.GetLeft(background) + background.Width);      
         }
+
 
 
         private void Rejouer_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow rejouer = new();
+            rejouer.Show();
+            MusiqueJeu.Stop();
+            this.Close();
         }
+
+
+        private void MenuBoutton(object sender, RoutedEventArgs e)
+        {
+            Menu retourMenu = new();
+            retourMenu.Show();
+            this.Close();
+            MusiqueJeu.Stop();
+        }
+
+
+        private void ButSon_Click(object sender, RoutedEventArgs e)
+        {
+            MusiqueJeu.IsMuted = !MusiqueJeu.IsMuted;
+        }
+
+
+        private void SonStatut_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (imageAffiche)
+                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "/Images/son.png"));
+            else
+                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "/Images/son_couper.png"));
+
+            imageAffiche = !imageAffiche;
+            butSon.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+        }
+
     }
 }
