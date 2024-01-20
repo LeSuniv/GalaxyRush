@@ -42,8 +42,6 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <MediaElement x:Name="MusiqueMenu" Source="musiqueMenu.mp3" LoadedBehavior="Manual" />
-        
         <Rectangle
             x:Name="Fond"
             Width="800"
@@ -56,7 +54,6 @@
             Height="264"
             HorizontalAlignment="Center"
             VerticalAlignment="Top" />
-
         <Button
             x:Name="ButJouer"
             Width="218"
