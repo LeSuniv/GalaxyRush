@@ -143,6 +143,8 @@ namespace GalaxyRush
         {
             Menu menu = new Menu();
             menu.ShowDialog();
+            MusiqueJeu.Stop();
+            MusiqueMenu.Play();
             this.Close();
         }
 
@@ -526,12 +528,12 @@ namespace GalaxyRush
         }
 
 
-
         private void Rejouer_Click(object sender, RoutedEventArgs e)
         {
             MainWindow rejouer = new();
             rejouer.Show();
             MusiqueJeu.Stop();
+            MusiqueMenu.Play();
             this.Close();
         }
 
@@ -540,8 +542,9 @@ namespace GalaxyRush
         {
             Menu retourMenu = new();
             retourMenu.Show();
-            this.Close();
             MusiqueJeu.Stop();
+            MusiqueMenu.Play();
+            this.Close();
         }
 
 
@@ -554,9 +557,9 @@ namespace GalaxyRush
         private void SonStatut_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (imageAffiche)
-                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "/Images/son.png"));
+                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\son.png"));
             else
-                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "/Images/son_couper.png"));
+                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\son_couper.png"));
 
             imageAffiche = !imageAffiche;
             butSon.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
