@@ -118,11 +118,11 @@ namespace GalaxyRush
             {
                 MettrePause();
             }
+            //if (e.Key == Key.Escape)
+            //{
+            //    Rejouer();
+            //}
             if (e.Key == Key.Escape)
-            {
-                Rejouer();
-            }
-            if (e.Key == Key.O)
             {
                 QuitterPartie();
             }
@@ -134,8 +134,7 @@ namespace GalaxyRush
             dispatcherTimer.Stop();
             tempsJeu.Stop();
             Quitter.Visibility = Visibility.Visible;
-            //Rejouer.Visibility = Visibility.Visible;
-            //Menu.Visibility = Visibility.Visible;
+            Rejouer1.Visibility = Visibility.Visible;
             perduText.Visibility = Visibility.Visible;
         }
 
@@ -497,7 +496,6 @@ namespace GalaxyRush
 
 
         #region Temps
-        // variable pour le temps
         private int minutes = 0;
         private int secondes = 0;
         private DispatcherTimer tempsJeu = new DispatcherTimer();

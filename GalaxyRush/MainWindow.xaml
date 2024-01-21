@@ -136,22 +136,8 @@
             Visibility="Collapsed" 
             Foreground="#FFD499B9" FontSize="20"
             />
-        <Button
-            x:Name="Menu"
-            Width="100"
-            Height="40"
-            Margin="0,0,550,40"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
-            Background="#0000DD"
-            BorderBrush="Black"
-            Click="MenuBoutton"
-            Content="Menu"
-            FontFamily="Stargaze Stencil normal"
-            Foreground="#FFFFFF"
-            Visibility="Collapsed"/>
-        <MediaElement x:Name="MusiqueJeu" Source="audio/musiqueJeu.mp3" LoadedBehavior="Manual" Visibility="Collapsed" />
-        <Button x:Name="butSon" HorizontalAlignment="Left" Margin="50,240,0,0" VerticalAlignment="Top" Height="85" Width="160" Click="ButSon_Click" Visibility="Collapsed"/>
-        <Image x:Name="sonStatut" MouseLeftButtonDown="SonStatut_MouseLeftButtonDown" Margin="46,236,589,108" Visibility="Collapsed"/>
+        <MediaElement x:Name="MusiqueJeu" Source="audio/musiqueJeu.mp3" LoadedBehavior="Manual" Visibility="Visible" Margin="45,306,594,33" />
+        <Button x:Name="butSon" HorizontalAlignment="Left" Margin="18,259,0,0" VerticalAlignment="Top" Height="85" Width="160" Click="ButSon_Click" Visibility="Collapsed"/>
+        <Image x:Name="sonStatut" MouseLeftButtonDown="SonStatut_MouseLeftButtonDown" Margin="16,256,619,88" Visibility="Collapsed"/>
     </Grid>
 </Window>

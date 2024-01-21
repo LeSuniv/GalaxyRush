@@ -18,6 +18,7 @@ namespace GalaxyRush
         public Menu()
         {
             InitializeComponent();
+            MusiqueJeu.Stop();
             MusiqueMenu.Play();
 
             fondMenu.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace.jpg"));
