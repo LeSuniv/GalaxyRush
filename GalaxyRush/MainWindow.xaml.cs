@@ -400,6 +400,8 @@ namespace GalaxyRush
                     if ( protege == 0 && invincibilite <= 0) 
                     {
                         Console.WriteLine("explosion");
+                        dispatcherTimer.Stop();
+                        tempsJeu.Stop();
                         FinDuJeu();
                         //MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
                     }
