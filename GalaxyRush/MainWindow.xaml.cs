@@ -59,7 +59,6 @@ namespace GalaxyRush
         private RotateTransform rotation3 = new RotateTransform(90);
 
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
-        private DispatcherTimer tempsJeu = new DispatcherTimer();
 
         private ImageBrush SkinJoueur = new ImageBrush();
         private ImageBrush fond = new ImageBrush();
@@ -91,10 +90,6 @@ namespace GalaxyRush
             dispatcherTimer.Tick += Jeu;
             dispatcherTimer.Start();
             joueur.Fill = SkinJoueur;
-
-            tempsJeu.Tick += ComptageTemps;
-            tempsJeu.Interval = TimeSpan.FromSeconds(15);
-            tempsJeu.Start();
 
         }
 
@@ -170,7 +165,6 @@ namespace GalaxyRush
         private void QuitterPartie()
         {
             dispatcherTimer.Stop();
-            tempsJeu.Stop();
             Quitter.Visibility = Visibility.Visible;
             Rejouer1.Visibility = Visibility.Visible;
             perduText.Visibility = Visibility.Visible;
@@ -198,7 +192,6 @@ namespace GalaxyRush
 #if DEBUG
             Console.WriteLine("Fin du jeu");
             dispatcherTimer.Stop();
-            tempsJeu.Stop();
             perduText.Visibility = Visibility.Visible;
             Rejouer1.Visibility = Visibility.Visible;
             Quitter.Visibility = Visibility.Visible;
@@ -509,7 +502,6 @@ namespace GalaxyRush
                 if (enPause)
                 {
                     dispatcherTimer.Stop();
-                    tempsJeu.Stop();
                     pauseText.Visibility = Visibility.Visible;
                     MusiqueJeu.Visibility = Visibility.Visible;
                     Rejouer1.Visibility = Visibility.Visible;
@@ -519,25 +511,11 @@ namespace GalaxyRush
                 {
                     pauseText.Visibility = Visibility.Collapsed;
                     dispatcherTimer.Start();
-                    tempsJeu.Start();
                     MusiqueJeu.Visibility = Visibility.Collapsed;
                     Rejouer1.Visibility = Visibility.Collapsed;
                     Quitter.Visibility = Visibility.Collapsed;
                 }
             }
-        }
-
-
-        private void ComptageTemps(object sender, EventArgs e)
-        {
-            secondes++;
-            if (secondes == 60)
-            {
-                minutes++;
-                secondes = 0;
-            }
-            string tempsFormat = minutes.ToString("D2") + ":" + secondes.ToString("D2");
-            temps.Text = tempsFormat;
         }
 
 
