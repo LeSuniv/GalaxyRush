@@ -27,7 +27,6 @@ namespace GalaxyRush
         private int vitesseJoueur = 5;
         private int nbrObstacle;
         private int score = 0;
-        private List<Rectangle> enlever = new List<Rectangle>();
         private int limiteAsteroide = 1;
         private int nbAsteroide = 0;
         private int limiteOvni = 2;
@@ -204,7 +203,6 @@ namespace GalaxyRush
                     myCanvas.Children.Add(nouveauAsteroide);
                     texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
                     nbAsteroide += 1;
-                    delai = tempsApparition;
                     asteroide.Asteroide = nouveauAsteroide;
                     delai_asteroide = tempsApparition;
                 }
@@ -231,7 +229,6 @@ namespace GalaxyRush
                     myCanvas.Children.Add(nouveauOvni);
                     textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
                     nbOvni += 1;
-                    delai = tempsApparition;
                     ovni.Ovni = nouveauOvni;
                     delai_ovni = tempsApparition;
                 }
