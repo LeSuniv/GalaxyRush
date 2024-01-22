@@ -29,7 +29,7 @@ namespace GalaxyRush
         private int score = 0;
         private int limiteAsteroide = 1;
         private int nbAsteroide = 0;
-        private int limiteOvni = 1;
+        private int limiteOvni = 2;
         private int nbOvni = 0;
         private int repereVitesse = 1;
         private int declencheur = 300;
@@ -42,6 +42,7 @@ namespace GalaxyRush
         private int protege = 0;
         private int limite_max = 4;
         private int invincibilite = 0;
+        private int limiteBouclier = 1;
 
         private double vitesseAsteroide = 7;
         private double vitesseOvni = 5;
@@ -235,22 +236,25 @@ namespace GalaxyRush
         {
             if (bonus == 0 && score >= 0)
             {
-                int right = 0;
-                int y = aleatoire.Next(0, 350);
-                ImageBrush apparence = new ImageBrush();
-                Rectangle bouclier = new Rectangle
+                for (int i = 0; i < limiteBouclier; i++)
                 {
-                    Tag = "bouclier",
-                    Height = 100,
-                    Width = 50,
-                    Fill = apparence,
-                };
-                Canvas.SetRight(bouclier, right);
-                Canvas.SetTop(bouclier, y);
-                listeBouclier.Add(bouclier);
-                myCanvas.Children.Add(bouclier);
-                apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.png"));
-                bonus = 1;
+                    bonus = 1;
+                    int right = 0;
+                    int y = aleatoire.Next(0, 350);
+                    ImageBrush apparence = new ImageBrush();
+                    Rectangle bouclier = new Rectangle
+                    {
+                        Tag = "bouclier",
+                        Height = 100,
+                        Width = 50,
+                        Fill = apparence,
+                    };
+                    Canvas.SetRight(bouclier, right);
+                    Canvas.SetTop(bouclier, y);
+                    listeBouclier.Add(bouclier);
+                    myCanvas.Children.Add(bouclier);
+                    apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.png"));
+                }
             }
         }
         private void Protege()
