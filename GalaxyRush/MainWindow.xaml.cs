@@ -25,7 +25,6 @@ namespace GalaxyRush
         private bool enPause = false;
 
         private int vitesseJoueur = 5;
-        private int nbrObstacle;
         private int score = 0;
         private int limiteAsteroide = 1;
         private int nbAsteroide = 0;
@@ -239,22 +238,25 @@ namespace GalaxyRush
                 {
                     delai_ovni -= 1;
                     y = aleatoire.Next(0, 350);
-                    ImageBrush textureOvni = new ImageBrush();
-                    Rectangle nouveauOvni = new Rectangle
+                    if (i < limiteOvni && delai_ovni == 0)
                     {
-                        Tag = "ovni",
-                        Height = 60,
-                        Width = 125,
-                        Fill = textureOvni,
-                    };
-                    Canvas.SetRight(nouveauOvni, right);
-                    Canvas.SetTop(nouveauOvni, y);
-                    listeObstacle.Add(nouveauOvni);
-                    myCanvas.Children.Add(nouveauOvni);
-                    textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
-                    nbOvni += 1;
-                    ovni.Ovni = nouveauOvni;
-                    delai_ovni = tempsApparition;
+                        ImageBrush textureOvni = new ImageBrush();
+                        Rectangle nouveauOvni = new Rectangle
+                        {
+                            Tag = "ovni",
+                            Height = 60,
+                            Width = 125,
+                            Fill = textureOvni,
+                        };
+                        Canvas.SetRight(nouveauOvni, right);
+                        Canvas.SetTop(nouveauOvni, y);
+                        listeObstacle.Add(nouveauOvni);
+                        myCanvas.Children.Add(nouveauOvni);
+                        textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
+                        nbOvni += 1;
+                        ovni.Ovni = nouveauOvni;
+                        delai_ovni = tempsApparition;
+                    }
                 }
             }
             #endregion
@@ -263,7 +265,7 @@ namespace GalaxyRush
 
         private void Bouclier()
         {
-            if (bonus == 0 && score >= 0)
+            if (bonus == 0 && score >= 6)
             {
                 for (int i = 0; i < limiteBouclier; i++)
                 {
@@ -347,7 +349,7 @@ namespace GalaxyRush
                     score += 1;
                     declencheur = aleatoire.Next(50, (int)ActualWidth / 2);
                     enlever.Add(ovni);
-                    nbOvni = 0;
+                    nbOvni -= 1;
                 }
             }
             foreach (Rectangle ovni in enlever)
