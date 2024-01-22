@@ -119,7 +119,7 @@
             Background="#00000000"
             BorderBrush="#FFD499B9"
             Click="QuitterBoutton"
-            Content="Menu"
+            Content="Quitter"
             FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="20"
             Foreground="#FFD499B9"

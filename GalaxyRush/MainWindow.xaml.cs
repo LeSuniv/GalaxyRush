@@ -84,13 +84,13 @@ namespace GalaxyRush
             backgroundImg.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png"));
             background.Fill = backgroundImg;
             background2.Fill = backgroundImg;
-            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(5);
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(15);
             dispatcherTimer.Tick += Jeu;
             dispatcherTimer.Start();
             joueur.Fill = SkinJoueur;
 
             tempsJeu.Tick += ComptageTemps;
-            tempsJeu.Interval = TimeSpan.FromSeconds(1);
+            tempsJeu.Interval = TimeSpan.FromSeconds(15);
             tempsJeu.Start();
 
         }
@@ -144,15 +144,13 @@ namespace GalaxyRush
             Quitter.Visibility = Visibility.Visible;
             Rejouer1.Visibility = Visibility.Visible;
             perduText.Visibility = Visibility.Visible;
+            finDePartie = true;
         }
 
 
         private void QuitterBoutton(object sender, RoutedEventArgs e)
         {
-            Menu menu = new Menu();
-            menu.ShowDialog();
-            MusiqueJeu.Stop();
-            this.Close();
+            Application.Current.Shutdown();        
         }
 
 
@@ -172,6 +170,7 @@ namespace GalaxyRush
             perduText.Visibility = Visibility.Visible;
             Rejouer1.Visibility = Visibility.Visible;
             Quitter.Visibility = Visibility.Visible;
+            finDePartie = true;
         }
 
 
@@ -467,25 +466,28 @@ namespace GalaxyRush
             {
                 return;
             }
-            enPause = !enPause;
-
-            if (enPause)
-            {
-                dispatcherTimer.Stop();
-                tempsJeu.Stop();
-                pauseText.Visibility = Visibility.Visible;
-                MusiqueJeu.Visibility = Visibility.Visible;
-                Rejouer1.Visibility = Visibility.Visible;
-                Quitter.Visibility = Visibility.Visible;
-            }
             else
             {
-                pauseText.Visibility = Visibility.Collapsed;
-                dispatcherTimer.Start();
-                tempsJeu.Start();
-                MusiqueJeu.Visibility = Visibility.Collapsed;
-                Rejouer1.Visibility = Visibility.Collapsed;
-                Quitter.Visibility = Visibility.Collapsed;
+                enPause = !enPause;
+
+                if (enPause)
+                {
+                    dispatcherTimer.Stop();
+                    tempsJeu.Stop();
+                    pauseText.Visibility = Visibility.Visible;
+                    MusiqueJeu.Visibility = Visibility.Visible;
+                    Rejouer1.Visibility = Visibility.Visible;
+                    Quitter.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    pauseText.Visibility = Visibility.Collapsed;
+                    dispatcherTimer.Start();
+                    tempsJeu.Start();
+                    MusiqueJeu.Visibility = Visibility.Collapsed;
+                    Rejouer1.Visibility = Visibility.Collapsed;
+                    Quitter.Visibility = Visibility.Collapsed;
+                }
             }
         }
 
