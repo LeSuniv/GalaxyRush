@@ -11,7 +11,18 @@
 
   <ItemGroup>
     <None Remove="fusee.png" />
+    <None Remove="Images\son.png" />
+    <None Remove="Images\son_couper.png" />
     <None Remove="Stargaze Stencil.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\son.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\son_couper.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -37,32 +48,26 @@
     <None Update="images\asteroide.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Images\bouclier.png">
+    <None Update="images\bouclier.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Images\fond_espace.jpg">
+    <None Update="images\fond_espace.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Images\fond_espace_jeu.png">
+    <None Update="images\fond_espace_jeu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Images\fusee.png">
+    <None Update="images\fusee.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Images\fusee_protege.png">
+    <None Update="images\fusee_protege.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Images\LogoGalaxyRushR.png">
+    <None Update="images\LogoGalaxyRushR.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Images\ovni.png">
+    <None Update="images\ovni.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Images\son.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Images\son_couper.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
