@@ -27,6 +27,7 @@ namespace GalaxyRush
         private int vitesseJoueur = 5;
         private int nbrObstacle;
         private int score = 0;
+        private List<Rectangle> enlever = new List<Rectangle>();
         private int limiteAsteroide = 1;
         private int nbAsteroide = 0;
         private int limiteOvni = 2;
@@ -51,6 +52,7 @@ namespace GalaxyRush
         private double changeQteOvni = 1;
         private double vitesseDefilement = 5;
         private double vitesseBouclier = 5;
+        List<Rectangle> listeObstacle= new List<Rectangle>();
 
         private RotateTransform rotation1 = new RotateTransform(135);
         private RotateTransform rotation2 = new RotateTransform(45);
@@ -82,7 +84,7 @@ namespace GalaxyRush
             Menu main = new Menu();
             main.ShowDialog();
 
-            backgroundImg.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png"));
+            backgroundImg.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace_jeu.png"));
             background.Fill = backgroundImg;
             background2.Fill = backgroundImg;
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(15);
@@ -177,6 +179,8 @@ namespace GalaxyRush
 
         private void CreeObstacles()
         {
+            Obstacles asteroide = new Obstacles();
+            Obstacles ovni = new Obstacles();
             int right = 0;
             int y;
             for (int i = nbAsteroide; i < limiteAsteroide; i++)
@@ -187,19 +191,21 @@ namespace GalaxyRush
                 {
                     #region Asteroide
                     ImageBrush texturObstacle = new ImageBrush();
-                    Rectangle nouveauObstacle = new Rectangle
+                    Rectangle nouveauAsteroide = new Rectangle
                     {
                         Tag = "asteroide",
-                        Height = 80,
+                        Height = 100,
                         Width = 50,
                         Fill = texturObstacle,
                     };
-                    Canvas.SetRight(nouveauObstacle, right);
-                    Canvas.SetTop(nouveauObstacle, y);
-                    listeAsteroide.Add(nouveauObstacle);
-                    myCanvas.Children.Add(nouveauObstacle);
+                    Canvas.SetRight(nouveauAsteroide, right);
+                    Canvas.SetTop(nouveauAsteroide, y);
+                    listeObstacle.Add(nouveauAsteroide);
+                    myCanvas.Children.Add(nouveauAsteroide);
                     texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
                     nbAsteroide += 1;
+                    delai = tempsApparition;
+                    asteroide.Asteroide = nouveauAsteroide;
                     delai_asteroide = tempsApparition;
                 }
                 #endregion
@@ -207,7 +213,6 @@ namespace GalaxyRush
             #region Ovni
             if (score >= 5)
             {
-
                 for (int i = nbOvni; i < limiteOvni; i++)
                 {
                     delai_ovni -= 1;
@@ -222,9 +227,12 @@ namespace GalaxyRush
                     };
                     Canvas.SetRight(nouveauOvni, right);
                     Canvas.SetTop(nouveauOvni, y);
+                    listeObstacle.Add(nouveauOvni);
                     myCanvas.Children.Add(nouveauOvni);
                     textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
                     nbOvni += 1;
+                    delai = tempsApparition;
+                    ovni.Ovni = nouveauOvni;
                     delai_ovni = tempsApparition;
                 }
             }
@@ -257,6 +265,8 @@ namespace GalaxyRush
                 }
             }
         }
+
+
         private void Protege()
         {
             if (protege == 0)
@@ -285,7 +295,6 @@ namespace GalaxyRush
                     enlever.Add(asteroide);
                     nbAsteroide -= 1;
                 }
-
             }
             foreach (Rectangle asteroide in enlever)
             {
@@ -325,6 +334,8 @@ namespace GalaxyRush
                 myCanvas.Children.Remove(ovni);
             }
         }
+
+
         private void Mouvement_Bouclier()
         {
             foreach (Rectangle bouclier in myCanvas.Children.OfType<Rectangle>())
@@ -346,6 +357,7 @@ namespace GalaxyRush
                 myCanvas.Children.Remove(bouclier);
             }
         }
+
 
         private void Vitesse_Et_Quantite()
         {
@@ -375,17 +387,17 @@ namespace GalaxyRush
                 Height = joueur.Height / 2,
                 Width = joueur.Width / 2,
                 Stroke = Brushes.Red,
-
             };
             Canvas.SetLeft(fuseeHitbox, Canvas.GetLeft(joueur) + joueur.Width / 4);
             Canvas.SetTop(fuseeHitbox, Canvas.GetTop(joueur) + joueur.Height / 4);
             myCanvas.Children.Add(fuseeHitbox);
             Panel.SetZIndex(fuseeHitbox, 99);
-            foreach (Rectangle x in listeAsteroide)
+            foreach (Rectangle x in listeObstacle)
             {
-                Rect asteroideBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width, x.Height);
+                Rect asteroideBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width , x.Height);
+                Rect ovniBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width, x.Height);
 
-                if (rect_fusee.IntersectsWith(asteroideBox))
+                if (rect_fusee.IntersectsWith(asteroideBox) || rect_fusee.IntersectsWith(ovniBox))
                 {
 #if DEBUG
                     if ( protege == 0 && invincibilite <= 0) 
@@ -420,9 +432,6 @@ namespace GalaxyRush
                 }
             }
             myCanvas.Children.Remove(fuseeHitbox);
-#if DEBUG
-            Console.WriteLine("retire");
-#endif
         }
 
 
@@ -504,7 +513,6 @@ namespace GalaxyRush
                 minutes++;
                 secondes = 0;
             }
-
             string tempsFormat = minutes.ToString("D2") + ":" + secondes.ToString("D2");
             temps.Text = tempsFormat;
         }
