@@ -22,42 +22,49 @@ namespace GalaxyRush
         private bool allerHaut = false;
         private bool allerBas = true;
         private bool finDePartie = false;
-        RotateTransform rotation1 = new RotateTransform(135);
-        RotateTransform rotation2 = new RotateTransform(45);
-        RotateTransform rotation3 = new RotateTransform(90);
-        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
-        private ImageBrush SkinJoueur = new ImageBrush();
+        private bool enPause = false;
+        private bool bonus = false;
+        private bool protege = false;
+
         private int vitesseJoueur = 5;
         private int nbrObstacle;
         private int score = 0;
-        private List<Rectangle> enlever = new List<Rectangle>();
-        private ImageBrush fond = new ImageBrush();
-        private ImageBrush fusee = new ImageBrush();
         private int limiteAsteroide = 1;
         private int nbAsteroide = 0;
-        private int nbOvni = 0;
         private int limiteOvni = 1;
+        private int nbOvni = 0;
         private int repereVitesse = 1;
-        Random aleatoire = new Random();
-        private bool enPause = false;
         private int declencheur = 300;
+        private int delai = 1;
+        private int tempsApparition = 20;
+        private int minutes = 0;
+        private int secondes = 0;
+
         private double vitesseAsteroide = 8;
         private double vitesseOvni = 6;
         private double changeVitesse = 10;
         private double changeQteAsteroide = 2;
         private double changeQteOvni = 3;
-        private int delai = 1;
-        private int tempsApparition = 20;
-        ImageBrush backgroundImg = new ImageBrush();
-        private bool bonus = false;
-        private bool protege = false;
         private double vitesseDefilement = 5;
-        List<Rectangle> listeAsteroide = new List<Rectangle>();
-        private int minutes = 0;
-        private int secondes = 0;
+
+        private RotateTransform rotation1 = new RotateTransform(135);
+        private RotateTransform rotation2 = new RotateTransform(45);
+        private RotateTransform rotation3 = new RotateTransform(90);
+
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private DispatcherTimer tempsJeu = new DispatcherTimer();
 
-        #endregion        
+        private ImageBrush SkinJoueur = new ImageBrush();
+        private ImageBrush fond = new ImageBrush();
+        private ImageBrush fusee = new ImageBrush();
+        private ImageBrush backgroundImg = new ImageBrush();
+
+        private List<Rectangle> enlever = new List<Rectangle>();
+        private List<Rectangle> listeAsteroide = new List<Rectangle>();
+
+        Random aleatoire = new Random();
+
+        #endregion
 
 
         public MainWindow()
