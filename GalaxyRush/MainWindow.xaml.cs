@@ -83,7 +83,7 @@ namespace GalaxyRush
             // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
 
             // rafraissement toutes les 16 milliseconds
-            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(16);
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(5);
             dispatcherTimer.Tick += Jeu;
             dispatcherTimer.Start();
             // chargement de l’image du joueur 
@@ -114,6 +114,7 @@ namespace GalaxyRush
                     allerHaut = true;
                     allerBas = false;
                     joueur.RenderTransform = rotation1;
+                    
                 }
                 else
                 {
@@ -165,14 +166,12 @@ namespace GalaxyRush
         }
 
 
-        private void FinDuJeu()
-        {
-            dispatcherTimer.Stop();
-            perduText.Visibility = Visibility.Visible;
-            Quitter.Visibility = Visibility.Visible;
-            Rejouer1.Visibility = Visibility.Visible;
-            finDePartie = true;
-        }
+        //private void FinDuJeu()
+        //{
+        //    dispatcherTimer.Stop();
+        //    tempsJeu.Stop();
+        //    perduText.Visibility = Visibility.Visible;
+        //}
 
 
         private void CreeObstacles()
@@ -191,7 +190,7 @@ namespace GalaxyRush
                     Rectangle nouveauObstacle = new Rectangle
                     {
                         Tag = "asteroide",
-                        Height = 100,
+                        Height = 80,
                         Width = 50,
                         Fill = texturObstacle,
                     };
@@ -334,23 +333,52 @@ namespace GalaxyRush
 
         private void Collision()
         {
-            Rect rect_fusee = new(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
+            Rect rect_fusee = new Rect(Canvas.GetLeft(joueur) + joueur.Width/4, Canvas.GetTop(joueur) + joueur.Height/4, joueur.Width/2, joueur.Height/2);
+            Rectangle fuseeHitbox = new Rectangle
+            {
+                Height = joueur.Height/2,
+                Width = joueur.Width/2,
+                Stroke = Brushes.Red,
+
+            };
+            Canvas.SetLeft(fuseeHitbox, Canvas.GetLeft(joueur) + joueur.Width/4);
+            Canvas.SetTop(fuseeHitbox, Canvas.GetTop(joueur) + joueur.Height/4);
+            myCanvas.Children.Add(fuseeHitbox);
+            Panel.SetZIndex(fuseeHitbox, 99);
             foreach (Rectangle x in listeAsteroide)
             {
-#if DEBUG
-                Console.WriteLine("asteroide");
-#endif
-                Rect asteroideBox = new(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                // création d'un asteroide 
+//#if DEBUG
+//                Console.WriteLine("asteroide");
+//#endif
+
+                Rect asteroideBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width, x.Height);
 
                 if (rect_fusee.IntersectsWith(asteroideBox))
                 {
 #if DEBUG
                     Console.WriteLine("explosion");
 #endif
-                    FinDuJeu();
+                    dispatcherTimer.Stop();
+                    tempsJeu.Stop();
+                    //perduText.Visibility = Visibility.Visible;
+                    MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
+
                 }
             }
+            myCanvas.Children.Remove(fuseeHitbox);
+#if DEBUG
+            Console.WriteLine("retire");
+#endif
+
         }
+
+        //private void AnimerFond()
+        //{
+        //    double newPos = Canvas.GetLeft(background) - vitesseDefilement;
+        //    Canvas.SetLeft(background, newPos);
+        //}
 
 
         private void MouvementFusee()
