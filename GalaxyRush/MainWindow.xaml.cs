@@ -36,8 +36,6 @@ namespace GalaxyRush
         private int nbrObstacle = 0;
         private int score = 0;
         private List<Rectangle> enlever = new List<Rectangle>();
-        private ImageBrush fond = new ImageBrush();
-        private ImageBrush fusee = new ImageBrush();
         private int limiteAsteroide = 1;
         private int nbAsteroide = 0;
         private int nbOvni = 0;
@@ -57,7 +55,7 @@ namespace GalaxyRush
         private bool bonus = false;
         private bool protege = false;
         private double vitesseDefilement = 5;
-        List<Rectangle> listeAsteroide = new List<Rectangle>();
+        List<Rectangle> listeObstacle= new List<Rectangle>();
 
         #endregion
 
@@ -171,6 +169,8 @@ namespace GalaxyRush
 
         private void CreeObstacles()
         {
+            Obstacles asteroide = new Obstacles();
+            Obstacles ovni = new Obstacles();
             int right = 0;
             int y = 0;
             for (int i = nbAsteroide; i < limiteAsteroide; i++)
@@ -182,27 +182,27 @@ namespace GalaxyRush
                 {
                     #region Asteroide
                     ImageBrush texturObstacle = new ImageBrush();
-                    Rectangle nouveauObstacle = new Rectangle
+                    Rectangle nouveauAsteroide = new Rectangle
                     {
                         Tag = "asteroide",
-                        Height = 80,
+                        Height = 100,
                         Width = 50,
                         Fill = texturObstacle,
                     };
-                    Canvas.SetRight(nouveauObstacle, right);
-                    Canvas.SetTop(nouveauObstacle, y);
-                    listeAsteroide.Add(nouveauObstacle);
-                    myCanvas.Children.Add(nouveauObstacle);
+                    Canvas.SetRight(nouveauAsteroide, right);
+                    Canvas.SetTop(nouveauAsteroide, y);
+                    listeObstacle.Add(nouveauAsteroide);
+                    myCanvas.Children.Add(nouveauAsteroide);
                     texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
                     nbAsteroide += 1;
                     delai = tempsApparition;
+                    asteroide.Asteroide = nouveauAsteroide;
                 }
                 #endregion
             }
             #region Ovni
             if (score >= 5)
             {
-
                 for (int i = nbOvni; i < limiteOvni; i++)
                 {
                     delai -= 1;
@@ -218,10 +218,12 @@ namespace GalaxyRush
                     };
                     Canvas.SetRight(nouveauOvni, right);
                     Canvas.SetTop(nouveauOvni, y);
+                    listeObstacle.Add(nouveauOvni);
                     myCanvas.Children.Add(nouveauOvni);
                     textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
                     nbOvni += 1;
                     delai = tempsApparition;
+                    ovni.Ovni = nouveauOvni;
                 }
             }
             #endregion
@@ -230,22 +232,22 @@ namespace GalaxyRush
 
         private void Bouclier()
         {
-                bonus = true;
-                int right = 0;
-                int y = 0;
-                y = aleatoire.Next(0, 350);
-                ImageBrush apparence = new ImageBrush();
-                Rectangle bouclier = new Rectangle
-                {
-                    Tag = "bouclier",
-                    Height = 100,
-                    Width = 50,
-                    Fill = apparence,
-                };
-                Canvas.SetRight(bouclier, right);
-                Canvas.SetTop(bouclier, y);
-                myCanvas.Children.Add(bouclier);
-                //apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.jpg"));
+            bonus = true;
+            int right = 0;
+            int y = 0;
+            y = aleatoire.Next(0, 350);
+            ImageBrush apparence = new ImageBrush();
+            Rectangle bouclier = new Rectangle
+            {
+                Tag = "bouclier",
+                Height = 100,
+                Width = 50,
+                Fill = apparence,
+            };
+            Canvas.SetRight(bouclier, right);
+            Canvas.SetTop(bouclier, y);
+            myCanvas.Children.Add(bouclier);
+            //apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.jpg"));
         }
 
 
@@ -264,7 +266,6 @@ namespace GalaxyRush
                     enlever.Add(asteroide);
                     nbAsteroide -= 1;
                 }
-
             }
             foreach (Rectangle asteroide in enlever)
             {
@@ -304,8 +305,6 @@ namespace GalaxyRush
                 myCanvas.Children.Remove(ovni);
             }
         }
-
-
         private void Vitesse_Et_Quantite()
         {
             if (score > changeVitesse * repereVitesse)
@@ -325,8 +324,6 @@ namespace GalaxyRush
                 limiteOvni++;
             }
         }
-
-
         private void Collision()
         {
             Rect rect_fusee = new Rect(Canvas.GetLeft(joueur) + joueur.Width/4, Canvas.GetTop(joueur) + joueur.Height/4, joueur.Width/2, joueur.Height/2);
@@ -335,23 +332,17 @@ namespace GalaxyRush
                 Height = joueur.Height/2,
                 Width = joueur.Width/2,
                 Stroke = Brushes.Red,
-
             };
             Canvas.SetLeft(fuseeHitbox, Canvas.GetLeft(joueur) + joueur.Width/4);
             Canvas.SetTop(fuseeHitbox, Canvas.GetTop(joueur) + joueur.Height/4);
             myCanvas.Children.Add(fuseeHitbox);
             Panel.SetZIndex(fuseeHitbox, 99);
-            foreach (Rectangle x in listeAsteroide)
+            foreach (Rectangle x in listeObstacle)
             {
+                Rect asteroideBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width , x.Height);
+                Rect ovniBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width, x.Height);
 
-                // création d'un asteroide 
-//#if DEBUG
-//                Console.WriteLine("asteroide");
-//#endif
-
-                Rect asteroideBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width, x.Height);
-
-                if (rect_fusee.IntersectsWith(asteroideBox))
+                if (rect_fusee.IntersectsWith(asteroideBox) || rect_fusee.IntersectsWith(ovniBox))
                 {
 #if DEBUG
                     Console.WriteLine("explosion");
@@ -359,15 +350,10 @@ namespace GalaxyRush
                     dispatcherTimer.Stop();
                     tempsJeu.Stop();
                     //perduText.Visibility = Visibility.Visible;
-                    MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
-
+                    MessageBox.Show("Vous avez été touché", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
                 }
             }
             myCanvas.Children.Remove(fuseeHitbox);
-#if DEBUG
-            Console.WriteLine("retire");
-#endif
-
         }
 
         //private void AnimerFond()
@@ -397,89 +383,11 @@ namespace GalaxyRush
 
         private void Jeu(object sender, EventArgs e)
         {
-            /* Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
-             foreach (Rectangle y in myCanvas.Children.OfType<Rectangle>())
-             {
-                 // si le rectangle est un ennemi
-                 if (y is Rectangle && (string)y.Tag == "asteroide")
-                 {
-                     Canvas.SetTop(y, Canvas.GetTop(y) - vitesseAsteroide);
-                     Rect boite_asteroide = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
-                     Rectangle asterRectangle = new Rectangle
-                     {
-                         Height = boite_asteroide.Height,
-                         Width = boite_asteroide.Width,
-                         Stroke = Brushes.Red
-                     };
-                     Canvas.SetRight(asterRectangle, Canvas.GetRight(y));
-                     Canvas.SetTop(asterRectangle, Canvas.GetTop(y));
-                     if (boite_asteroide.IntersectsWith(rect_fusee))
-                     {
-                         Console.WriteLine("collision ateriode");
-                         dispatcherTimer.Stop();
-                         MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
-                     }
-                 }*/
             Canvas.SetLeft(background, Canvas.GetLeft(background) - 9);
             Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 9);
             MouvementFusee();
             CreeObstacles();
             Bouclier();
-            /*Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
-            foreach (Rectangle x in myCanvas.Children.OfType<Rectangle>()) 
-            {
-                if (x is Rectangle && (string)x.Tag == "bouclier") 
-                {
-                    Canvas.SetRight(x, Canvas.GetRight(x) + vitesseOvni);
-                    Rect bullet = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
-                    if ( rect_fusee.IntersectsWith(bullet)) 
-                    {
-                        dispatcherTimer.Stop()
-                    }
-                } 
-            }*/
-
-
-            ////Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
-            //foreach (Rectangle y in myCanvas.Children.OfType<Rectangle>())
-            //{
-            //    if (y is Rectangle && (string)y.Tag == "asteroide")
-            //    {
-            //        // Déplacer l'astéroïde
-            //        Canvas.SetRight(y, Canvas.GetRight(y) + vitesseAsteroide);
-
-            //        // Créer un rectangle pour la détection de collision
-            //        Rect boite_asteroide = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
-
-            //        // Vérifier la collision avec la fusée
-            //        if (rect_fusee.IntersectsWith(boite_asteroide))
-            //        {
-            //            // Collision détectée
-            //            if (protege)
-            //            {
-            //                // Si la protection est activée, ne pas arrêter le jeu
-            //                // Peut-être ajouter des effets visuels ou sonores pour indiquer la protection
-            //                // Réduire le score ou appliquer d'autres règles selon le besoin
-            //            }
-            //            else
-            //            {
-            //                // Si la protection n'est pas activée, arrêter le jeu
-            //                dispatcherTimer.Stop();
-            //                tempsJeu.Stop();
-            //                MessageBox.Show("Vous avez été touché par un astéroïde", "La mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
-            //            }
-            //        }
-
-            //        // Si l'astéroïde sort de l'écran, le retirer et ajuster les compteurs
-            //        if (Canvas.GetTop(y) > myCanvas.ActualHeight)
-            //        {
-            //            enlever.Add(y);
-            //            nbAsteroide -= 1;
-            //        }
-            //    }
-            //}
-
-
             // Retirer les astéroïdes sortis de l'écran
             foreach (Rectangle asteroide in enlever)
             {
