@@ -26,7 +26,7 @@ namespace GalaxyRush
 
         private int vitesseJoueur = 5;
         private int nbrObstacle;
-        private int score = 10;
+        private int score;
         private int limiteAsteroide = 1;
         private int nbAsteroide = 0;
         private int limiteOvni = 1;
@@ -79,7 +79,7 @@ namespace GalaxyRush
             Menu main = new Menu();
             main.ShowDialog();
 
-            backgroundImg.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png"));
+            backgroundImg.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\fond_espace_jeu.png"));
             background.Fill = backgroundImg;
             background2.Fill = backgroundImg;
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(15);
@@ -235,8 +235,8 @@ namespace GalaxyRush
             {
                 int right = 0;
                 int y = aleatoire.Next(0, 350);
-                ImageBrush apparence = new ImageBrush();
-                Rectangle bouclier = new Rectangle
+                ImageBrush apparence = new();
+                Rectangle bouclier = new()
                 {
                     Tag = "bouclier",
                     Height = 100,
@@ -246,10 +246,12 @@ namespace GalaxyRush
                 Canvas.SetRight(bouclier, right);
                 Canvas.SetTop(bouclier, y);
                 myCanvas.Children.Add(bouclier);
-                apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.png"));
+                apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\bouclier.png"));
                 bonus = 1;
             }
         }
+
+
         private void Protege()
         {
             if (protege == 0)
@@ -318,6 +320,8 @@ namespace GalaxyRush
                 myCanvas.Children.Remove(ovni);
             }
         }
+
+
         private void Mouvement_Bouclier()
         {
             foreach (Rectangle bouclier in myCanvas.Children.OfType<Rectangle>())
@@ -339,6 +343,7 @@ namespace GalaxyRush
                 myCanvas.Children.Remove(bouclier);
             }
         }
+
 
         private void Vitesse_Et_Quantite()
         {
@@ -480,7 +485,6 @@ namespace GalaxyRush
                 minutes++;
                 secondes = 0;
             }
-
             string tempsFormat = minutes.ToString("D2") + ":" + secondes.ToString("D2");
             temps.Text = tempsFormat;
         }
