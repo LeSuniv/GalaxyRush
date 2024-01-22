@@ -24,18 +24,20 @@
             KeyDown="CleeCanvasAppuyee">
             <Rectangle
                 Name="background"
+                Canvas.Left="0"
                 Width="800"
                 Height="450"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Canvas.Left="0"
                 Fill="Orange" />
             <Rectangle
                 Name="background2"
                 Canvas.Left="800"
                 Width="800"
                 Height="450"
-                Fill="LightGreen" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Fill="LightGreen" />
             <Rectangle
                 Name="joueur"
                 Canvas.Left="110"
@@ -43,7 +45,8 @@
                 Width="67"
                 Height="99"
                 Fill="Brown"
-                RenderTransformOrigin="0.5,0.5">
+                RenderTransformOrigin="0.5,0.5"
+                Tag="fusee">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform />
@@ -100,12 +103,12 @@
             x:Name="perduText"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontFamily="{StaticResource Stargaze Stencil}"            
+            FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="100"
             FontWeight="ExtraBold"
             Foreground="#FFFFFF"
             Text="Perdu"
-            Visibility="Collapsed"/>
+            Visibility="Collapsed" />
         <Button
             x:Name="Quitter"
             Width="140"
@@ -118,9 +121,9 @@
             Click="QuitterBoutton"
             Content="Menu"
             FontFamily="{StaticResource Stargaze Stencil}"
+            FontSize="20"
             Foreground="#FFD499B9"
-            Visibility="Collapsed" 
-            FontSize="20" />
+            Visibility="Collapsed" />
         <Button
             x:Name="Rejouer1"
             Width="140"
@@ -129,16 +132,37 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
             Background="#00000000"
-            BorderBrush= "#D499B9"
+            BorderBrush="#D499B9"
             Click="Rejouer_Click"
             Content="Rejouer"
             FontFamily="{StaticResource Stargaze Stencil}"
-            Visibility="Collapsed" 
-            Foreground="#FFD499B9" FontSize="20"
-            />
-        <MediaElement x:Name="MusiqueMenu"  Source="audio/musiqueMenu.mp3" LoadedBehavior="Manual" Margin="52,244,592,109" />
-        <MediaElement x:Name="MusiqueJeu" Source="audio/musiqueJeu.mp3" LoadedBehavior="Manual" Visibility="Visible" Margin="45,306,594,33" />
-        <Button x:Name="butSon" HorizontalAlignment="Left" Margin="18,259,0,0" VerticalAlignment="Top" Height="85" Width="160" Click="ButSon_Click" Visibility="Collapsed"/>
-        <Image x:Name="sonStatut" MouseLeftButtonDown="SonStatut_MouseLeftButtonDown" Margin="16,256,619,88" Visibility="Collapsed"/>
+            FontSize="20"
+            Foreground="#FFD499B9"
+            Visibility="Collapsed" />
+        <MediaElement
+            x:Name="MusiqueMenu"
+            Margin="52,244,592,109"
+            LoadedBehavior="Manual"
+            Source="audio/musiqueMenu.mp3" />
+        <MediaElement
+            x:Name="MusiqueJeu"
+            Margin="45,306,594,33"
+            LoadedBehavior="Manual"
+            Source="audio/musiqueJeu.mp3"
+            Visibility="Visible" />
+        <Button
+            x:Name="butSon"
+            Width="160"
+            Height="85"
+            Margin="18,259,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="ButSon_Click"
+            Visibility="Collapsed" />
+        <Image
+            x:Name="sonStatut"
+            Margin="16,256,619,88"
+            MouseLeftButtonDown="SonStatut_MouseLeftButtonDown"
+            Visibility="Collapsed" />
     </Grid>
 </Window>

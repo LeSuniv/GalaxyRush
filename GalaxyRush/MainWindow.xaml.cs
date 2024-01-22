@@ -56,6 +56,7 @@ namespace GalaxyRush
         private bool bonus = false;
         private bool protege = false;
         private double vitesseDefilement = 5;
+        List<Rectangle> listeAsteroide = new List<Rectangle>();
 
         #endregion
 
@@ -195,6 +196,7 @@ namespace GalaxyRush
                     };
                     Canvas.SetRight(nouveauObstacle, right);
                     Canvas.SetTop(nouveauObstacle, y);
+                    listeAsteroide.Add(nouveauObstacle);
                     myCanvas.Children.Add(nouveauObstacle);
                     texturObstacle.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/asteroide.png"));
                     nbAsteroide += 1;
@@ -330,24 +332,39 @@ namespace GalaxyRush
         }
 
 
-        /*private void Collision()
+        private void Collision()
         {
-            
-                //}
-                else if (y is Rectangle && (string)y.Tag == "ovni")
+            Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
+            foreach (Rectangle x in listeAsteroide)
+            {
+
+                // création d'un asteroide 
+#if DEBUG
+                Console.WriteLine("asteroide");
+#endif
+                //Rectangle tamere = new Rectangle
+                //{
+                //    Height = x.Height,
+                //    Width = x.Width,
+                //    Stroke = Brushes.Red,
+
+                //};
+                //Canvas.SetLeft(tamere, Canvas.GetLeft(x));
+                //Canvas.SetTop(tamere, Canvas.GetTop(x));
+                //myCanvas.Children.Add(tamere);
+                //Panel.SetZIndex(tamere, 99);
+                Rect asteroideBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                if (rect_fusee.IntersectsWith(asteroideBox))
                 {
-                    Rect boite_ovni = new Rect(Canvas.GetRight(y), Canvas.GetTop(y), y.Width, y.Height);
-                    if (rect_fusee.IntersectsWith(boite_ovni))
-                    {
-                        Console.WriteLine("collision onvi");
-                        
-                        dispatcherTimer.Stop();
-                        MessageBox.Show("Vous avez été touché par un ovni", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
-                    }
+#if DEBUG
+                    Console.WriteLine("explosion");
+#endif
+                    dispatcherTimer.Stop();
+                    perduText.Visibility = Visibility.Visible;
                 }
             }
-        }*/
-
+        }
 
         private void AnimerFond()
         {
@@ -417,44 +434,47 @@ namespace GalaxyRush
                     }
                 } 
             }*/
-            Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
-            foreach (Rectangle y in myCanvas.Children.OfType<Rectangle>())
-            {
-                if (y is Rectangle && (string)y.Tag == "asteroide")
-                {
-                    // Déplacer l'astéroïde
-                    Canvas.SetRight(y, Canvas.GetRight(y) + vitesseAsteroide);
 
-                    // Créer un rectangle pour la détection de collision
-                    Rect boite_asteroide = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
 
-                    // Vérifier la collision avec la fusée
-                    if (rect_fusee.IntersectsWith(boite_asteroide))
-                    {
-                        // Collision détectée
-                        if (protege)
-                        {
-                            // Si la protection est activée, ne pas arrêter le jeu
-                            // Peut-être ajouter des effets visuels ou sonores pour indiquer la protection
-                            // Réduire le score ou appliquer d'autres règles selon le besoin
-                        }
-                        else
-                        {
-                            // Si la protection n'est pas activée, arrêter le jeu
-                            dispatcherTimer.Stop();
-                            tempsJeu.Stop();
-                            MessageBox.Show("Vous avez été touché par un astéroïde", "La mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
-                        }
-                    }
+            ////Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
+            //foreach (Rectangle y in myCanvas.Children.OfType<Rectangle>())
+            //{
+            //    if (y is Rectangle && (string)y.Tag == "asteroide")
+            //    {
+            //        // Déplacer l'astéroïde
+            //        Canvas.SetRight(y, Canvas.GetRight(y) + vitesseAsteroide);
 
-                    // Si l'astéroïde sort de l'écran, le retirer et ajuster les compteurs
-                    if (Canvas.GetTop(y) > myCanvas.ActualHeight)
-                    {
-                        enlever.Add(y);
-                        nbAsteroide -= 1;
-                    }
-                }
-            }
+            //        // Créer un rectangle pour la détection de collision
+            //        Rect boite_asteroide = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+
+            //        // Vérifier la collision avec la fusée
+            //        if (rect_fusee.IntersectsWith(boite_asteroide))
+            //        {
+            //            // Collision détectée
+            //            if (protege)
+            //            {
+            //                // Si la protection est activée, ne pas arrêter le jeu
+            //                // Peut-être ajouter des effets visuels ou sonores pour indiquer la protection
+            //                // Réduire le score ou appliquer d'autres règles selon le besoin
+            //            }
+            //            else
+            //            {
+            //                // Si la protection n'est pas activée, arrêter le jeu
+            //                dispatcherTimer.Stop();
+            //                tempsJeu.Stop();
+            //                MessageBox.Show("Vous avez été touché par un astéroïde", "La mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
+            //            }
+            //        }
+
+            //        // Si l'astéroïde sort de l'écran, le retirer et ajuster les compteurs
+            //        if (Canvas.GetTop(y) > myCanvas.ActualHeight)
+            //        {
+            //            enlever.Add(y);
+            //            nbAsteroide -= 1;
+            //        }
+            //    }
+            //}
+
 
             // Retirer les astéroïdes sortis de l'écran
             foreach (Rectangle asteroide in enlever)
@@ -462,7 +482,7 @@ namespace GalaxyRush
                 myCanvas.Children.Remove(asteroide);
             }
             Vitesse_Et_Quantite();
-            //Collision();
+            Collision();
             MouvementObstacle();
             BougerFond();
         }
