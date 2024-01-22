@@ -45,7 +45,7 @@ namespace GalaxyRush
         private double changeVitesse = 8;
         private double changeQteAsteroide = 2;
         private double changeQteOvni = 1;
-        private double vitesseDefilement = 5;
+        private double vitesseDefilement = 3;
 
         private RotateTransform rotation1 = new RotateTransform(135);
         private RotateTransform rotation2 = new RotateTransform(45);
@@ -79,14 +79,14 @@ namespace GalaxyRush
             backgroundImg.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png"));
             background.Fill = backgroundImg;
             background2.Fill = backgroundImg;
-            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(5);
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(15);
             dispatcherTimer.Tick += Jeu;
             dispatcherTimer.Start();
             SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fusee.png"));
             joueur.Fill = SkinJoueur;
 
             tempsJeu.Tick += ComptageTemps;
-            tempsJeu.Interval = TimeSpan.FromSeconds(1);
+            tempsJeu.Interval = TimeSpan.FromSeconds(15);
             tempsJeu.Start();
 
         }
@@ -109,7 +109,7 @@ namespace GalaxyRush
                     allerHaut = true;
                     allerBas = false;
                     joueur.RenderTransform = rotation1;
-                    
+
                 }
                 else
                 {
@@ -140,15 +140,13 @@ namespace GalaxyRush
             Quitter.Visibility = Visibility.Visible;
             Rejouer1.Visibility = Visibility.Visible;
             perduText.Visibility = Visibility.Visible;
+            finDePartie = true;
         }
 
 
         private void QuitterBoutton(object sender, RoutedEventArgs e)
         {
-            Menu menu = new Menu();
-            menu.ShowDialog();
-            MusiqueJeu.Stop();
-            this.Close();
+            Application.Current.Shutdown();        
         }
 
 
@@ -168,6 +166,7 @@ namespace GalaxyRush
             perduText.Visibility = Visibility.Visible;
             Rejouer1.Visibility = Visibility.Visible;
             Quitter.Visibility = Visibility.Visible;
+            finDePartie = true;
         }
 
 
@@ -330,16 +329,16 @@ namespace GalaxyRush
 
         private void Collision()
         {
-            Rect rect_fusee = new Rect(Canvas.GetLeft(joueur) + joueur.Width/4, Canvas.GetTop(joueur) + joueur.Height/4, joueur.Width/2, joueur.Height/2);
+            Rect rect_fusee = new Rect(Canvas.GetLeft(joueur) + joueur.Width / 4, Canvas.GetTop(joueur) + joueur.Height / 4, joueur.Width / 2, joueur.Height / 2);
             Rectangle fuseeHitbox = new Rectangle
             {
-                Height = joueur.Height/2,
-                Width = joueur.Width/2,
+                Height = joueur.Height / 2,
+                Width = joueur.Width / 2,
                 Stroke = Brushes.Red,
 
             };
-            Canvas.SetLeft(fuseeHitbox, Canvas.GetLeft(joueur) + joueur.Width/4);
-            Canvas.SetTop(fuseeHitbox, Canvas.GetTop(joueur) + joueur.Height/4);
+            Canvas.SetLeft(fuseeHitbox, Canvas.GetLeft(joueur) + joueur.Width / 4);
+            Canvas.SetTop(fuseeHitbox, Canvas.GetTop(joueur) + joueur.Height / 4);
             myCanvas.Children.Add(fuseeHitbox);
             Panel.SetZIndex(fuseeHitbox, 99);
             foreach (Rectangle x in listeAsteroide)
@@ -352,7 +351,7 @@ namespace GalaxyRush
                     Console.WriteLine("explosion");
 #endif
                     FinDuJeu();
-                        //MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    //MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
 
                 }
             }
@@ -407,25 +406,28 @@ namespace GalaxyRush
             {
                 return;
             }
-            enPause = !enPause;
-
-            if (enPause)
-            {
-                dispatcherTimer.Stop();
-                tempsJeu.Stop();
-                pauseText.Visibility = Visibility.Visible;
-                MusiqueJeu.Visibility = Visibility.Visible;
-                Rejouer1.Visibility = Visibility.Visible;
-                Quitter.Visibility = Visibility.Visible;
-            }
             else
             {
-                pauseText.Visibility = Visibility.Collapsed;
-                dispatcherTimer.Start();
-                tempsJeu.Start();
-                MusiqueJeu.Visibility = Visibility.Collapsed;
-                Rejouer1.Visibility = Visibility.Collapsed;
-                Quitter.Visibility = Visibility.Collapsed;
+                enPause = !enPause;
+
+                if (enPause)
+                {
+                    dispatcherTimer.Stop();
+                    tempsJeu.Stop();
+                    pauseText.Visibility = Visibility.Visible;
+                    MusiqueJeu.Visibility = Visibility.Visible;
+                    Rejouer1.Visibility = Visibility.Visible;
+                    Quitter.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    pauseText.Visibility = Visibility.Collapsed;
+                    dispatcherTimer.Start();
+                    tempsJeu.Start();
+                    MusiqueJeu.Visibility = Visibility.Collapsed;
+                    Rejouer1.Visibility = Visibility.Collapsed;
+                    Quitter.Visibility = Visibility.Collapsed;
+                }
             }
         }
 
