@@ -144,7 +144,7 @@ namespace GalaxyRush
             Menu menu = new Menu();
             menu.ShowDialog();
             MusiqueJeu.Stop();
-            MusiqueMenu.Play();
+            //MusiqueMenu.Play();
             this.Close();
         }
 
@@ -479,7 +479,6 @@ namespace GalaxyRush
                 pauseText.Visibility = Visibility.Visible;
                 MusiqueJeu.Visibility = Visibility.Visible;
                 butSon.Visibility = Visibility.Visible;
-                sonStatut.Visibility = Visibility.Visible;
                 Rejouer1.Visibility = Visibility.Visible;
                 Quitter.Visibility = Visibility.Visible;
             }
@@ -490,7 +489,6 @@ namespace GalaxyRush
                 tempsJeu.Start();
                 MusiqueJeu.Visibility = Visibility.Collapsed;
                 butSon.Visibility = Visibility.Collapsed;
-                sonStatut.Visibility = Visibility.Collapsed;
                 Rejouer1.Visibility = Visibility.Collapsed;
                 Quitter.Visibility = Visibility.Collapsed;
             }
@@ -533,7 +531,7 @@ namespace GalaxyRush
             MainWindow rejouer = new();
             rejouer.Show();
             MusiqueJeu.Stop();
-            MusiqueMenu.Play();
+            //MusiqueMenu.Play();
             this.Close();
         }
 
@@ -543,7 +541,6 @@ namespace GalaxyRush
             Menu retourMenu = new();
             retourMenu.Show();
             MusiqueJeu.Stop();
-            MusiqueMenu.Play();
             this.Close();
         }
 
@@ -551,18 +548,12 @@ namespace GalaxyRush
         private void ButSon_Click(object sender, RoutedEventArgs e)
         {
             MusiqueJeu.IsMuted = !MusiqueJeu.IsMuted;
-        }
-
-
-        private void SonStatut_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (imageAffiche)
-                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\son.png"));
-            else
-                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\son_couper.png"));
-
-            imageAffiche = !imageAffiche;
-            butSon.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            string imageUri;
+            if (MusiqueJeu.IsMuted)           
+                imageUri = "\\Images\\son_couper.png";            
+            else           
+                imageUri = "\\Images\\son.png";
+            butSon.Background = new ImageBrush(new BitmapImage(new Uri($"pack://application:,,,/GalaxyRush;component/{imageUri}", UriKind.Absolute)));
         }
     }
 }

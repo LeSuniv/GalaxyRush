@@ -136,9 +136,11 @@
             Visibility="Collapsed" 
             Foreground="#FFD499B9" FontSize="20"
             />
-        <MediaElement x:Name="MusiqueMenu"  Source="audio/musiqueMenu.mp3" LoadedBehavior="Manual" Margin="52,244,592,109" />
-        <MediaElement x:Name="MusiqueJeu" Source="audio/musiqueJeu.mp3" LoadedBehavior="Manual" Visibility="Visible" Margin="45,306,594,33" />
-        <Button x:Name="butSon" HorizontalAlignment="Left" Margin="18,259,0,0" VerticalAlignment="Top" Height="85" Width="160" Click="ButSon_Click" Visibility="Collapsed"/>
-        <Image x:Name="sonStatut" MouseLeftButtonDown="SonStatut_MouseLeftButtonDown" Margin="16,256,619,88" Visibility="Collapsed"/>
+        <MediaElement x:Name="MusiqueJeu" Source="audio/musiqueJeu.mp3" LoadedBehavior="Manual" Visibility="Collapsed" />
+        <Button x:Name="butSon" Foreground="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Height="44" Width="54" Click="ButSon_Click" Visibility="Collapsed">
+            <Button.Background>
+                <ImageBrush ImageSource="\images\son_couper.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

@@ -97,9 +97,11 @@
             FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="15"
             Foreground="#D499B9" />
-        <MediaElement x:Name="MusiqueJeu" Source="audio/musiqueJeu.mp3" LoadedBehavior="Manual" Visibility="Collapsed" />
-        <MediaElement x:Name="MusiqueMenu"  Source="audio/musiqueMenu.mp3" LoadedBehavior="Manual" Margin="52,244,592,109" />
-        <Button x:Name="butSon" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" Margin="50,240,0,0" VerticalAlignment="Top" Height="85" Width="160" Click="ButSon_Click"/>
-        <Image x:Name="sonStatut"  MouseLeftButtonDown="SonStatut_MouseLeftButtonDown" Margin="46,236,589,108"/>
+        <MediaElement x:Name="MusiqueMenu" Source="audio/musiqueMenu.mp3" LoadedBehavior="Manual" Visibility="Collapsed" />
+        <Button x:Name="butSon" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" Margin="25,372,0,0" VerticalAlignment="Top" Height="44" Width="54" Click="ButSon_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="\images\son_couper.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
