@@ -26,7 +26,7 @@ namespace GalaxyRush
 
         private int vitesseJoueur = 5;
         private int nbrObstacle;
-        private int score = 10;
+        private int score = 0;
         private int limiteAsteroide = 1;
         private int nbAsteroide = 0;
         private int limiteOvni = 1;
@@ -41,6 +41,7 @@ namespace GalaxyRush
         private int bonus = 0;
         private int protege = 0;
         private int limite_max = 4;
+        private int invincibilite = 0;
 
         private double vitesseAsteroide = 7;
         private double vitesseOvni = 5;
@@ -64,6 +65,7 @@ namespace GalaxyRush
 
         private List<Rectangle> enlever = new List<Rectangle>();
         private List<Rectangle> listeAsteroide = new List<Rectangle>();
+        private List<Rectangle> listeBouclier = new List<Rectangle>();
 
         Random aleatoire = new Random();
 
@@ -232,7 +234,7 @@ namespace GalaxyRush
 
         private void Bouclier()
         {
-            if (bonus == 0 && score >= 10)
+            if (bonus == 0 && score >= 0)
             {
                 int right = 0;
                 int y = aleatoire.Next(0, 350);
@@ -246,6 +248,7 @@ namespace GalaxyRush
                 };
                 Canvas.SetRight(bouclier, right);
                 Canvas.SetTop(bouclier, y);
+                listeBouclier.Add(bouclier);
                 myCanvas.Children.Add(bouclier);
                 apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.png"));
                 bonus = 1;
@@ -327,7 +330,7 @@ namespace GalaxyRush
                 {
                     Canvas.SetRight(bouclier, Canvas.GetRight(bouclier) + vitesseBouclier);
 
-                    if (Canvas.GetRight(bouclier) > ActualWidth)
+                    if ((Canvas.GetRight(bouclier) > ActualWidth) || protege == 1)
                     {
                         enlever.Add(bouclier);
                         bonus = 0;
@@ -357,19 +360,12 @@ namespace GalaxyRush
                     limiteAsteroide += 1;
                 }
             }
-            if (score > (changeQteOvni * limiteOvni))
-            {
-                if (limiteOvni <= limite_max)
-                {
-                    changeQteOvni = changeQteOvni + changeQteOvni;
-                    limiteOvni += 1;
-                }
-            }
         }
 
 
         private void Collision()
         {
+            invincibilite -= 1;
             Rect rect_fusee = new Rect(Canvas.GetLeft(joueur) + joueur.Width / 4, Canvas.GetTop(joueur) + joueur.Height / 4, joueur.Width / 2, joueur.Height / 2);
             Rectangle fuseeHitbox = new Rectangle
             {
@@ -389,11 +385,35 @@ namespace GalaxyRush
                 if (rect_fusee.IntersectsWith(asteroideBox))
                 {
 #if DEBUG
-                    Console.WriteLine("explosion");
+                    if ( protege == 0 && invincibilite <= 0) 
+                    {
+                        Console.WriteLine("explosion");
+                        FinDuJeu();
+                        //MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    }
+                    else 
+                    {
+                        protege = 0;
+                        bonus = 0;
+                        invincibilite = 290;
+                    }
+                    
 #endif
-                    FinDuJeu();
-                    //MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
 
+                }
+            }
+            foreach (Rectangle y in listeBouclier)
+            {
+                Rect bouclierBox = new Rect(800 - Canvas.GetRight(y), Canvas.GetTop(y), y.Width, y.Height);
+
+                if (rect_fusee.IntersectsWith(bouclierBox))
+                {
+                    protege = 1;
+                    bonus = 1;
+                    if (y is Rectangle && (string)y.Tag == "bouclier")
+                    {
+                        myCanvas.Children.Remove(y);
+                    }
                 }
             }
             myCanvas.Children.Remove(fuseeHitbox);
