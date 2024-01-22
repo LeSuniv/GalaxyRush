@@ -21,6 +21,7 @@ namespace GalaxyRush
 
         private bool allerHaut = false;
         private bool allerBas = true;
+        private bool finDePartie = false;
         bool imageAffiche = true;
         RotateTransform rotation1 = new RotateTransform(135);
         RotateTransform rotation2 = new RotateTransform(45);
@@ -150,13 +151,6 @@ namespace GalaxyRush
         }
 
 
-        //private void MenuBoutton(object sender, RoutedEventArgs e)
-        //{
-        //    Menu menu = new Menu();
-        //    menu.Show();
-        //}
-
-
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space && allerHaut == true)
@@ -169,8 +163,10 @@ namespace GalaxyRush
         private void FinDuJeu()
         {
             dispatcherTimer.Stop();
-            tempsJeu.Stop();
             perduText.Visibility = Visibility.Visible;
+            Quitter.Visibility = Visibility.Visible;
+            Rejouer1.Visibility = Visibility.Visible;
+            finDePartie = true;
         }
 
 
@@ -337,22 +333,9 @@ namespace GalaxyRush
             Rect rect_fusee = new Rect(Canvas.GetLeft(joueur), Canvas.GetTop(joueur), joueur.Width, joueur.Height);
             foreach (Rectangle x in listeAsteroide)
             {
-
-                // création d'un asteroide 
 #if DEBUG
                 Console.WriteLine("asteroide");
 #endif
-                //Rectangle tamere = new Rectangle
-                //{
-                //    Height = x.Height,
-                //    Width = x.Width,
-                //    Stroke = Brushes.Red,
-
-                //};
-                //Canvas.SetLeft(tamere, Canvas.GetLeft(x));
-                //Canvas.SetTop(tamere, Canvas.GetTop(x));
-                //myCanvas.Children.Add(tamere);
-                //Panel.SetZIndex(tamere, 99);
                 Rect asteroideBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width, x.Height);
 
                 if (rect_fusee.IntersectsWith(asteroideBox))
@@ -360,16 +343,9 @@ namespace GalaxyRush
 #if DEBUG
                     Console.WriteLine("explosion");
 #endif
-                    dispatcherTimer.Stop();
-                    perduText.Visibility = Visibility.Visible;
+                    FinDuJeu();
                 }
             }
-        }
-
-        private void AnimerFond()
-        {
-            double newPos = Canvas.GetLeft(background) - vitesseDefilement;
-            Canvas.SetLeft(background, newPos);
         }
 
 
@@ -490,6 +466,10 @@ namespace GalaxyRush
 
         private void MettrePause()
         {
+            if (finDePartie)
+            {
+                return;
+            }
             enPause = !enPause;
 
             if (enPause)
@@ -498,7 +478,6 @@ namespace GalaxyRush
                 tempsJeu.Stop();
                 pauseText.Visibility = Visibility.Visible;
                 MusiqueJeu.Visibility = Visibility.Visible;
-                butSon.Visibility = Visibility.Visible;
                 Rejouer1.Visibility = Visibility.Visible;
                 Quitter.Visibility = Visibility.Visible;
             }
@@ -508,7 +487,6 @@ namespace GalaxyRush
                 dispatcherTimer.Start();
                 tempsJeu.Start();
                 MusiqueJeu.Visibility = Visibility.Collapsed;
-                butSon.Visibility = Visibility.Collapsed;
                 Rejouer1.Visibility = Visibility.Collapsed;
                 Quitter.Visibility = Visibility.Collapsed;
             }
@@ -551,7 +529,6 @@ namespace GalaxyRush
             MainWindow rejouer = new();
             rejouer.Show();
             MusiqueJeu.Stop();
-            //MusiqueMenu.Play();
             this.Close();
         }
 
@@ -562,18 +539,6 @@ namespace GalaxyRush
             retourMenu.Show();
             MusiqueJeu.Stop();
             this.Close();
-        }
-
-
-        private void ButSon_Click(object sender, RoutedEventArgs e)
-        {
-            MusiqueJeu.IsMuted = !MusiqueJeu.IsMuted;
-            string imageUri;
-            if (MusiqueJeu.IsMuted)           
-                imageUri = "\\Images\\son_couper.png";            
-            else           
-                imageUri = "\\Images\\son.png";
-            butSon.Background = new ImageBrush(new BitmapImage(new Uri($"pack://application:,,,/GalaxyRush;component/{imageUri}", UriKind.Absolute)));
         }
     }
 }

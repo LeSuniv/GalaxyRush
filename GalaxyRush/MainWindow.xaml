@@ -140,10 +140,5 @@
             Foreground="#FFD499B9" FontSize="20"
             />
         <MediaElement x:Name="MusiqueJeu" Source="audio/musiqueJeu.mp3" LoadedBehavior="Manual" Visibility="Collapsed" />
-        <Button x:Name="butSon" Foreground="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Height="44" Width="54" Click="ButSon_Click" Visibility="Collapsed">
-            <Button.Background>
-                <ImageBrush ImageSource="\images\son_couper.png"/>
-            </Button.Background>
-        </Button>
     </Grid>
 </Window>
