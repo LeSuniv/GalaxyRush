@@ -64,31 +64,6 @@
                 FontWeight="Bold"
                 Foreground="White" />
         </Canvas>
-        <Grid>
-            <TextBlock
-                x:Name="temps"
-                Width="86"
-                Height="33"
-                Margin="698,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                FontFamily="{StaticResource Stargaze Stencil}"
-                FontSize="25"
-                FontWeight="Bold"
-                Foreground="White"
-                Text="00:00" />
-            <TextBlock
-                Width="112"
-                Height="34"
-                Margin="579,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                FontFamily="{StaticResource Stargaze Stencil}"
-                FontSize="25"
-                FontWeight="Bold"
-                Foreground="White"
-                Text="Temps: " />
-        </Grid>
         <TextBlock
             x:Name="pauseText"
             HorizontalAlignment="Center"
