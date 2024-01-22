@@ -40,11 +40,11 @@ namespace GalaxyRush
         private int minutes = 0;
         private int secondes = 0;
 
-        private double vitesseAsteroide = 8;
-        private double vitesseOvni = 6;
-        private double changeVitesse = 10;
+        private double vitesseAsteroide = 7;
+        private double vitesseOvni = 5;
+        private double changeVitesse = 8;
         private double changeQteAsteroide = 2;
-        private double changeQteOvni = 3;
+        private double changeQteOvni = 1;
         private double vitesseDefilement = 5;
 
         private RotateTransform rotation1 = new RotateTransform(135);
@@ -79,14 +79,9 @@ namespace GalaxyRush
             backgroundImg.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace_jeu.png"));
             background.Fill = backgroundImg;
             background2.Fill = backgroundImg;
-            // configure le Timer et les événements
-            // lie le timer du répartiteur à un événement appelé moteur de jeu gameengine
-
-            // rafraissement toutes les 16 milliseconds
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(5);
             dispatcherTimer.Tick += Jeu;
             dispatcherTimer.Start();
-            // chargement de l’image du joueur 
             SkinJoueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fusee.png"));
             joueur.Fill = SkinJoueur;
 
@@ -100,7 +95,7 @@ namespace GalaxyRush
         private void Rejouer()
         {
             MainWindow menu = new();
-            menu.ShowDialog();
+            menu.Show();
             this.Close();
         }
 
@@ -166,12 +161,14 @@ namespace GalaxyRush
         }
 
 
-        //private void FinDuJeu()
-        //{
-        //    dispatcherTimer.Stop();
-        //    tempsJeu.Stop();
-        //    perduText.Visibility = Visibility.Visible;
-        //}
+        private void FinDuJeu()
+        {
+            dispatcherTimer.Stop();
+            tempsJeu.Stop();
+            perduText.Visibility = Visibility.Visible;
+            Rejouer1.Visibility = Visibility.Visible;
+            Quitter.Visibility = Visibility.Visible;
+        }
 
 
         private void CreeObstacles()
@@ -249,7 +246,7 @@ namespace GalaxyRush
             Canvas.SetRight(bouclier, right);
             Canvas.SetTop(bouclier, y);
             myCanvas.Children.Add(bouclier);
-            apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.jpg"));
+            //apparence.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bouclier.jpg"));
         }
 
 
@@ -347,12 +344,6 @@ namespace GalaxyRush
             Panel.SetZIndex(fuseeHitbox, 99);
             foreach (Rectangle x in listeAsteroide)
             {
-
-                // création d'un asteroide 
-//#if DEBUG
-//                Console.WriteLine("asteroide");
-//#endif
-
                 Rect asteroideBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width, x.Height);
 
                 if (rect_fusee.IntersectsWith(asteroideBox))
@@ -360,10 +351,8 @@ namespace GalaxyRush
 #if DEBUG
                     Console.WriteLine("explosion");
 #endif
-                    dispatcherTimer.Stop();
-                    tempsJeu.Stop();
-                    //perduText.Visibility = Visibility.Visible;
-                    MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    FinDuJeu();
+                        //MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
 
                 }
             }
@@ -371,14 +360,7 @@ namespace GalaxyRush
 #if DEBUG
             Console.WriteLine("retire");
 #endif
-
         }
-
-        //private void AnimerFond()
-        //{
-        //    double newPos = Canvas.GetLeft(background) - vitesseDefilement;
-        //    Canvas.SetLeft(background, newPos);
-        //}
 
 
         private void MouvementFusee()
