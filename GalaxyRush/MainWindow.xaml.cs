@@ -40,6 +40,7 @@ namespace GalaxyRush
         private int secondes = 0;
         private int bonus = 0;
         private int protege = 0;
+        private int protectionUltimeDeLaMortQuiTue = 0;
         private int limite_max = 4;
         private int invincibilite = 0;
         private int limiteBouclier = 1;
@@ -110,18 +111,37 @@ namespace GalaxyRush
         {
             if (e.Key == Key.Space)
             {
+#if DEBUG
+                Console.WriteLine("espace pressé");
                 if (allerHaut == false)
                 {
                     allerHaut = true;
                     allerBas = false;
                     joueur.RenderTransform = rotation1;
-
+#endif
                 }
                 else
                 {
                     allerBas = true;
                     allerHaut = false;
                     joueur.RenderTransform = rotation2;
+                }
+            }
+            if (e.Key == Key.C)
+            {
+                if (protectionUltimeDeLaMortQuiTue == 0)
+                {
+#if DEBUG
+                    Console.WriteLine("Immortel");
+                    protectionUltimeDeLaMortQuiTue = 1;
+#endif
+                }
+                else 
+                {
+#if DEBUG
+                    Console.WriteLine("plus Immortel");
+                    protectionUltimeDeLaMortQuiTue = 0;
+#endif
                 }
             }
             if (e.Key == Key.P)
@@ -167,12 +187,15 @@ namespace GalaxyRush
 
         private void FinDuJeu()
         {
+#if DEBUG
+            Console.WriteLine("Fin du jeu");
             dispatcherTimer.Stop();
             tempsJeu.Stop();
             perduText.Visibility = Visibility.Visible;
             Rejouer1.Visibility = Visibility.Visible;
             Quitter.Visibility = Visibility.Visible;
             finDePartie = true;
+#endif
         }
 
 
@@ -397,13 +420,13 @@ namespace GalaxyRush
                 if (rect_fusee.IntersectsWith(asteroideBox) || rect_fusee.IntersectsWith(ovniBox))
                 {
 #if DEBUG
-                    if ( protege == 0 && invincibilite <= 0) 
+                    if ( protege == 0 && invincibilite <= 0 && protectionUltimeDeLaMortQuiTue == 0) 
                     {
-                        Console.WriteLine("explosion");
+                        Console.WriteLine("touché");
                         FinDuJeu();
                         //MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
                     }
-                    else 
+                    else if ( protege == 1 && protectionUltimeDeLaMortQuiTue == 0)
                     {
                         protege = 0;
                         bonus = 0;
@@ -458,10 +481,6 @@ namespace GalaxyRush
             MouvementFusee();
             CreeObstacles();
             Bouclier();
-            foreach (Rectangle asteroide in enlever)
-            {
-                myCanvas.Children.Remove(asteroide);
-            }
             Mouvement_Bouclier();
             Vitesse_Et_Quantite();
             Collision();

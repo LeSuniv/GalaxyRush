@@ -28,6 +28,7 @@ namespace GalaxyRush
         private void ButJouer_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
+            MusiqueMenu.Stop();
         }
 
 
