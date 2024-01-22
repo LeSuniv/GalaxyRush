@@ -21,6 +21,7 @@ namespace GalaxyRush
 
         private bool allerHaut = false;
         private bool allerBas = true;
+        private bool finDePartie = false;
         bool imageAffiche = true;
         RotateTransform rotation1 = new RotateTransform(135);
         RotateTransform rotation2 = new RotateTransform(45);
@@ -146,16 +147,9 @@ namespace GalaxyRush
             Menu menu = new Menu();
             menu.ShowDialog();
             MusiqueJeu.Stop();
-            MusiqueMenu.Play();
+            //MusiqueMenu.Play();
             this.Close();
         }
-
-
-        //private void MenuBoutton(object sender, RoutedEventArgs e)
-        //{
-        //    Menu menu = new Menu();
-        //    menu.Show();
-        //}
 
 
         private void CleeCanvasRelachee(object sender, KeyEventArgs e)
@@ -500,6 +494,10 @@ namespace GalaxyRush
 
         private void MettrePause()
         {
+            if (finDePartie)
+            {
+                return;
+            }
             enPause = !enPause;
 
             if (enPause)
@@ -508,8 +506,6 @@ namespace GalaxyRush
                 tempsJeu.Stop();
                 pauseText.Visibility = Visibility.Visible;
                 MusiqueJeu.Visibility = Visibility.Visible;
-                butSon.Visibility = Visibility.Visible;
-                sonStatut.Visibility = Visibility.Visible;
                 Rejouer1.Visibility = Visibility.Visible;
                 Quitter.Visibility = Visibility.Visible;
             }
@@ -519,8 +515,6 @@ namespace GalaxyRush
                 dispatcherTimer.Start();
                 tempsJeu.Start();
                 MusiqueJeu.Visibility = Visibility.Collapsed;
-                butSon.Visibility = Visibility.Collapsed;
-                sonStatut.Visibility = Visibility.Collapsed;
                 Rejouer1.Visibility = Visibility.Collapsed;
                 Quitter.Visibility = Visibility.Collapsed;
             }
@@ -563,7 +557,6 @@ namespace GalaxyRush
             MainWindow rejouer = new();
             rejouer.Show();
             MusiqueJeu.Stop();
-            MusiqueMenu.Play();
             this.Close();
         }
 
@@ -573,26 +566,7 @@ namespace GalaxyRush
             Menu retourMenu = new();
             retourMenu.Show();
             MusiqueJeu.Stop();
-            MusiqueMenu.Play();
             this.Close();
-        }
-
-
-        private void ButSon_Click(object sender, RoutedEventArgs e)
-        {
-            MusiqueJeu.IsMuted = !MusiqueJeu.IsMuted;
-        }
-
-
-        private void SonStatut_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (imageAffiche)
-                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\son.png"));
-            else
-                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\son_couper.png"));
-
-            imageAffiche = !imageAffiche;
-            butSon.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
         }
     }
 }
