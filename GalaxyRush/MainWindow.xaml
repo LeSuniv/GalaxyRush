@@ -24,18 +24,20 @@
             KeyDown="CleeCanvasAppuyee">
             <Rectangle
                 Name="background"
+                Canvas.Left="0"
                 Width="800"
                 Height="450"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Canvas.Left="0"
                 Fill="Orange" />
             <Rectangle
                 Name="background2"
                 Canvas.Left="800"
                 Width="800"
                 Height="450"
-                Fill="LightGreen" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Fill="LightGreen" />
             <Rectangle
                 Name="joueur"
                 Canvas.Left="110"
@@ -43,7 +45,8 @@
                 Width="67"
                 Height="99"
                 Fill="Brown"
-                RenderTransformOrigin="0.5,0.5">
+                RenderTransformOrigin="0.5,0.5"
+                Tag="fusee">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform />
@@ -61,31 +64,6 @@
                 FontWeight="Bold"
                 Foreground="White" />
         </Canvas>
-        <Grid>
-            <TextBlock
-                x:Name="temps"
-                Width="86"
-                Height="33"
-                Margin="698,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                FontFamily="{StaticResource Stargaze Stencil}"
-                FontSize="25"
-                FontWeight="Bold"
-                Foreground="White"
-                Text="00:00" />
-            <TextBlock
-                Width="112"
-                Height="34"
-                Margin="579,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                FontFamily="{StaticResource Stargaze Stencil}"
-                FontSize="25"
-                FontWeight="Bold"
-                Foreground="White"
-                Text="Temps: " />
-        </Grid>
         <TextBlock
             x:Name="pauseText"
             HorizontalAlignment="Center"
@@ -100,12 +78,12 @@
             x:Name="perduText"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontFamily="{StaticResource Stargaze Stencil}"            
+            FontFamily="{StaticResource Stargaze Stencil}"
             FontSize="100"
             FontWeight="ExtraBold"
             Foreground="#FFFFFF"
             Text="Perdu"
-            Visibility="Collapsed"/>
+            Visibility="Collapsed" />
         <Button
             x:Name="Quitter"
             Width="140"
@@ -116,11 +94,11 @@
             Background="#00000000"
             BorderBrush="#FFD499B9"
             Click="QuitterBoutton"
-            Content="Menu"
+            Content="Quitter"
             FontFamily="{StaticResource Stargaze Stencil}"
+            FontSize="20"
             Foreground="#FFD499B9"
-            Visibility="Collapsed" 
-            FontSize="20" />
+            Visibility="Collapsed" />
         <Button
             x:Name="Rejouer1"
             Width="140"
@@ -129,16 +107,13 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
             Background="#00000000"
-            BorderBrush= "#D499B9"
+            BorderBrush="#D499B9"
             Click="Rejouer_Click"
             Content="Rejouer"
             FontFamily="{StaticResource Stargaze Stencil}"
             Visibility="Collapsed" 
             Foreground="#FFD499B9" FontSize="20"
             />
-        <MediaElement x:Name="MusiqueMenu"  Source="audio/musiqueMenu.mp3" LoadedBehavior="Manual" Margin="52,244,592,109" />
-        <MediaElement x:Name="MusiqueJeu" Source="audio/musiqueJeu.mp3" LoadedBehavior="Manual" Visibility="Visible" Margin="45,306,594,33" />
-        <Button x:Name="butSon" HorizontalAlignment="Left" Margin="18,259,0,0" VerticalAlignment="Top" Height="85" Width="160" Click="ButSon_Click" Visibility="Collapsed"/>
-        <Image x:Name="sonStatut" MouseLeftButtonDown="SonStatut_MouseLeftButtonDown" Margin="16,256,619,88" Visibility="Collapsed"/>
+        <MediaElement x:Name="MusiqueJeu" Source="audio/musiqueJeu.mp3" LoadedBehavior="Manual" Visibility="Collapsed" />
     </Grid>
 </Window>

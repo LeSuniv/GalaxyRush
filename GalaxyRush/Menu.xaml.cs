@@ -13,30 +13,22 @@ namespace GalaxyRush
         private ImageBrush fondMenu = new ImageBrush();
         private ImageBrush fondMenuLogo = new ImageBrush();
         private bool fenetreRegle = false;
-        bool imageAffiche = true;
 
         public Menu()
         {
             InitializeComponent();
-            MusiqueJeu.Stop();
             MusiqueMenu.Play();
-
             fondMenu.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\fond_espace.jpg"));
             Fond.Fill = fondMenu;
             fondMenuLogo.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\images\\LogoGalaxyRushR.png"));
             FondLogo.Fill = fondMenuLogo;
         }
 
+
         private void ButJouer_Click(object sender, RoutedEventArgs e)
         {
-            //MainWindow gameWindow = new MainWindow();
-            //gameWindow.ShowDialog();
-            //MainWindow jeu = new MainWindow();
-            //jeu.ShowDialog();
-            //this.Hide();
-
             this.DialogResult = true;
-            //this.Close();
+            MusiqueMenu.Stop();
         }
 
 
@@ -59,19 +51,19 @@ namespace GalaxyRush
 
 
         private void ButSon_Click(object sender, RoutedEventArgs e)
-        {
+        {         
             MusiqueMenu.IsMuted = !MusiqueMenu.IsMuted;
-        }
 
-        private void SonStatut_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (imageAffiche)
-                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "/Images/son.png"));
+            string imageUri;
+            if (MusiqueMenu.IsMuted)
+            {
+                imageUri = "\\Images\\son_couper.png";
+            }
             else
-                sonStatut.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "/Images/son_couper.png"));
-
-            imageAffiche = !imageAffiche;
-            butSon.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            {
+                imageUri = "\\Images\\son.png";
+            }
+            butSon.Background = new ImageBrush(new BitmapImage(new Uri($"pack://application:,,,/GalaxyRush;component/{imageUri}", UriKind.Absolute)));
         }
     }
 }
