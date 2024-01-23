@@ -108,6 +108,8 @@ namespace GalaxyRush
 
                 if (allerHaut == false)
                 {
+#if DEBUG
+
                     Console.WriteLine("fusée vers le bas");
 #endif
                     allerHaut = true;
