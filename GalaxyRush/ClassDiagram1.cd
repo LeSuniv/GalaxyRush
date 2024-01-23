@@ -3,7 +3,7 @@
   <Class Name="GalaxyRush.MainWindow">
     <Position X="6.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAIARAHSIBQgAJAAACYAAAABAAAGABEQaAAGRAAIAI=</HashCode>
+      <HashCode>ABAIEUQOCIlQgGNBJACaAAAAAIAAHhAE5dQACJSAIOI=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -17,9 +17,9 @@
     <Lollipop Position="0.1" />
   </Class>
   <Class Name="GalaxyRush.Menu">
-    <Position X="8.5" Y="3.25" Width="1.5" />
+    <Position X="8.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQAAAIAAAAAAEAAAAAIAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>AAAAAAAEAAQAAAIACAAAAEAAAAAIAAAAAAAABAAAAAA=</HashCode>
       <FileName>Menu.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
