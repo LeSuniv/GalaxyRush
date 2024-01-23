@@ -97,10 +97,11 @@ namespace GalaxyRush
         {
 #if DEBUG
             Console.WriteLine("rejouer");
+#endif
+
             MainWindow menu = new();
             menu.Show();
             this.Close();
-#endif
         }
 
 
@@ -110,25 +111,25 @@ namespace GalaxyRush
             {
 #if DEBUG
                 Console.WriteLine("espace pressé");
+#endif
+
                 if (allerHaut == false)
                 {
-#if DEBUG
                     Console.WriteLine("fusée vers le bas");
                     allerHaut = true;
                     allerBas = false;
                     joueur.RenderTransform = rotation1;
-#endif
                 }
                 else
                 {
 #if DEBUG
                     Console.WriteLine("fusée vers le haut");
+#endif
+
                     allerBas = true;
                     allerHaut = false;
                     joueur.RenderTransform = rotation2;
-#endif
                 }
-#endif
             }
             if (e.Key == Key.C)
             {
@@ -136,8 +137,9 @@ namespace GalaxyRush
                 {
 #if DEBUG
                     Console.WriteLine("Immortel");
-                    totemImmunite = 1;
 #endif
+
+                    totemImmunite = 1;
                 }
                 else 
                 {
@@ -151,8 +153,9 @@ namespace GalaxyRush
             {
 #if DEBUG
                 Console.WriteLine("pause");
-                MettrePause();
 #endif
+
+                MettrePause();
             }
             if (e.Key == Key.Escape)
             {
@@ -190,12 +193,13 @@ namespace GalaxyRush
         {
 #if DEBUG
             Console.WriteLine("Fin du jeu");
+#endif
+
             dispatcherTimer.Stop();
             perduText.Visibility = Visibility.Visible;
             Rejouer1.Visibility = Visibility.Visible;
             Quitter.Visibility = Visibility.Visible;
             finDePartie = true;
-#endif
         }
 
 
@@ -421,21 +425,24 @@ namespace GalaxyRush
 
                 if (rect_fusee.IntersectsWith(obstacleBox))
                 {
-#if DEBUG
                     if ( protege == 0 && invincibilite <= 0 && totemImmunite == 0) 
                     {
+#if DEBUG
+
                         Console.WriteLine("touché");
-                        FinDuJeu();
 #endif
+
+                        FinDuJeu();
                     }
                     else if ( protege == 1 && totemImmunite == 0)
                     {
 #if DEBUG
                         Console.WriteLine("protégé");
+#endif
+
                         protege = 0;
                         bonus = 0;
                         invincibilite = 290;
-#endif
                     }
                 }
             }
