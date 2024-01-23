@@ -25,7 +25,6 @@ namespace GalaxyRush
         private bool enPause = false;
 
         private int vitesseJoueur = 5;
-        private int nbrObstacle;
         private int score = 0;
         private int limiteAsteroide = 1;
         private int nbAsteroide = 0;
@@ -40,6 +39,7 @@ namespace GalaxyRush
         private int secondes = 0;
         private int bonus = 0;
         private int protege = 0;
+        private int totemImmunite = 0;
         private int limite_max = 4;
         private int invincibilite = 0;
         private int limiteBouclier = 1;
@@ -58,7 +58,6 @@ namespace GalaxyRush
         private RotateTransform rotation3 = new RotateTransform(90);
 
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
-        private DispatcherTimer tempsJeu = new DispatcherTimer();
 
         private ImageBrush SkinJoueur = new ImageBrush();
         private ImageBrush fond = new ImageBrush();
@@ -91,18 +90,17 @@ namespace GalaxyRush
             dispatcherTimer.Start();
             joueur.Fill = SkinJoueur;
 
-            tempsJeu.Tick += ComptageTemps;
-            tempsJeu.Interval = TimeSpan.FromSeconds(15);
-            tempsJeu.Start();
-
         }
 
 
         private void Rejouer()
         {
+#if DEBUG
+            Console.WriteLine("rejouer");
             MainWindow menu = new();
             menu.Show();
             this.Close();
+#endif
         }
 
 
@@ -110,31 +108,55 @@ namespace GalaxyRush
         {
             if (e.Key == Key.Space)
             {
+#if DEBUG
+                Console.WriteLine("espace pressé");
                 if (allerHaut == false)
                 {
+#if DEBUG
+                    Console.WriteLine("fusée vers le bas");
                     allerHaut = true;
                     allerBas = false;
                     joueur.RenderTransform = rotation1;
-
+#endif
                 }
                 else
                 {
+#if DEBUG
+                    Console.WriteLine("fusée vers le haut");
                     allerBas = true;
                     allerHaut = false;
                     joueur.RenderTransform = rotation2;
+#endif
+                }
+#endif
+            }
+            if (e.Key == Key.C)
+            {
+                if (totemImmunite == 0)
+                {
+#if DEBUG
+                    Console.WriteLine("Immortel");
+                    totemImmunite = 1;
+#endif
+                }
+                else 
+                {
+#if DEBUG
+                    Console.WriteLine("plus Immortel");
+                    totemImmunite = 0;
+#endif
                 }
             }
             if (e.Key == Key.P)
             {
+#if DEBUG
+                Console.WriteLine("pause");
                 MettrePause();
+#endif
             }
             if (e.Key == Key.Escape)
             {
                 Rejouer();
-            }
-            if (e.Key == Key.Escape)
-            {
-                QuitterPartie();
             }
         }
 
@@ -142,7 +164,6 @@ namespace GalaxyRush
         private void QuitterPartie()
         {
             dispatcherTimer.Stop();
-            tempsJeu.Stop();
             Quitter.Visibility = Visibility.Visible;
             Rejouer1.Visibility = Visibility.Visible;
             perduText.Visibility = Visibility.Visible;
@@ -167,12 +188,14 @@ namespace GalaxyRush
 
         private void FinDuJeu()
         {
+#if DEBUG
+            Console.WriteLine("Fin du jeu");
             dispatcherTimer.Stop();
-            tempsJeu.Stop();
             perduText.Visibility = Visibility.Visible;
             Rejouer1.Visibility = Visibility.Visible;
             Quitter.Visibility = Visibility.Visible;
             finDePartie = true;
+#endif
         }
 
 
@@ -215,22 +238,25 @@ namespace GalaxyRush
                 {
                     delai_ovni -= 1;
                     y = aleatoire.Next(0, 350);
-                    ImageBrush textureOvni = new ImageBrush();
-                    Rectangle nouveauOvni = new Rectangle
+                    if (i < limiteOvni && delai_ovni == 0)
                     {
-                        Tag = "ovni",
-                        Height = 60,
-                        Width = 125,
-                        Fill = textureOvni,
-                    };
-                    Canvas.SetRight(nouveauOvni, right);
-                    Canvas.SetTop(nouveauOvni, y);
-                    listeObstacle.Add(nouveauOvni);
-                    myCanvas.Children.Add(nouveauOvni);
-                    textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
-                    nbOvni += 1;
-                    ovni.Ovni = nouveauOvni;
-                    delai_ovni = tempsApparition;
+                        ImageBrush textureOvni = new ImageBrush();
+                        Rectangle nouveauOvni = new Rectangle
+                        {
+                            Tag = "ovni",
+                            Height = 60,
+                            Width = 125,
+                            Fill = textureOvni,
+                        };
+                        Canvas.SetRight(nouveauOvni, right);
+                        Canvas.SetTop(nouveauOvni, y);
+                        listeObstacle.Add(nouveauOvni);
+                        myCanvas.Children.Add(nouveauOvni);
+                        textureOvni.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/ovni.png"));
+                        nbOvni += 1;
+                        ovni.Ovni = nouveauOvni;
+                        delai_ovni = tempsApparition;
+                    }
                 }
             }
             #endregion
@@ -239,7 +265,7 @@ namespace GalaxyRush
 
         private void Bouclier()
         {
-            if (bonus == 0 && score >= 0)
+            if (bonus == 0 && score >= 6)
             {
                 for (int i = 0; i < limiteBouclier; i++)
                 {
@@ -323,7 +349,7 @@ namespace GalaxyRush
                     score += 1;
                     declencheur = aleatoire.Next(50, (int)ActualWidth / 2);
                     enlever.Add(ovni);
-                    nbOvni = 0;
+                    nbOvni -= 1;
                 }
             }
             foreach (Rectangle ovni in enlever)
@@ -391,29 +417,26 @@ namespace GalaxyRush
             Panel.SetZIndex(fuseeHitbox, 99);
             foreach (Rectangle x in listeObstacle)
             {
-                Rect asteroideBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width , x.Height);
-                Rect ovniBox = new Rect(800 - Canvas.GetRight(x), Canvas.GetTop(x), x.Width, x.Height);
+                Rect obstacleBox = new Rect(800 - Canvas.GetRight(x)-x.ActualWidth, Canvas.GetTop(x), x.Width , x.Height);
 
-                if (rect_fusee.IntersectsWith(asteroideBox) || rect_fusee.IntersectsWith(ovniBox))
+                if (rect_fusee.IntersectsWith(obstacleBox))
                 {
 #if DEBUG
-                    if ( protege == 0 && invincibilite <= 0) 
+                    if ( protege == 0 && invincibilite <= 0 && totemImmunite == 0) 
                     {
-                        Console.WriteLine("explosion");
-                        dispatcherTimer.Stop();
-                        tempsJeu.Stop();
+                        Console.WriteLine("touché");
                         FinDuJeu();
-                        //MessageBox.Show("Vous avez été touché par un asteroide", "la mission est un échec", MessageBoxButton.OK, MessageBoxImage.Stop);
+#endif
                     }
-                    else 
+                    else if ( protege == 1 && totemImmunite == 0)
                     {
+#if DEBUG
+                        Console.WriteLine("protégé");
                         protege = 0;
                         bonus = 0;
                         invincibilite = 290;
-                    }
-                    
 #endif
-
+                    }
                 }
             }
             foreach (Rectangle y in listeBouclier)
@@ -460,10 +483,6 @@ namespace GalaxyRush
             MouvementFusee();
             CreeObstacles();
             Bouclier();
-            foreach (Rectangle asteroide in enlever)
-            {
-                myCanvas.Children.Remove(asteroide);
-            }
             Mouvement_Bouclier();
             Vitesse_Et_Quantite();
             Collision();
@@ -485,7 +504,6 @@ namespace GalaxyRush
                 if (enPause)
                 {
                     dispatcherTimer.Stop();
-                    tempsJeu.Stop();
                     pauseText.Visibility = Visibility.Visible;
                     MusiqueJeu.Visibility = Visibility.Visible;
                     Rejouer1.Visibility = Visibility.Visible;
@@ -495,25 +513,11 @@ namespace GalaxyRush
                 {
                     pauseText.Visibility = Visibility.Collapsed;
                     dispatcherTimer.Start();
-                    tempsJeu.Start();
                     MusiqueJeu.Visibility = Visibility.Collapsed;
                     Rejouer1.Visibility = Visibility.Collapsed;
                     Quitter.Visibility = Visibility.Collapsed;
                 }
             }
-        }
-
-
-        private void ComptageTemps(object sender, EventArgs e)
-        {
-            secondes++;
-            if (secondes == 60)
-            {
-                minutes++;
-                secondes = 0;
-            }
-            string tempsFormat = minutes.ToString("D2") + ":" + secondes.ToString("D2");
-            temps.Text = tempsFormat;
         }
 
 
