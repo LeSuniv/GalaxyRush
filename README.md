@@ -5,8 +5,8 @@ Galaxy Rush is a WPF game coded in C# on Visual Studio. It is an endless runner 
 ![fond_espace](https://github.com/user-attachments/assets/821f1031-593f-43cb-a28f-4c6d3367a4a0)
 
 ## Authors
-* **Sefer Tasdemir** - [Sefer](https://github.com/sftss)
-* **Esteban Drouet** - [Droueest](https://github.com/Droueest)
 * **Olivier Brunel** - [Obrunel](https://github.com/Obrunel)
+* **Esteban Drouet** - [Droueest](https://github.com/Droueest)
+* **Sefer Tasdemir** - [Sefer](https://github.com/sftss)
 
 ![fond_espace_jeu](https://github.com/user-attachments/assets/de571ae0-6bd9-431b-9e6b-8f7b4f81debc)
